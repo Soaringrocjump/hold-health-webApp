@@ -1,0 +1,340 @@
+/* 公共 */
+.state{
+  width: 104px;
+  height: 44px;
+  line-height: 44px;
+  border-radius: 40px;
+  text-align: center;
+  background: rgba(238, 0, 0, 0.1);
+  border: 1px solid #fcc5c5;
+  font-size: 24px;
+  color: #EC0000;
+  margin: 0 auto;
+}
+.infoPanel{
+  padding: 0 40px;
+  background: #fff;
+  padding-top: 25px;
+  margin-top: 20px;
+  .tit{
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: #333;
+    font-weight: bold;
+    span{
+      font-size: 24px;
+      color: #999;
+      font-weight: normal;
+    }
+    &::before{
+      position: absolute;
+      content: "";
+      top: 0;
+      left: -17px;
+      width: 5px;
+      height: 30px;
+      background: #416bd7;
+    }
+  }
+  .panel-row{
+    li{
+      padding: 30px 0 15px;
+      border-bottom: 1px solid #F3F2F7;
+      font-size: 26px;
+      &:last-child{
+        border-bottom: 0;
+      }
+      .import{
+        position: relative;
+        &::before{
+          position: absolute;
+          left: 0;
+          top: 0;
+          content: "*";
+          color: #F10000;
+        }
+      }
+      .fl{
+        font-size: 26px;
+      }
+      .fr{
+        font-size: 26px;
+        >input,textarea{
+          width: 100%;
+          border: 0;
+          font-size: 26px;
+          // text-align: right;
+          // &::-webkit-input-placeholder{
+          //   text-align: left;
+          // }
+        }
+      }
+      .warning{
+        font-size: 22px;
+        color: #ED0000;
+        margin-top: 25px;
+      }
+      .imgBox{
+        width: 162px;
+        height: 162px;
+        margin-left: 15px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        overflow: hidden;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}
+.infoPanel+.infoPanel{
+  margin-top: 15px;
+}
+.infoPanel:last-child{
+  margin-bottom: 20px;
+}
+.commit{
+  width:648px;
+  height:80px;
+  line-height: 80px;
+  background:rgba(65,107,215,1);
+  border-radius:4px;
+  margin: 25px auto 50px;
+  text-align: center;
+  color: #fff;
+  font-size: 32px;
+}
+/* 机构列表 */
+.orgList{
+  .top_search{
+    border-top: 1px solid #E8E8E8;
+    height: 80px;
+    background: #fff;
+    .searchBox{
+      position: relative;
+      width: 653px;
+      height: 60px;
+      border-radius: 60px;
+      background: #F0F4F7;
+      .searchIcon{
+        position: absolute;
+        width: 34px;
+        height: 34px;
+        top: 15px;
+        left: 37px;
+      }
+      input{
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        border: 0;
+        background: transparent;
+        padding-left: 98px;
+        padding-right: 20px;
+        font-size: 26px;
+      }
+    }
+  }
+  .listBox{
+    li{
+      width: 100%;
+      height: 210px;
+      background: #fff;
+      margin-top: 20px;
+      padding: 35px 44px 35px;
+      display: flex;
+      justify-content: space-between;
+      .comInfo{
+        position: relative;
+        padding-left: 23px;
+        width: 500px;
+        height: 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        h2{
+          font-size: 28px;
+          color: #333;
+        }
+        p{
+          font-size: 26px;
+          color: #888;
+        }
+        h2,p{
+          width: 100%;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+        .left_v_line{
+          position: absolute;
+          content: "";
+          left: 0;
+          top: 0;
+          width: 5px;
+          height: 140px;
+          background: #416BD7;
+        }
+        .bg_red{
+          background: #ec0000;
+        }
+        .bg_org{
+          background: #ff9900;
+        }
+        .bg_green{
+          background: #00ab50;
+        }
+      }
+      .right_state{
+        span{
+          color: #888;
+          font-size: 26px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+/* 机构详情 */
+.orgDetail{
+  .result{
+    width: 100%;
+    height: 260px;
+    background: #fff;
+    margin-top: 8px;
+    padding-top: 25px;
+    .icon{
+      width: 108px;
+      height: 108px;
+      margin: 0 auto;
+    }
+    .result_state{
+      width: 100%;
+      margin: 20px auto 0;
+      text-align: center;
+      font-size: 30px;
+      color: #333;
+      font-weight: 400;
+    }
+  }
+  .investorBox{
+    width: 100%;
+    height: 210px;
+    background: #fff;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 0 55px 0 47px;
+    .investorInfo{
+      width: 500px;
+      height: 140px;
+      position: relative;
+      font-size: 26px;
+      .investor,.sum{
+        color: #333;
+      }
+      .date{
+        color: #888;
+      }
+      .ques{
+        display: inline-block;
+        width: 34px;
+        height: 34px;
+        line-height: 36px;
+        margin-left: 15px;
+        border-radius: 50px;
+        text-align: center;
+        color: #fff;
+        background: rgba(236, 0, 0, 0.6);
+      }
+      &::before{
+        position: absolute;
+        content: "";
+        top: 0;
+        left: -23px;
+        width: 5px;
+        height: 140px;
+        background: #416BD7;
+      }
+    }
+    .v-line{
+      width: 1px;
+      height: 186px;
+      background: #F3F2F7;
+    }
+    .edit{
+      font-size: 32px;
+      color: #416BD7;
+    }
+  }
+  .comName{
+    width: 100%;
+    min-height: 80px;
+    background: #fff;
+    margin-top: 10px;
+    padding: 15px 32px;
+    .name{
+      font-size: 30px;
+      color: #416BD7;
+    }
+    .state{
+      margin-left: 40px;
+    }
+  }
+  .infoPanel .panel-row li{
+    .fl{
+      max-width: 200px;
+      color: #666;
+    }
+    .fr{
+      max-width: 415px;
+      color: #333;
+      text-align: right;
+    }
+  }
+}
+/* 信息提交/修改 */
+.InvestorReg{
+  .reg_tips{
+    width: 100%;
+    height:42px;
+    line-height: 42px;
+    background:rgba(255,0,0,0.3);
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+  }
+  .infoPanel .panel-row li{
+    .fl{
+      max-width: 200px;
+      padding-left: 15px;
+      color: #333;
+    }
+    .fr{
+      width: 430px;
+      color: #666;
+    }
+  }
+  .regPanel~.regPanel{
+    margin-top: 10px;
+  }
+}
+/* 信息提交/修改 */
+.regDetail{
+  .infoPanel{
+    margin-top: 10px;
+    .panel-row li{
+      .fr{
+        width: 430px;
+        color: #666;
+        text-align: right;
+      }
+      .deepen{
+        color: #333;
+      }
+    }
+  } 
+}
