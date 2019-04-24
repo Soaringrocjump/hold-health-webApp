@@ -1,6 +1,8 @@
-<!-- 首页 -->
+<!-- 个人中心模块 -->
 <template>
-  <div></div>
+  <div class="personal-page">
+    个人中心
+  </div>
 </template>
 
 <script>
