@@ -1,0 +1,143 @@
+/*个人中心*/
+.personal-page{
+  .personal-top{
+    width:750px;
+    height:260px;
+    overflow: hidden;
+    background: url(~IMG/personal-top.png),linear-gradient(90deg,rgba(106,99,242,1),rgba(186,54,229,1));
+    background-size: contain;
+    .personal-top-option{
+      display: flex;
+      justify-content: space-between;
+      margin-top: 60px;
+      color: #fff;
+      span{
+        font-size: 32px;
+      }
+    }
+  }
+  .personal-card{
+    width:689px;
+    height:215px;
+    margin: -92px auto 0;
+    background:#fff;
+    border:1px solid rgba(232, 232, 232, 1);
+    box-shadow:4px 3px 20px 0px rgba(0, 0, 0, 0.25);
+    border-radius:25px;
+    overflow: hidden;
+    .personal-card-up{
+      height: 146px;
+      padding: 0 35px 0 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .head-info{
+        display: flex;
+        align-items: center;
+        .head{
+          width:109px;
+          height:109px;
+          background:#D2D2D2;
+          border:2px solid rgba(210,210,210,1);
+          box-shadow:0px 7px 18px 0px rgba(125,133,152,0.36);
+          border-radius:50%;
+          overflow: hidden;
+        }
+        dl{
+          margin-left: 11px;
+          color: #333;
+          dt{
+            font-size: 30px;
+          }
+          dd{
+            font-size: 25px;
+            margin-top: 20px;
+          }
+        }
+      }
+      .qr-code{
+        width: 82px;
+        height: 82px;
+      }
+    }
+    .personal-card-down{
+      height: 69px;
+      background: #F4F5FA;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &>div{
+        width: 50%;
+        height: 35px;
+        font-size: 25px;
+        color: #C8C8C8;
+        text-align: center;
+        color: #818181;
+        span{
+          margin: 0 8px;
+        }
+      }
+      &>div~div{
+        border-left: 1px solid #C8C8C8;
+      }
+    }
+  }
+  .personal-new-msg{
+    margin-top: 25px;
+    width:750px;
+    height:74px;
+    padding: 0 35px 0 30px;
+    background:rgba(255,242,214,1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .check{
+      span~span{
+        font-size: 30px;
+        margin-left: 10px;
+        color: #CFA96E;
+      }
+      .msg-icon{
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+      }
+    }
+    .close{
+      width: 37px;
+      height: 37px;
+    }
+  }
+  .personal-menu-list{
+    background: #fff;
+    margin-top: 14px;
+    li{
+      height: 105px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 35px;
+      .menu-info{
+        display: flex;
+        align-items: center;
+      }
+      .menu-icon{
+        display: inline-block;
+        width: 49px;
+        height: 49px;
+      }
+      .menu-name{
+        margin-left: 34px;
+        font-size: 32px;
+        color: #333;
+      } 
+      .jump{
+        width: 35px;
+        height: 35px;
+      }
+    }
+    li~li{
+      border-top: 2px solid rgba(244,245,250,1);
+    }
+  }
+}

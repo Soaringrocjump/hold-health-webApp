@@ -53,5 +53,19 @@ export default new Router({
         },
       ]
     },
+    //我的客户模块
+    {
+      path: '/myClient',
+      name: 'myClient',
+      component: () => import ("@/components/page/index/myClient"),
+      meta: {title: 'myClient'},
+    },
+    //模块
+    {
+      path: '/clientInfo',
+      name: 'clientInfo',
+      component: () => import ("@/components/page/index/clientInfo"),
+      meta: {title: 'clientInfo'},
+    },
   ]
 })

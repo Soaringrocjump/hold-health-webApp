@@ -1,6 +1,6 @@
 <!-- 卡片title -->
 <template>
-  <div class="title">
+  <div :class="['title', hasLine ? 'hasLine': '']">
     <div class="name">
       <span class="sign"></span>
       <span>{{title}}</span>
@@ -17,6 +17,10 @@ export default {
       default: '标题'
     },
     hasMore:{
+      type: Boolean,
+      default: false
+    },
+    hasLine:{
       type: Boolean,
       default: false
     }
@@ -37,7 +41,6 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid rgba(244,245,250,1);
   .name{
     display: flex;
     align-items: center;
@@ -53,5 +56,8 @@ export default {
     font-size: 26px;
     color: #000;
   }
+}
+.hasLine{
+  border-bottom: 2px solid rgba(244,245,250,1);
 }
 </style>

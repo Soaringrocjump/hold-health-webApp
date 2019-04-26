@@ -1,0 +1,278 @@
+.myClient-page{
+  .myClient-banner{
+    width: 750px;
+    height: 200px;
+  }
+  .myClient-filter{
+    background: #fff;
+    padding-bottom: 15px;
+    .myClient-search{
+      position: relative;
+      width:658px;
+      height:80px;
+      margin: -40px auto;
+      display: flex;
+      background:rgba(255,255,255,1);
+      border-radius: 80px;
+      overflow: hidden;
+      box-shadow:0px 0px 32px 4px rgba(0, 0, 0, 0.1);
+      .left-input{
+        width: 479px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #9B9B9B;
+        font-size: 24px;
+        i{
+          font-size: 42px;
+        }
+        input{
+          width: 320px;
+          height: 42px;
+          margin-left: 12px;
+          border: none;
+          background: transparent;
+        }
+      }
+      .right-btn{
+        width: 179px;
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+        color: #fff;
+        font-size: 28px;
+        background:linear-gradient(-18deg,rgba(11,5,116,1),rgba(44,109,240,1));
+      }
+    }
+    .myClient-tab{
+      margin-top: 76px;
+      display: flex;
+      justify-content: space-around;
+      dl{
+        position: relative;
+        width: 105px;
+        text-align: center;
+        color: #828282;
+        dt{
+          width: 98px;
+          height: 98px;
+          margin: 0 auto;
+        }
+        dd{
+          font-size: 26px;
+          margin-top: 10px;
+        }
+      }
+      .active{
+        color: #1C3AB3;
+        font-weight: bold;
+        &::after{
+          position: absolute;
+          bottom: -15px;
+          left: 0;
+          content: "";
+          width: 105px;
+          height: 15px;
+          background: #0344B9;
+        }
+      }
+    }
+  }
+  .myClient-list{
+    margin-top: 20px;
+    background: #fff;
+    table{
+      th{
+        height: 78px;
+        text-align: center;
+        border-bottom: 2px solid rgba(244,245,250,1);
+      }
+      td{
+        height: 88px;
+        text-align: center;
+        border-bottom: 2px solid rgba(244,245,250,1);
+      }
+      td:first-child{
+        text-align: right;
+      }
+      .repeat{
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+      }
+      .type{
+        display: inline-block;
+        width: 67px;
+        height: 33px;
+      }
+    }
+  }
+}
+.clientInfo-page{
+  .clientInfo-top{
+    width:750px;
+    height:260px;
+    overflow: hidden;
+    background: url(~IMG/personal-top.png),#3c4154;
+    background-size: contain;
+  }
+  .clientInfo-panel{
+    position: relative;
+    background: #fff;
+    padding-bottom: 10px;
+    padding-top: 420px;
+  }
+  .clientInfo-card{
+    position: absolute;
+    top: -92px;
+    left: 50%;
+    transform: translateX(-50%);
+    width:689px;
+    height:486px;
+    // margin: -92px auto 0;
+    background:#fff;
+    border:1px solid rgba(232, 232, 232, 1);
+    box-shadow:4px 3px 20px 0px rgba(0, 0, 0, 0.25);
+    border-radius:25px;
+    overflow: hidden;
+    .clientInfo-card-up{
+      height: 146px;
+      padding: 0 40px 0 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .head-info{
+        display: flex;
+        align-items: center;
+        .head{
+          width:109px;
+          height:109px;
+          background:#D2D2D2;
+          border:2px solid rgba(210,210,210,1);
+          box-shadow:0px 7px 18px 0px rgba(125,133,152,0.36);
+          border-radius:50%;
+          overflow: hidden;
+        }
+        h2{
+          font-size: 35px;
+          color: #333;
+          font-weight: bold;
+          margin-left: 50px;
+        }
+        h3{
+          font-size: 30px;
+          color: #333;
+          margin-left: 40px;
+        }
+      }
+      .type{
+        width: 158px;
+        height: 47px;
+      }
+    }
+    .clientInfo-card-down{
+      position: relative;
+      height: 340px;
+      background: #F4F5FA;
+      padding: 30px 45px;
+      display: flex;
+      justify-content: space-between;
+      &>div{
+        font-size: 28px;
+        color: #767676;
+        line-height: 2;
+      }
+      .info-left{
+        width: 368px;
+      }
+      .info-right{
+        margin-left: 26px;
+      }
+      .revise{
+        position: absolute;
+        right: 38px;
+        bottom: 38px;
+        width: 89px;
+        height: 89px;
+        line-height: 89px;
+        text-align: center;
+        border-radius: 20px;
+        background:linear-gradient(#fece72,#d4940e);
+        box-shadow: 0 -2px 0 #ffe0a4;
+        i{
+          font-size: 48px;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .clientInfo-archive{
+    .archive-card{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 0 30px;
+      &>div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 12px 0 27px;
+        width:330px;
+        height:140px;
+        border-radius:10px;
+        margin-bottom: 20px;
+        color: #fff;
+        .card-icon{
+          width: 85px;
+          height: 85px;
+        }
+        dl{
+          width: 180px;
+          dt{
+            font-size: 30px;
+            margin-bottom: 16px;
+          }
+          dd{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            span{
+              font-size: 24px;
+              big{
+                font-size: 40px;;
+              }
+              small{
+                font-size: 20px;
+              }
+            }
+          }
+        }
+      }
+      .card1{
+        background:linear-gradient(132deg,rgba(255,163,102,1) 0%,rgba(255,196,68,1) 100%);
+      }
+      .card2{
+        background:linear-gradient(132deg,rgba(103,160,252,1) 0%,rgba(134,189,254,1) 100%);
+      }
+      .card3{
+        background:linear-gradient(132deg,rgba(169,79,255,1) 0%,rgba(230,53,255,1) 100%);
+      }
+      .card4{
+        background:linear-gradient(132deg,rgba(247,112,119,1) 0%,rgba(178,115,160,1) 100%);
+      }
+    }
+  }
+  .clientInfo-service{
+    margin-top: 12px;
+    .service-record{
+      padding: 14px 45px 30px;
+      li{
+        font-size: 25px;
+        line-height: 1.8;
+        color: #777;
+      }
+    }
+  }
+}

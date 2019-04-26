@@ -2,13 +2,13 @@
 <template>
   <div class="wrapper">
     <div class="bottom-menu">
-      <dl class="active" @click="handle('index')">
+      <dl :class="[isActive == 'index' ? 'active' : '']" @click="handle('index')">
         <dt>
           <i class="iconfont icon-shouye"></i>
         </dt>
         <dd>首页</dd>
       </dl>
-      <dl @click="handle('orders')">
+      <dl :class="[isActive == 'orders' ? 'active' : '']" @click="handle('orders')">
         <dt>
           <i class="iconfont icon-leimupinleifenleileibie2"></i>
         </dt>
@@ -16,17 +16,17 @@
       </dl>
       <dl class="center">
         <dt>
-          <img src="~IMG/plus.png" alt="">
+          <img src="~IMG/menu-plus.png" alt="">
         </dt>
         <dd>我要邀约</dd>
       </dl>
-      <dl @click="handle('purchase')">
+      <dl :class="[isActive == 'purchase' ? 'active' : '']" @click="handle('purchase')">
         <dt>
           <i class="iconfont icon-gouwuche"></i>
         </dt>
         <dd>采购</dd>
       </dl>
-      <dl @click="handle('personal')">
+      <dl :class="[isActive == 'personal' ? 'active' : '']" @click="handle('personal')">
         <dt>
           <i class="iconfont icon-wode-"></i>
         </dt>
@@ -41,10 +41,13 @@
 export default {
   data () {
     return {
+      isActive: 'index'
     };
   },
   methods:{
     handle(path){
+      console.log('path',path)
+      this.isActive = path
       this.$router.push({
         path: '/menu/'+path
       })
@@ -90,6 +93,11 @@ export default {
     }
     dl.active{
       color: #086BFF;
+      dt i{
+        background-image: -webkit-linear-gradient( #1228F6 , #337BFF , #33B0FF );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
     }
   }
 }
