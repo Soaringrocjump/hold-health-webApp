@@ -1,0 +1,319 @@
+/* 邀约模块 */
+.invitation-page{
+  //选择服务
+  .choseService{
+    background: #fff;
+    height: 100%;
+    padding: 30px 0 130px;
+    .service-list{
+      width:650px;
+      height:758px;
+      margin: 0 auto;
+      background: #fff;
+      border:1px solid rgba(232, 232, 232, 1);
+      box-shadow:4px 3px 20px 0px rgba(0, 0, 0, 0.25);
+      border-radius:25px;
+      overflow: hidden;
+      dt{
+        height: 100px;
+        line-height: 100px;
+        font-size: 35px;
+        color: #555;
+        padding: 0 32px;
+        margin-top: 8px;
+      }
+      dd{
+        height: 155px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 24px 0 32px;
+        border-top: 1px solid #DADADA;
+        .invitation-service{
+          width: 490px;
+          height: 113px;
+        }
+        .checkBox{
+          width: 55px;
+          height: 55px;
+          border: 3px solid #BABABA;
+          border-radius: 12px;
+        }
+        .checkedBox{
+          width: 55px;
+          height: 55px;
+          border-radius: 12px;
+        }
+      }
+    }
+    .confirmBtn{
+      width:550px;
+      height:90px;
+      line-height: 90px;
+      color: #fff;
+      text-align: center;
+      border-radius: 90px;
+      font-size: 35px;
+      background:linear-gradient(0deg,rgba(11,5,116,1),rgba(44,109,240,1));
+      margin: 168px auto 0;
+    }
+  }
+  .scanCode{
+    background:#fff;
+    padding: 30px 0 54px;
+    .qr-code-box{
+      width:650px;
+      height:861px;
+      background:#fff;
+      margin: 0 auto;
+      border:1px solid rgba(232, 232, 232, 1);
+      box-shadow:4px 3px 20px 0px rgba(0, 0, 0, 0.25);
+      border-radius:25px;
+      overflow: hidden;
+      text-align: center;
+      h2{
+        font-size:54px;
+        margin-top: 65px;
+        background:linear-gradient(0deg,rgba(106,99,242,1) 22.216796875%, rgba(186,54,229,1) 73.828125%);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+      }
+      .qr-code{
+        width: 306px;
+        height: 306px;
+        margin: 0 auto;
+      }
+      .step1{
+        font-size: 28px;
+        color: #333;
+        margin: 15px 0
+      }
+      .step2{
+        font-size: 32px;
+        color: #2C2C2C;
+        line-height: 1.8;
+        margin: 25px 0;
+      }
+      .cancel{
+        width: 111px;
+        height: 111px;
+        line-height: 111px;
+        text-align: center;
+        background: #d665f2;
+        border-radius: 50%;
+        color: #fff;
+        margin: 50px auto;
+        i{
+          font-size: 72px;
+        }
+      }
+    }
+    .other{
+      text-align: center;
+      font-size: 30px;
+      color: #777;
+      margin-top: 80px;
+    }
+    .editBtn{
+      width:550px;
+      height:90px;
+      line-height:90px;
+      background:linear-gradient(0deg,rgba(106,99,242,1),rgba(186,54,229,1));
+      box-shadow:0px 2px 0px 0px rgba(255,255,255,0.31);
+      border-radius: 90px;
+      font-size: 35px;
+      color: #fff;
+      text-align: center;
+      margin: 20px auto;
+    }
+  }
+  .confirmShare,.getAppointment{
+    .slogan{
+      width: 522px;
+      margin: 66px auto;
+    }
+    .invitation-info{
+      width:649px;
+      height:299px;
+      background:#fff;
+      border:1px solid rgba(232, 232, 232, 1);
+      box-shadow:4px 3px 20px 0px rgba(0, 0, 0, 0.25);
+      border-radius:25px;
+      margin: -53px auto;
+      padding: 30px 35px;
+      color: #555;
+      line-height: 1.6;
+      h2{
+        font-size: 35px;
+      }
+      p{
+        font-size: 28px;
+      }
+    }
+    .gradient-txt{
+      width: 516px;
+      margin: 115px auto 0;
+    }
+    .intro{
+      font-size: 35px;
+      color: #555;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .service-list{
+      width:650px;
+      height:663px;
+      margin: 30px auto;
+      background: #fff;
+      border:1px solid rgba(232, 232, 232, 1);
+      box-shadow:4px 3px 20px 0px rgba(0, 0, 0, 0.25);
+      border-radius:25px;
+      padding: 15px 0;
+      overflow: hidden;
+      li{
+        height: 155px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 24px 0 32px;
+        .invitation-service{
+          width: 490px;
+          height: 113px;
+        }
+        .arrow{
+          width: 49px;
+          height: 49px;
+        }
+      }
+      li~li{
+        border-top: 1px solid #DADADA;
+      }
+    }
+    .confirmBtn{
+      width:550px;
+      height:90px;
+      line-height:90px;
+      background:linear-gradient(0deg,rgba(106,99,242,1),rgba(186,54,229,1));
+      box-shadow:0px 2px 0px 0px rgba(255,255,255,0.31);
+      border-radius: 90px;
+      font-size: 35px;
+      color: #fff;
+      text-align: center;
+      margin: 130px auto;
+    }
+  }
+  .getAppointment{
+    .service-info{
+      padding: 50px 0 60px;
+      background: #fff;
+      .gradient-txt2{
+        width: 458px;
+        margin: 0 auto;
+      }
+      p{
+        font-size: 28px;
+        color: #646464;
+        margin-top: 20px;
+        text-align: center;
+        .officer{
+          font-size: 28px;
+          color: #000;
+          font-weight: bold;
+        }
+      }
+      .officer-code{
+        width: 200px;
+        margin: 45px auto;
+      }
+      .step{
+        color: #646464;
+        width: 592px;
+        margin: 65px auto;
+        line-height: 1.6;
+        dt{
+          font-size: 35px;
+        }
+        dd{
+          font-size: 28px;
+        }
+      }
+    }
+    
+  }
+  .fillAppointment{
+    .slogan{
+      width: 522px;
+      margin: 66px auto;
+    }
+    .invitation-info{
+      width:500px;
+      height:80px;
+      line-height:80px;
+      background:rgba(255,255,255,1);
+      box-shadow:0px 0px 32px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 80px;
+      margin: -40px auto;
+      text-align: center;
+      font-size: 35px;
+      color: #5F5F5F;
+    }
+    .gradient-txt2{
+      width: 461px;
+      margin: 85px auto 0;
+    } 
+    p{
+      font-size: 28px;
+      color: #646464;
+      margin-top: 20px;
+      text-align: center;
+      .officer{
+        font-size: 28px;
+        color: #000;
+        font-weight: bold;
+      }
+    }
+    .fill-info{
+      padding: 40px 100px 89px;
+      background: #fff;
+      margin: 30px auto;
+      dl{
+        margin-top: 10px;
+        dt{
+          font-size: 29px;
+          line-height: 50px;
+          color: #8348EB;
+          .nes{
+            color: #FF0000;
+            // font-size: 42px;
+          }
+        }
+        dd{
+          input{
+            width:100%;
+            height:80px;
+            background:rgba(255,255,255,1);
+            border:2px solid rgba(180, 180, 180, 1);
+          }
+          textarea{
+            width:100%;
+            height:278px;
+            background:rgba(255,255,255,1);
+            border:2px solid rgba(180, 180, 180, 1);
+          }
+        }
+      }
+      .confirmBtn{
+        width:100%;
+        height:104px;
+        line-height: 104px;
+        background:linear-gradient(0deg,rgba(106,99,242,1),rgba(186,54,229,1));
+        box-shadow:0px 1px 0px 0px rgba(255,255,255,0.31);
+        margin: 74px auto;
+        border-radius: 104px;
+        text-align: center;
+        color: #fff;
+        font-size: 45px;
+      }
+    }
+  }
+}

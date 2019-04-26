@@ -15,18 +15,38 @@
         <div class="right-btn">查 询</div>
       </div>
       <div class="myClient-tab">
-        <dl v-for="(item,index) in myClientType" :key="index" :class="[item.type == selType ? 'active' : '']" @click="handle(item.type)">
+        <!-- <dl v-for="(item,index) in myClientType" :key="index" :class="[item.type == selType ? 'active' : '']" @click="handle(item.type)">
           <dt>
             <img :src="item.icon" alt="">
           </dt>
           <dd>{{item.type}}</dd>
+        </dl> -->
+        <dl v-for="(item,index) in myClientType" :key="index" >
+          <dt>
+            <img :src="item.icon" alt="">
+          </dt>
         </dl>
       </div>
+      <van-tabs v-model="active" color="#0344b9" title-active-color="#0344b9"  swipeable>
+        <van-tab title="全部客户">
+          <allList />
+        </van-tab>
+        <van-tab title="复检客户">
+          <repeatList />
+        </van-tab>
+        <van-tab title="准客户">
+          <followList />
+        </van-tab>
+        <van-tab title="签单客户">
+          <signingList />
+        </van-tab>
+      </van-tabs>
     </div>
-    <allList v-show="selType == '全部客户'"/>
+    
+    <!-- <allList v-show="selType == '全部客户'"/>
     <repeatList v-show="selType == '复检客户'"/>
     <followList v-show="selType == '准客户'"/>
-    <signingList v-show="selType == '签单客户'"/>
+    <signingList v-show="selType == '签单客户'"/> -->
   </div>
 </template>
 
@@ -39,6 +59,7 @@ import signingList from './components/signingList'
 export default {
   data () {
     return {
+      active: 0,
       selType: '全部客户',
       myClientType:[
         {
@@ -76,5 +97,28 @@ export default {
 
 </script>
 <style lang='scss' >
+.van-tabs--line .van-tabs__wrap {
+  height: 21vw;
+  .van-tab{
+    font-size: 26px;
+    line-height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+  }
+  .van-tabs__line{
+    height: 10px;
+    border-radius: 0;
+  }
+  .van-tabs__nav{
+    background: transparent;
+  }
+}
+.van-tabs--line{
+  padding-top: 21.1vw;
+}
+.van-tabs {
+  margin-top: -13vw;
+}
 @import "@/assets/style/myClient.scss";
 </style>

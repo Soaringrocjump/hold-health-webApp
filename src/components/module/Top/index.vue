@@ -3,7 +3,7 @@
   <div :class="['page-top',hasBg ? 'hasBg': '',theme,]">
     <i class="iconfont icon-fanhui" @click="$router.go(-1)"></i>
     <span>{{title}}</span>
-    <i class="iconfont icon-lingdang1f"></i>
+    <i class="iconfont icon-lingdang"></i>
   </div>
 </template>
 
@@ -39,8 +39,14 @@ export default {
   justify-content: space-between;
   align-items: center;
   color: #fff;
-  i{
+  // i{
+  //   font-size: 40px;
+  // }
+  i:nth-of-type(1){
     font-size: 40px;
+  }
+  i:nth-of-type(2){
+    font-size: 46px;
   }
   span{
     font-size: 36px;

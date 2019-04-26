@@ -1,9 +1,9 @@
 <!-- 客户信息模块 -->
 <template>
   <div class="clientInfo-page">
-    <div class="clientInfo-top">
+    <TopBg gray>
       <PersonTop title="客户信息" hasBack hasMore/>
-    </div>
+    </TopBg>
     <div class="clientInfo-panel">
       <div class="clientInfo-card">
         <div class="clientInfo-card-up">
@@ -105,6 +105,7 @@
 <script>
 import PersonTop from 'Module/PersonTop'
 import Title from 'Module/Title'
+import TopBg from 'Module/TopBg'
 export default {
   data () {
     return {
@@ -112,7 +113,8 @@ export default {
   },
   components:{
     PersonTop,
-    Title
+    Title,
+    TopBg
   }
 }
 

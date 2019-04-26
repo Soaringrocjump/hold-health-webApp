@@ -5,7 +5,7 @@
   }
   .myClient-filter{
     background: #fff;
-    padding-bottom: 15px;
+    // padding-bottom: 15px;
     .myClient-search{
       position: relative;
       width:658px;
@@ -81,7 +81,8 @@
     }
   }
   .myClient-list{
-    margin-top: 20px;
+    // margin-top: 20px;
+    border-top: 20px solid #f4f5fa;
     background: #fff;
     table{
       th{
@@ -111,13 +112,6 @@
   }
 }
 .clientInfo-page{
-  .clientInfo-top{
-    width:750px;
-    height:260px;
-    overflow: hidden;
-    background: url(~IMG/personal-top.png),#3c4154;
-    background-size: contain;
-  }
   .clientInfo-panel{
     position: relative;
     background: #fff;

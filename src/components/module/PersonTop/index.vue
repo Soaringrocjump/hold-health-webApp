@@ -42,7 +42,7 @@ export default {
     font-size: 40px;
   }
   span{
-    font-size: 32px;
+    font-size: 36px;
   }
 }
 </style>

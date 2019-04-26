@@ -35,7 +35,7 @@
         <dd>等待客户</dd>
       </dl>
       <dl>
-        <dt>3</dt>
+        <router-link to="/recharge"><dt>3</dt></router-link>
         <dd>充值记录</dd>
       </dl>
     </div>

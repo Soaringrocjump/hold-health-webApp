@@ -2,7 +2,7 @@
 <template>
   <div class="login-page">
     <div class="login-top">
-      <img src="~IMG/login-logo.png" alt="">
+      <img src="~IMG/login-slogan.png" alt="">
     </div>
     <div class="login-form">
       <h2>登录</h2>

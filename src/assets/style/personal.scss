@@ -1,19 +1,12 @@
 /*个人中心*/
 .personal-page{
-  .personal-top{
-    width:750px;
-    height:260px;
-    overflow: hidden;
-    background: url(~IMG/personal-top.png),linear-gradient(90deg,rgba(106,99,242,1),rgba(186,54,229,1));
-    background-size: contain;
-    .personal-top-option{
-      display: flex;
-      justify-content: space-between;
-      margin-top: 60px;
-      color: #fff;
-      span{
-        font-size: 32px;
-      }
+  .personal-top-option{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    color: #fff;
+    span{
+      font-size: 32px;
     }
   }
   .personal-card{

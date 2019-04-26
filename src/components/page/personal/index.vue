@@ -1,9 +1,9 @@
 <!-- 个人中心模块 -->
 <template>
   <div class="personal-page">
-    <div class="personal-top">
+    <TopBg>
       <PersonTop title="个人中心"  hasMore/>
-    </div>
+    </TopBg>
     <div class="personal-card">
       <div class="personal-card-up">
         <div class="head-info">
@@ -57,6 +57,7 @@
 
 <script>
 import PersonTop from 'Module/PersonTop'
+import TopBg from 'Module/TopBg'
 export default {
   data () {
     return {
@@ -89,7 +90,8 @@ export default {
     };
   },
   components:{
-    PersonTop
+    PersonTop,
+    TopBg
   }
 }
 

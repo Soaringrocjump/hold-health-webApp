@@ -1,20 +1,20 @@
 <!-- 邀约模块 -->
 <template>
   <div class="invitation-page">
-    <Top3List title="发布邀约"/>
+    <Top2List title="健康预约"/>
     <router-view/>
   </div>
 </template>
 
 <script>
-import Top3List from './module/Top3List'
+import Top2List from './module/Top2List'
 export default {
   data () {
     return {
     };
   },
   components:{
-    Top3List
+    Top2List
   }
 }
 

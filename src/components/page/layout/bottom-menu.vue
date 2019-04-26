@@ -15,7 +15,7 @@
         <dd>订单</dd>
       </dl>
       <dl class="center">
-        <dt>
+        <dt @click="toInvitation">
           <img src="~IMG/menu-plus.png" alt="">
         </dt>
         <dd>我要邀约</dd>
@@ -50,6 +50,12 @@ export default {
       this.isActive = path
       this.$router.push({
         path: '/menu/'+path
+      })
+    },
+    //发布邀约
+    toInvitation(){
+      this.$router.push({
+        path: '/invitation'
       })
     }
   }

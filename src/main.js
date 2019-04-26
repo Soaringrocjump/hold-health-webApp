@@ -5,19 +5,10 @@ import App from './App'
 import router from './router'
 import axios from './axios';
 
-//ElementUI
-import { Tooltip, Upload } from 'element-ui';
-Vue.use(Tooltip)
-Vue.use(Upload)
 //VantUI
-import { Cell, Popup, Area, Dialog, Loading, Pagination, Toast } from 'vant';
-Vue.use(Cell);
-Vue.use(Popup);
-Vue.use(Area);
-Vue.use(Dialog);
-Vue.use(Loading);
-Vue.use(Pagination);
-Vue.use(Toast);
+import { Tab, Tabs } from 'vant';
+Vue.use(Tab);
+Vue.use(Tabs);
 
 Vue.config.productionTip = false
 

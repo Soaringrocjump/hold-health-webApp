@@ -1,0 +1,176 @@
+/* 充值记录 */
+.recharge-page{
+  .recharge-panel{
+    position: relative;
+    background: #fff;
+    padding-bottom: 10px;
+    padding-top: 180px;
+  }
+  .recharge-card{
+    position: absolute;
+    top: -92px;
+    left: 50%;
+    transform: translateX(-50%);
+    width:689px;
+    height:252px;
+    background:#fff;
+    border:1px solid rgba(232, 232, 232, 1);
+    box-shadow:4px 3px 20px 0px rgba(0, 0, 0, 0.25);
+    border-radius:25px;
+    overflow: hidden;
+    .recharge-card-up{
+      height: 161px;
+      padding: 0 40px 0 25px;
+      display: flex;
+      align-items: center;
+      .head{
+        width:132px;
+        height:110px;
+        box-shadow:0px 7px 18px 0px rgba(125,133,152,0.36);
+        border-radius:10px;
+        overflow: hidden;
+      }
+      .count{
+        color: #555;
+        margin-left: 29px;
+        p{
+          font-size: 28px;
+        }
+        p:last-child(){
+          font-size: 24px;
+        }
+        
+      }
+    }
+    .recharge-card-down{
+      position: relative;
+      height: 91px;
+      display: flex;
+      font-size: 30px;
+      div{
+        width: 50%;
+        height: 91px;
+        line-height: 91px;
+        text-align: center;
+        background: #F4F5FA;
+      }
+      .active{
+        background: linear-gradient(0deg,rgba(3,68,184,1),rgba(154,209,255,1));
+        color: #fff;
+
+      }
+    }
+  }
+  .record{
+    background: #fff;
+    margin-top: 18px;
+    ul{
+      padding-top: 2px;
+      li{
+        height: 106px;
+        border-top: 2px solid rgba(244,245,250,1);
+        padding: 0 72px; 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        dt{
+          font-size: 24px;
+          color: #0a0a0a;
+        }
+        dd{
+          font-size: 24px;
+          color: #5a5a5a;
+        }
+        span{
+          font-size: 30px;
+          color: #0a0a0a;
+        }
+      }
+
+    }
+  }
+  .recharge{
+    background: #fff;
+    margin-top: 18px;
+    padding-bottom: 200px;
+    h2{
+      font-size: 32px;
+      color: #5C5C5C;
+      padding: 15px 40px;
+    }
+    .recharge-package{
+      margin-top: 10px;
+      padding: 0 30px;
+      li{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 6px;
+        .package-price{
+          width: 196px;
+          height: 117px;
+          line-height: 117px;
+          padding-left: 30px;
+          background: #6AC3FF;
+          border-radius: 17px;
+          color: #fff;
+          font-size: 42px;
+        }
+        .package-price-checked{
+          width: 196px;
+          height: 117px;
+          line-height: 117px;
+          padding-left: 30px;
+          background: #D20000;
+          border-radius: 17px;
+          color: #fff;
+          font-size: 42px;
+        }
+        .package-chose{
+          width:476px;
+          height:117px;
+          background:rgba(0,0,0,0);
+          border:2px solid rgba(180, 180, 180, 1);
+          border-radius:17px;
+          padding: 0 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .privilege{
+            width: 355px;
+            font-size: 24px;
+            color: #8B8B8B;
+          }
+          .check{
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border:2px solid rgba(180, 180, 180, 1);
+          }
+          .checked{
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+    .tips{
+      padding: 0 69px;
+      font-size:21px;
+      color:rgba(157,157,157,1);
+      line-height:35px;
+      margin-top: 60px;
+    }
+    .confirmBtn{
+      width:550px;
+      height:90px;
+      line-height:90px;
+      text-align: center;
+      background:linear-gradient(0deg,rgba(11,5,116,1),rgba(44,109,240,1));
+      margin: 30px auto;
+      font-size: 35px;
+      color: #fff;
+      border-radius: 90px;
+    }
+  }
+}
