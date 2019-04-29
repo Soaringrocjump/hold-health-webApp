@@ -2,7 +2,7 @@
 <template>
   <div class="invitation-page">
     <Top3List title="发布邀约"/>
-    <transition :name="'slide-' + (direction == 'forward' ? 'in' : 'out')">
+    <transition :name="'son-slide-' + (direction == 'forward' ? 'in' : 'out')">
     <router-view/>
     </transition>
   </div>

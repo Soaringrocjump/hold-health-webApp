@@ -26,9 +26,9 @@
         </li>
       </ul>
     </div>
-    <router-link to="/appointment">
-      <div class="confirmBtn">已确认，下一步</div>
-    </router-link>
+    <!-- <router-link to="/appointment"> -->
+      <div class="confirmBtn">已确认，发布邀约</div>
+    <!-- </router-link> -->
   </div>
 </template>
 

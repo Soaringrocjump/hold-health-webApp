@@ -1,7 +1,12 @@
 <!-- 订单模块 -->
 <template>
-  <div>
-    订单
+  <div class="orders-page">
+    <div class="no-order">
+      <div class="no-order-info">
+        <i class="iconfont icon-dingdan1"></i>
+        <span>暂无订单信息</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -14,5 +19,6 @@ export default {
 }
 
 </script>
-<style lang='' scoped>
+<style lang='scss' scoped>
+@import "@/assets/style/orders.scss";
 </style>

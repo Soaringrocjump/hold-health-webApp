@@ -1,0 +1,31 @@
+.purchase-page{
+  width: 750px;
+  //空购物车页面
+  .shopping-cart-empty{
+    padding-top: 150px;
+    p{
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #777;
+      font-size: 32px;
+      i{
+        font-size: 32px;
+        margin: 0 10px;
+      }
+    }
+    .go-purchase{
+      width: 150px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #086bff;
+      // text-align: center;
+      margin: 30px auto;
+      color: #086bff;
+      border-radius: 5px;
+    }
+  }
+}

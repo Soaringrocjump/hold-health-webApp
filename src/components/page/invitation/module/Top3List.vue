@@ -3,7 +3,7 @@
   <div class="invitation-top-option">
     <span><i class="iconfont icon-fanhui" @click="$router.go(-1)"></i></span>
     <span>{{title}}</span>
-    <span><i class="iconfont icon-guanbi1"></i></span>
+    <span @click="cancel"><i class="iconfont icon-guanbi1"></i></span>
   </div>
 </template>
 
@@ -19,6 +19,13 @@ export default {
     return {
     };
   },
+  methods:{
+    cancel(){
+      this.$router.push({
+        path: '/menu'
+      })
+    }
+  }
 }
 
 </script>

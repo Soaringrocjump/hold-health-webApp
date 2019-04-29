@@ -2,6 +2,7 @@
 .invitation-page{
   //选择服务
   .choseService{
+    width: 750px;
     background: #fff;
     height: 100%;
     padding: 30px 0 130px;
@@ -58,7 +59,9 @@
       margin: 168px auto 0;
     }
   }
+  //扫码
   .scanCode{
+    width: 750px;
     background:#fff;
     padding: 30px 0 54px;
     .qr-code-box{
@@ -127,6 +130,7 @@
       margin: 20px auto;
     }
   }
+  //确认发布邀约
   .confirmShare,.getAppointment{
     .slogan{
       width: 522px;

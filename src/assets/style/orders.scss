@@ -1,0 +1,19 @@
+.orders-page{
+  width: 750px;
+  //无订单页面
+  .no-order{
+    padding-top: 150px;
+    .no-order-info{
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #777;
+      font-size: 32px;
+      i{
+        font-size: 36px;
+        margin: 0 10px;
+      }
+    }
+  }
+}
