@@ -27,12 +27,12 @@
         <dd>我的客户</dd>
       </dl>
       <dl>
-        <dt>312</dt>
+        <router-link to="/successTest"><dt>312</dt></router-link>
         <dd>成功检测</dd>
       </dl>
       <dl>
-        <dt>10</dt>
-        <dd>等待客户</dd>
+        <router-link to="/waitTest"><dt>10</dt></router-link>
+        <dd>等待检测</dd>
       </dl>
       <dl>
         <router-link to="/recharge"><dt>3</dt></router-link>
@@ -45,7 +45,7 @@
           <img src="~IMG/slogan1.png" alt="">
         </li>
         <li>
-          <img src="~IMG/slogan2.png" alt="">
+          <img src="~IMG/slogan3.png" alt="">
         </li>
       </ul>
     </div>
@@ -88,13 +88,13 @@
         </li>
       </ul>
     </div>
-    <div class="index-slogan2">
+    <!-- <div class="index-slogan2">
       <ul>
         <li>
           <img src="~IMG/slogan3.png" alt="">
         </li>
       </ul>
-    </div>
+    </div> -->
     <div class="index-slogan3">
       <ul>
         <li>

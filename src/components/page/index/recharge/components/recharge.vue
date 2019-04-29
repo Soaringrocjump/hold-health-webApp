@@ -5,9 +5,9 @@
     <ul class="recharge-package">
       <li v-for="(item,index) in recharge" :key="index">
         <div :class="[item.checked ? 'package-price-checked': 'package-price']">¥ {{item.amount}}</div>
-        <div class="package-chose">
+        <div class="package-chose" @click="check(item)">
           <div class="privilege">{{item.privilege}}</div>
-          <div :class="[ item.checked ? 'checked' : 'check']" @click="check(item)">
+          <div :class="[ item.checked ? 'checked' : 'check']" >
             <img v-if="item.checked" src="~IMG/recharge-check.png" alt="">
           </div>
         </div>

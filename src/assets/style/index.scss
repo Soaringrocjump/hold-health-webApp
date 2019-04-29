@@ -63,7 +63,7 @@
       text-align: center;
       dt{
         font-size: 45px;
-        font-family:'square721BT';
+        font-family:"specialfont";
         font-weight: bold;
         line-height: 1;
         color: #03a6be;
@@ -84,16 +84,17 @@
   }
   .index-slogan{
     background: #fff;
-    padding: 33px 30px 31px;
+    padding: 13px 30px 11px;
     li{
       width: 690px;
       // height: 140px;
       border-radius: 10px;
       overflow: hidden;
+      margin: 20px 0;
     }
-    li~li{
-      margin-top: 20px;
-    }
+    // li~li{
+    //   margin-top: 20px;
+    // }
   }
   .index-slogan2{
     padding: 16px 30px;
@@ -110,6 +111,7 @@
   .index-slogan3{
     background: #fff;
     padding: 17px 30px 20px;
+    margin-top: 14px;
     li{
       width: 690px;
       // height: 140px;

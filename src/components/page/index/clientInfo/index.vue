@@ -15,7 +15,10 @@
             <h3>男</h3>
           </div>
           <div class="type">
-            <img src="~IMG/myClient-type-zhun.png" alt="">
+            <img src="~IMG/clientInfo-type-zhun.png" alt="">
+            <!-- <img src="~IMG/clientInfo-type-sign.png" alt="">
+            <img src="~IMG/clientInfo-type-general.png" alt="">
+            <img src="~IMG/clientInfo-type-invalid.png" alt=""> -->
           </div>
         </div>
         <div class="clientInfo-card-down">

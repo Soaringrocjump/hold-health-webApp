@@ -137,7 +137,7 @@ body {
 .border-l{
   border-left: 2px solid #F4F5FA;
 }
-// @font-face{	font-family:'square721BT'; src:url('@/assets/font/Square721BT-Roman.ttf')format('truetype');}
+@font-face{	font-family:'Roman'; src:url('@/assets/font/TT0246M_.TTF')format('truetype');}
 // @font-face{	
 //   font-family:'square721BT';
 //   font-weight: bold;
@@ -147,4 +147,47 @@ body {
 //   url('src/assets/font/Square721BT-Roman.ttf')format('truetype'), /* Safari, Android, iOS */
 //   url('src/assets/font/Square721BT-Roman.svg#square721BT')format('svg');/* Legacy iOS */
 // }
+// @font-face{	font-family:'Square721BT'; src:url('@/assets/font/Square721BT-Roman.ttf')format('truetype');}
+// @font-face{	
+//   font-family:'square721BT';
+//   font-weight: bold;
+//   src:url('src/assets/font/Square721BT-Roman.eot');/* IE9 Compat Modes */
+//   src:url('src/assets/font/Square721BT-Roman.eot?#iefix')format('embedded-opentype'), /* IE6-IE8 */
+//   url('src/assets/font/Square721BT-Roman.woff')format('woff'), /* Modern Browsers */
+//   url('src/assets/font/Square721BT-Roman.ttf')format('truetype'), /* Safari, Android, iOS */
+//   url('src/assets/font/Square721BT-Roman.svg#square721BT')format('svg');/* Legacy iOS */
+// }
+//页面切换动画
+.slide-out-enter-active,
+.slide-out-leave-active,
+.slide-in-enter-active,
+.slide-in-leave-active {
+  will-change: transform;
+  transition: all 250ms;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  backface-visibility: hidden;
+  perspective: 1000;
+}
+
+.slide-out-enter {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+
+.slide-out-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+
+.slide-in-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+
+.slide-in-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
 

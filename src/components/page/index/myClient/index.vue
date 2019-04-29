@@ -120,5 +120,8 @@ export default {
 .van-tabs {
   margin-top: -13vw;
 }
+.van-hairline--top-bottom:after {
+    border: none;
+}
 @import "@/assets/style/myClient.scss";
 </style>

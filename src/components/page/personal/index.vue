@@ -15,9 +15,10 @@
             <dd>太平洋人寿保险宁波分公司</dd>
           </dl>
         </div>
-        <div class="qr-code">
+        <!-- <div class="qr-code">
           <img src="~IMG/qqr-code.png" alt="">
-        </div>
+        </div> -->
+        <i class="iconfont icon-erweima"></i>
       </div>
       <div class="personal-card-down">
         <div>
@@ -39,19 +40,100 @@
         <img src="~IMG/personal-close.png" alt="">
       </div>
     </div>
-    <ul class="personal-menu-list">
-      <li v-for="(item,index) in personalMenu" :key="index">
-        <div class="menu-info">
-          <span class="menu-icon">
-            <img :src="item.iconName" alt="">
-          </span>
-          <span class="menu-name">{{item.menuName}}</span>
+    <div class="personal-panel">
+      <h2>我的钱包</h2>
+      <div class="part-panel">
+        <div class="part-left">
+          <dl>
+            <dt>剩余检测次数</dt>
+            <dd>365</dd>
+          </dl>
+          <div class="panel-btn">继续充值</div>
         </div>
-        <div class="jump">
-          <img src="~IMG/personal-jump.png" alt="">
+        <div class="ver-line"></div>
+        <div class="part-right">
+          <dl>
+            <dt>到期时间（过期清零）</dt>
+            <dd>2019.10.01</dd>
+          </dl>
+          <div class="panel-btn">如何延长有效期</div>
         </div>
-      </li>
-    </ul>
+      </div>
+    </div>
+    <div class="personal-panel">
+      <h2>我的设备</h2>
+      <div class="part-panel">
+        <div class="part-left">
+          <dl>
+            <dt>设备识别号</dt>
+            <dd>HH19B0001</dd>
+          </dl>
+          <div class="panel-btn">继续充值</div>
+        </div>
+        <div class="ver-line"></div>
+        <div class="part-right">
+          <dl>
+            <dt>设备归属权</dt>
+            <dd>拥有所有权</dd>
+          </dl>
+          <div class="panel-btn">申请解绑设备</div>
+        </div>
+      </div>
+    </div>
+    <div class="personal-panel">
+      <h2>发布邀约记录</h2>
+      <ul class="record">
+        <li>2019.05.01,13:11 通过微信发送给朋友。</li>
+        <li>2019.05.01,13:11 通过微信分享到朋友圈。</li>
+        <li>2019.05.01,13:11 分享到QQ。</li>
+        <li>2019.05.01,13:11 分享到新浪微博。</li>
+      </ul>
+      <div class="record-bottom">
+          <div class="panel-btn">申请解绑设备</div>
+          <span class="more">查看更多>></span>
+      </div>
+    </div>
+    <div class="personal-panel">
+      <h2>我的工具</h2>
+      <div class="personal-tool-list clearfix">
+        <dl class="border-r border-b ">
+          <dt>
+            <img src="~IMG/index-tool1.png" alt="">
+          </dt>
+          <dd>账户管理</dd>
+        </dl>
+        <dl class="border-r border-b">
+          <dt>
+            <img src="~IMG/index-tool2.png" alt="">
+          </dt>
+          <dd>推广海报</dd>
+        </dl>
+        <dl class="border-b">
+          <dt>
+            <img src="~IMG/index-tool3.png" alt="">
+          </dt>
+          <dd>进度查询</dd>
+        </dl>
+        <dl class="border-r padding-t">
+          <dt>
+            <img src="~IMG/index-tool4.png" alt="">
+          </dt>
+          <dd>流程说明</dd>
+        </dl>
+        <dl class="border-r padding-t">
+          <dt>
+            <img src="~IMG/index-tool5.png" alt="">
+          </dt>
+          <dd>升级会员</dd>
+        </dl>
+        <dl class="padding-t">
+          <dt>
+            <img src="~IMG/index-tool6.png" alt="">
+          </dt>
+          <dd>帮助中心</dd>
+        </dl>
+      </div>
+    </div>
   </div>
 </template>
 

@@ -104,6 +104,20 @@ export default new Router({
       component: () => import ("@/components/page/index/clientInfo"),
       meta: {title: 'clientInfo'},
     },
+    //成功检测模块
+    {
+      path: '/successTest',
+      name: 'successTest',
+      component: () => import ("@/components/page/index/holdHealthTest/successTest"),
+      meta: {title: 'successTest'},
+    },
+    //等待检测模块
+    {
+      path: '/waitTest',
+      name: 'waitTest',
+      component: () => import ("@/components/page/index/holdHealthTest/waitTest"),
+      meta: {title: 'waitTest'},
+    },
     //充值记录模块
     {
       path: '/recharge',
@@ -111,5 +125,6 @@ export default new Router({
       component: () => import ("@/components/page/index/recharge"),
       meta: {title: 'recharge'},
     },
+    
   ]
 })

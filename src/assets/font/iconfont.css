@@ -7,6 +7,11 @@
   url('iconfont.svg?t=1556247210451#iconfont') format('svg'); /* iOS 4.1- */
 }
 
+@font-face{	
+  font-family:"specialfont"; 
+  src:url("@/assets/font/TT0246M_.TTF") format("truetype");
+}
+
 .iconfont {
   font-family: "iconfont" !important;
   font-size: 16px;

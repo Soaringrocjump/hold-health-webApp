@@ -14,7 +14,6 @@
     width:689px;
     height:252px;
     background:#fff;
-    border:1px solid rgba(232, 232, 232, 1);
     box-shadow:4px 3px 20px 0px rgba(0, 0, 0, 0.25);
     border-radius:25px;
     overflow: hidden;
@@ -55,7 +54,8 @@
         background: #F4F5FA;
       }
       .active{
-        background: linear-gradient(0deg,rgba(3,68,184,1),rgba(154,209,255,1));
+        // background: linear-gradient(0deg,rgba(3,68,184,1),rgba(154,209,255,1));
+        background:linear-gradient(0deg,rgba(106,99,242,1),rgba(186,54,229,1));
         color: #fff;
 
       }
@@ -172,5 +172,59 @@
       color: #fff;
       border-radius: 90px;
     }
+  }
+  .pop-up-bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+    background: rgba(130, 130, 130, 0.6);
+    .pop-up-frame{
+      width: 640px;
+      // height: 650px;
+      background: #fff;
+      border-radius: 10px;
+      position: absolute;
+      // left: 50%;
+      left: 55px;
+      transform: translateX(-50%);
+      top: 166px;
+      transform: scale(0.2);
+      animation: bounceIn 0.5s forwards;
+      overflow: hidden;
+      .frame-cont{
+        // height: 545px;
+        border-bottom: 2px solid #D8D8D8;
+        padding: 10px 42px 45px;
+        dl{
+          margin-top: 30px;
+          dt{
+            font-size: 36px;
+            color: #000;
+            font-weight: bold;
+          }
+          dd{
+            margin-top: 20px;
+            font-size: 28px;
+            color: #969696;
+          }
+        }
+      }
+      .frame-close{
+        line-height: 95px;
+        text-align: center;
+        font-size: 32px;
+        color: #2581d8;
+      }
+    }
+  }
+}
+@keyframes bounceIn {
+  0%{
+    transform: scale(0.2);
+  }
+  100%{
+    transform: scale(1);
   }
 }

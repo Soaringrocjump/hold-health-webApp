@@ -33,16 +33,24 @@
         <dd>我的</dd>
       </dl>
     </div>
+    <transition :name="'slide-' + (direction == 'forward' ? 'in' : 'out')">
     <router-view/>
+    </transition>
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
   data () {
     return {
       isActive: 'index'
     };
+  },
+  computed:{
+    ...mapState({
+      direction: state => state.direction,
+    })
   },
   methods:{
     handle(path){
@@ -107,5 +115,36 @@ export default {
     }
   }
 }
+// .slide-out-enter-active,
+// .slide-out-leave-active,
+// .slide-in-enter-active,
+// .slide-in-leave-active {
+//   will-change: transform;
+//   transition: all 250ms;
+//   height: 100%;
+//   top: 0;
+//   position: absolute;
+//   backface-visibility: hidden;
+//   perspective: 1000;
+// }
 
+// .slide-out-enter {
+//   opacity: 0;
+//   transform: translate3d(-100%, 0, 0);
+// }
+
+// .slide-out-leave-active {
+//   opacity: 0;
+//   transform: translate3d(100%, 0, 0);
+// }
+
+// .slide-in-enter {
+//   opacity: 0;
+//   transform: translate3d(100%, 0, 0);
+// }
+
+// .slide-in-leave-active {
+//   opacity: 0;
+//   transform: translate3d(-100%, 0, 0);
+// }
 </style>
