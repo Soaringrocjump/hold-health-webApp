@@ -3,8 +3,17 @@ import Vue from 'vue';
 /*引入资源请求插件*/
 import axios from 'axios';
 // axios.defaults.timeout = 5000
+
+const request = axios.create({
+    baseURL: 'http://47.96.67.198:8861/', 
+    timeout: 10000, // 请求超时
+    headers: {
+        'content-type': 'application/json;charset=UTF-8',
+        'token': sessionStorage.getItem('authorization')
+    }
+})
 //添加请求拦截器
-axios.interceptors.request.use((config) => {
+request.interceptors.request.use((config) => {
     //传参格式转换JSON格式
     if (config.method === 'post') {
         if (typeof (config.data) == "object") {
@@ -20,6 +29,6 @@ axios.interceptors.request.use((config) => {
     return Promise.reject(error);
 });
 /*使用axios插件*/
-Vue.prototype.$axios = axios;
-Vue.prototype.HOME = 'http://47.99.185.0:8088/'
-Vue.prototype.FILE = 'http://47.99.185.0:8088/alapolicefile/'
+Vue.prototype.$axios = request;
+// Vue.prototype.HOME = 'http://47.99.185.0:8088/'
+// Vue.prototype.FILE = 'http://47.99.185.0:8088/alapolicefile/'
