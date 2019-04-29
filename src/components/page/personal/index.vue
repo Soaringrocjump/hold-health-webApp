@@ -11,7 +11,7 @@
             <img src="~IMG/YY.jpg" alt="">
           </div>
           <dl>
-            <dt>工号：YYYY0001</dt>
+            <dt>工号：{{basicInfo.staffCode}}</dt>
             <dd>太平洋人寿保险宁波分公司</dd>
           </dl>
         </div>
@@ -23,7 +23,7 @@
       <div class="personal-card-down">
         <div>
           <span>剩余检测次数</span>
-          <span>365</span>
+          <span>{{basicInfo.deviceNums}}</span>
         </div>
         <div>
           <span>当前剩余积分</span>
@@ -138,6 +138,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import PersonTop from 'Module/PersonTop'
 import TopBg from 'Module/TopBg'
 export default {
@@ -174,6 +175,9 @@ export default {
   components:{
     PersonTop,
     TopBg
+  },
+  computed: {
+    ...mapState(['basicInfo'])
   }
 }
 

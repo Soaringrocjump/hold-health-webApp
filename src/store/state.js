@@ -2,6 +2,7 @@
 
 const state = {
   direction: 'forward',
+  basicInfo: ''
 }
 
 export default state

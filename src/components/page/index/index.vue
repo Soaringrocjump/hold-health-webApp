@@ -23,19 +23,19 @@
     </div>
     <div class="index-count">
       <dl>
-        <router-link to="/myClient"><dt>47</dt></router-link>
+        <router-link to="/myClient"><dt>{{basicInfo.customerTotal}}</dt></router-link>
         <dd>我的客户</dd>
       </dl>
       <dl>
-        <router-link to="/successTest"><dt>312</dt></router-link>
+        <router-link to="/successTest"><dt>{{basicInfo.successDetectionTotal}}</dt></router-link>
         <dd>成功检测</dd>
       </dl>
       <dl>
-        <router-link to="/waitTest"><dt>10</dt></router-link>
+        <router-link to="/waitTest"><dt>{{basicInfo.waitDetectionTotal}}</dt></router-link>
         <dd>等待检测</dd>
       </dl>
       <dl>
-        <router-link to="/recharge"><dt>3</dt></router-link>
+        <router-link to="/recharge"><dt>{{basicInfo.rechargeRecordTotal}}</dt></router-link>
         <dd>充值记录</dd>
       </dl>
     </div>
@@ -188,6 +188,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import Title from 'Module/Title'
 export default {
   data () {
@@ -196,6 +197,9 @@ export default {
   },
   components:{
     Title
+  },
+  computed: {
+    ...mapState(['basicInfo'])
   }
 }
 
