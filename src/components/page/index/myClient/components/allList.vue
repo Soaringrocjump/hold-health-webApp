@@ -55,12 +55,41 @@ export default {
     };
   },
   methods:{
+    //获取检测列表
+    getCustomerList(){
+      this.$axios({
+        method: "post",
+        url: "order/orderList",
+        data: {
+          customerType: 1,
+          pageNum: 1,
+          pageSize: 5,
+          staffCode: sessionStorage.getItem("staffCode")
+        }
+      })
+        .then(result => {
+          console.log('result',result);
+          // if (result.data.resultCode == "200"){
+          //   var msg = result.data.data
+          //   this.successOrderList = msg.list
+          //   console.log(this.orderList);
+          // }else{
+          //   console.log(result)
+          // }
+        })
+        .catch(err => {
+          alert("错误：获取数据异常" + err);
+        });
+    },
     jump(val){
       console.log('tr点击')
       this.$router.push({
         path: '/clientInfo'
       })
     }
+  },
+  mounted(){
+    this.getCustomerList()
   }
 }
 

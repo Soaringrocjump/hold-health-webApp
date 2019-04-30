@@ -24,6 +24,9 @@
       </ul>
       <div class="btn" @click="login">登 录</div>
     </div>
+    <van-popup v-model="show" position="top" >
+      {{message}}
+    </van-popup>
   </div>
 </template>
 
@@ -32,6 +35,8 @@ import {mapMutations} from 'vuex'
 export default {
   data () {
     return {
+      show: false,
+      message:'',
       userName: '',
       userPwd: ''
     };
@@ -44,32 +49,38 @@ export default {
         console.log(this.userName);
         console.log(this.userPwd);
         this.$axios({
-        method: "post",
-        url: "staff/login?userName="+this.userName+"&userPwd="+this.userPwd,
-      })
-        .then(result => {
-          if (result.data.resultCode == "200"){
-            var msg = result.data.data
-            sessionStorage.setItem("authorization",msg.token);
-          
-            console.log('result',msg);
-            this.LOGIN_INFO(msg)
-            this.$router.push({
-              path: 'menu',
-              // query:{
-              //   customerTotal: msg.customerTotal,
-              //   successDetectionTotal: msg.successDetectionTotal,
-              //   waitDetectionTotal: msg.waitDetectionTotal,
-              //   rechargeRecordTotal: msg.rechargeRecordTotal
-              // }
-            })
-          }else{
-
-          }
+          method: "post",
+          url: "staff/login?userName="+this.userName+"&userPwd="+this.userPwd,
         })
-        .catch(err => {
-          alert("错误：获取数据异常" + err);
-        });
+          .then(result => {
+            if (result.data.resultCode == "200"){
+              var msg = result.data.data
+              sessionStorage.setItem("authorization",msg.token);
+              sessionStorage.setItem("staffCode",msg.staffCode);
+              sessionStorage.setItem("basicInfo",JSON.stringify(msg));
+              console.log('result',msg);
+              this.LOGIN_INFO(msg)
+              this.$router.push({
+                path: 'menu'
+              })
+            }else{
+              console.log(result)
+              this.message=result.data.message
+              this.show = true;
+              setTimeout(()=>{
+                this.show = false;
+              },2000)
+            }
+          })
+          .catch(err => {
+            alert("错误：获取数据异常" + err);
+          });
+      }else{
+        this.message="请输入账号或密码"
+        this.show = true;
+        setTimeout(()=>{
+          this.show = false;
+        },2000)
       }
       
       
@@ -80,4 +91,9 @@ export default {
 </script>
 <style lang='scss' scoped>
 @import "@/assets/style/login.scss";
+.van-popup{
+  color: rgba(255, 0, 0, 0.7);
+  padding: 20px 50px;
+  text-align: center;
+}
 </style>

@@ -2,7 +2,8 @@
 
 const state = {
   direction: 'forward',
-  basicInfo: ''
+  basicInfo: '',
+  waitTestList: '',
 }
 
 export default state

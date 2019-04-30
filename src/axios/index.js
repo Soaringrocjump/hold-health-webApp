@@ -9,7 +9,8 @@ const request = axios.create({
     timeout: 10000, // 请求超时
     headers: {
         'content-type': 'application/json;charset=UTF-8',
-        'token': sessionStorage.getItem('authorization')
+        // 'token': sessionStorage.getItem('authorization')  
+        'token': '2dbe6524c2864873b92cd4d73512a6fe' 
     }
 })
 //添加请求拦截器
@@ -32,3 +33,4 @@ request.interceptors.request.use((config) => {
 Vue.prototype.$axios = request;
 // Vue.prototype.HOME = 'http://47.99.185.0:8088/'
 // Vue.prototype.FILE = 'http://47.99.185.0:8088/alapolicefile/'
+export default request

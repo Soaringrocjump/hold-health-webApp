@@ -193,13 +193,20 @@ import Title from 'Module/Title'
 export default {
   data () {
     return {
+      basicInfo: JSON.parse(sessionStorage.getItem("basicInfo"))
     };
   },
   components:{
     Title
   },
   computed: {
-    ...mapState(['basicInfo'])
+    // ...mapState(['basicInfo']),
+  },
+  methods:{
+    
+  },
+  mounted(){
+    
   }
 }
 

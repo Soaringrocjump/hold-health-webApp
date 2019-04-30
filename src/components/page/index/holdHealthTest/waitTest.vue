@@ -13,51 +13,39 @@
         <div class="right-btn">查 询</div>
       </div>
       <ul class="test-list">
-        <li>
+        <li v-for="(item,index) in orderList" :key="index">
           <div class="left-info">
-            <p>检测单号： CPIC20575587</p>
-            <p>申请检测人：<span>王一一</span><span>男</span><span>20岁</span></p>
-            <p>提交时间： 2018-10-28  20:57:56</p>
+            <p>检测单号： {{item.orderCode}}</p>
+            <p>申请检测人：<span>{{item.userName}}</span><span>{{item.userGender}}</span><span>{{item.userAge}}岁</span></p>
+            <p>提交时间： {{item.gmtModify | formatterDateTime}}</p>
             <div class="test-tag">
-              <span>
+              <span  v-if="item.orgCode == 'cpic'">
                 <img src="~IMG/hold-health-tag1.png" alt="">
               </span>
-            </div>
-          </div>
-          <div class="right-item" @click="popOut">
-            <img src="~IMG/hold-health-test-item.png" alt="">
-          </div>
-        </li>
-        <li>
-          <div class="left-info">
-            <p>检测单号： CPIC20575587</p>
-            <p>申请检测人：<span>王一一</span><span>男</span><span>20岁</span></p>
-            <p>提交时间： 2018-10-28  20:57:56</p>
-            <div class="test-tag">
-              <span>
+              <span v-if="item.orgCode == 'cntp'">
                 <img src="~IMG/hold-health-tag2.png" alt="">
               </span>
-            </div>
-          </div>
-          <div class="right-item">
-            <img src="~IMG/hold-health-test-item.png" alt="">
-          </div>
-        </li>
-        <li>
-          <div class="left-info">
-            <p>检测单号： CPIC20575587</p>
-            <p>申请检测人：<span>王一一</span><span>男</span><span>20岁</span></p>
-            <p>提交时间： 2018-10-28  20:57:56</p>
-            <div class="test-tag">
-              <span>
-                <img src="~IMG/hold-health-cancel.png" alt="">
+              <span @click="popOut">
+                <img src="~IMG/hold-health-info.png" alt="">
               </span>
             </div>
+            <div class="test-tag">
+              
+              <!-- <span>
+                <img src="~IMG/hold-health-cancel.png" alt="">
+              </span> -->
+            </div>
           </div>
           <div class="right-item">
+            <a :href="'https://h.guanqi2019.com/func/hrs/#/TestHealthDetail?orderCode='+item.orderCode">
             <img src="~IMG/hold-health-test-item.png" alt="">
+            </a>
+            <!-- <a href="https://www.baidu.com">
+            <img src="~IMG/hold-health-test-item.png" alt="">
+            </a> -->
           </div>
         </li>
+        <!-- 
         <li>
           <div class="left-info">
             <p>检测单号： CPIC20575587</p>
@@ -75,8 +63,9 @@
           <div class="right-item">
             <img src="~IMG/hold-health-test-item.png" alt="">
           </div>
-        </li>
+        </li> -->
       </ul>
+      <van-loading v-if="show" type="spinner" color="white" />
     </div>
     <div class="pop-up-bg" v-if="visible">
       <div class="pop-up-frame">
@@ -105,7 +94,9 @@ import TopBg from 'Module/TopBg'
 export default {
   data () {
     return {
-      visible: false
+      visible: false,
+      show: true,
+      orderList: []
     };
   },
   components:{
@@ -113,6 +104,39 @@ export default {
     TopBg
   },
   methods:{
+    //获取检测列表
+    getOrderList(){
+      this.show = true
+      this.$axios({
+        method: "post",
+        url: "order/orderList",
+        data: {
+          orderStatus: 0,
+          pageNum: 1,
+          pageSize: 5,
+          // staffCode: sessionStorage.getItem("staffCode")
+          staffCode: 'TESTS81'
+        }
+      })
+        .then(result => {
+          // console.log('result',result);
+          if (result.data.resultCode == "200"){
+            var msg = result.data.data
+            this.orderList = msg.list
+            this.show = false
+            console.log(this.orderList);
+          }else{
+            console.log(result)
+          }
+        })
+        .catch(err => {
+          alert("错误：获取数据异常" + err);
+        });
+    },
+    //跳app
+    jumpAPP(val){
+
+    },
     //弹出弹框
     popOut(){
       this.visible = true
@@ -121,6 +145,9 @@ export default {
     cancel(){
       this.visible = false
     }
+  },
+  mounted(){
+    this.getOrderList()
   }
 }
 

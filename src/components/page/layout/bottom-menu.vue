@@ -2,13 +2,13 @@
 <template>
   <div class="wrapper">
     <div class="bottom-menu">
-      <dl :class="[isActive == 'index' ? 'active' : '']" @click="handle('index')">
+      <dl :class="[$route.path.endsWith('index') ? 'active' : '']" @click="handle('index')">
         <dt>
           <i class="iconfont icon-shouye"></i>
         </dt>
         <dd>首页</dd>
       </dl>
-      <dl :class="[isActive == 'orders' ? 'active' : '']" @click="handle('orders')">
+      <dl :class="[$route.path.endsWith('orders') ? 'active' : '']" @click="handle('orders')">
         <dt>
           <i class="iconfont icon-leimupinleifenleileibie2"></i>
         </dt>
@@ -20,13 +20,13 @@
         </dt>
         <dd>我要邀约</dd>
       </dl>
-      <dl :class="[isActive == 'purchase' ? 'active' : '']" @click="handle('purchase')">
+      <dl :class="[$route.path.endsWith('purchase') ? 'active' : '']" @click="handle('purchase')">
         <dt>
           <i class="iconfont icon-gouwuche"></i>
         </dt>
         <dd>采购</dd>
       </dl>
-      <dl :class="[isActive == 'personal' ? 'active' : '']" @click="handle('personal')">
+      <dl :class="[$route.path.endsWith('personal') ? 'active' : '']" @click="handle('personal')">
         <dt>
           <i class="iconfont icon-wode-"></i>
         </dt>
@@ -44,7 +44,8 @@ import {mapState} from 'vuex'
 export default {
   data () {
     return {
-      isActive: 'index'
+      isActive: 'index',
+      path: this.$route.path
     };
   },
   computed:{
@@ -55,6 +56,8 @@ export default {
   methods:{
     handle(path){
       console.log('path',path)
+      console.log('router',this.$route.path)
+      this.path = this.$route.path
       this.isActive = path
       this.$router.push({
         path: '/menu/'+path

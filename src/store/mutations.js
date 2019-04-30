@@ -5,8 +5,19 @@ const mutations = {
     state.direction = payload.direction
   },
   LOGIN_INFO(state,payload){
-    state.basicInfo = payload
-  }
+    console.log('payload',payload)
+    let sessionBasicInfo = JSON.parse(sessionStorage.getItem("basicInfo"))
+    console.log('getItem',sessionBasicInfo)
+    // state.basicInfo = payload;
+    state.basicInfo = Object.assign(
+      {},
+      payload,
+      sessionBasicInfo
+    )
+  },
+  CHANGE_ORDER_LIST(state,payload){
+    state.waitTestList = payload
+  },
 }
 
 export default mutations

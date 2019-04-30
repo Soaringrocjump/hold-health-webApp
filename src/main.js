@@ -5,11 +5,19 @@ import App from './App'
 import router from './router'
 import axios from './axios'
 import store from './store'
+import * as filters from './filters' // 全局过滤文件
 
 //VantUI
-import { Tab, Tabs } from 'vant';
+import { Tab, Tabs, Popup, Loading  } from 'vant';
 Vue.use(Tab);
 Vue.use(Tabs);
+Vue.use(Popup);
+Vue.use(Loading);
+
+// 注册全局过滤器
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
 
 Vue.config.productionTip = false
 // simple history management
