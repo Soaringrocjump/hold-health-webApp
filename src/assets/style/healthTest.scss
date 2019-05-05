@@ -1,11 +1,16 @@
 .waitTest,.successTest{
-  .waitTest-card-search{
-    position: relative;
+  position: relative;
+  background: #fff;
+  .fix-top{
+    position: fixed;
+    left: 0;
+    top: 0;
     background: #fff;
-    padding: 87px 0 138px;
+    padding-bottom: 76px;
+    border-bottom: 4px solid #f7f7f7;
     .waitTest-search{
       position: absolute;
-      top: -40px;
+      bottom: 36px;
       left: 50%;
       transform: translateX(-50%);
       width:658px;
@@ -46,54 +51,55 @@
         // background:linear-gradient(0deg,rgba(106,99,242,1),rgba(186,54,229,1));
       }
     }
-    .test-list{
-      border-top: 4px solid #f7f7f7;
-      li{
-        // height: 245px;
-        padding: 33px 59px 29px;
-        border-bottom: 4px solid #f7f7f7;
-        display: flex;
-        justify-content: space-between;
-        .left-info{
-          p{
-            font-size: 26px;
-            color: #000;
-            span{
-              margin-left: 20px;
-            }
-          }
-          p:last-of-type{
-            color: #969696
-          }
-          .test-tag{
-            margin-top: 20px;
-            span{
-              display: inline-block;
-              width: 185px;
-            }
-            span~span{
-              margin-left: 20px;
-            }
+  }
+  .test-list{
+    padding-top: 336px;
+    padding-bottom: 310px;
+    li{
+      // height: 245px;
+      padding: 33px 59px 29px;
+      border-bottom: 4px solid #f7f7f7;
+      display: flex;
+      justify-content: space-between;
+      .left-info{
+        p{
+          font-size: 26px;
+          color: #000;
+          span{
+            margin-left: 20px;
           }
         }
-        .right-item{
-          width: 120px;
+        p:last-of-type{
+          color: #969696
         }
-        .right-score{
-          width: 130px;
-          height: 97px;
-          border-left: 2px solid #D7D7D7;
-          padding-left: 34px;
-          text-align: center;
-          dt{
-            font-size: 21px;
-            color: #858585;
+        .test-tag{
+          margin-top: 20px;
+          span{
+            display: inline-block;
+            width: 185px;
           }
-          dd{
-            font-size: 49px;
-            color: #777;
-            font-weight: bold;
+          span~span{
+            margin-left: 20px;
           }
+        }
+      }
+      .right-item{
+        width: 120px;
+      }
+      .right-score{
+        width: 130px;
+        height: 97px;
+        border-left: 2px solid #D7D7D7;
+        padding-left: 34px;
+        text-align: center;
+        dt{
+          font-size: 21px;
+          color: #858585;
+        }
+        dd{
+          font-size: 49px;
+          color: #777;
+          font-weight: bold;
         }
       }
     }

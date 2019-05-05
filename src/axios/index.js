@@ -9,8 +9,8 @@ const request = axios.create({
     timeout: 10000, // 请求超时
     headers: {
         'content-type': 'application/json;charset=UTF-8',
-        // 'token': sessionStorage.getItem('authorization')  
-        'token': '2dbe6524c2864873b92cd4d73512a6fe' 
+        'token': localStorage.getItem('authorization')  
+        // 'token': '2dbe6524c2864873b92cd4d73512a6fe' 
     }
 })
 //添加请求拦截器
@@ -21,10 +21,10 @@ request.interceptors.request.use((config) => {
             config.data = JSON.stringify(config.data);
         }
     }
-    let token = sessionStorage.getItem('authorization')
-    if (token) { // 判断是否存在token，如果存在的话，则每个http header都加上token
-        config.headers.authorization = token;
-    }
+    // let token = localStorage.getItem('authorization')
+    // if (token) { // 判断是否存在token，如果存在的话，则每个http header都加上token
+    //     config.headers.authorization = token;
+    // }
     return config;
 }, (error) => {
     return Promise.reject(error);

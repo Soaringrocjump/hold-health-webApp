@@ -1,10 +1,10 @@
 <!-- 等待检测 -->
 <template>
   <div class="waitTest">
-    <TopBg>
-      <Top title="等待检测"  theme="white"/>
-    </TopBg>
-    <div class="waitTest-card-search">
+    <div class="fix-top">
+      <TopBg>
+        <Top title="等待检测"  theme="white"/>
+      </TopBg>
       <div class="waitTest-search">
         <div class="left-input">
           <i class="iconfont icon-xiazai17"></i>
@@ -12,61 +12,35 @@
         </div>
         <div class="right-btn">查 询</div>
       </div>
-      <ul class="test-list">
-        <li v-for="(item,index) in orderList" :key="index">
-          <div class="left-info">
-            <p>检测单号： {{item.orderCode}}</p>
-            <p>申请检测人：<span>{{item.userName}}</span><span>{{item.userGender}}</span><span>{{item.userAge}}岁</span></p>
-            <p>提交时间： {{item.gmtModify | formatterDateTime}}</p>
-            <div class="test-tag">
-              <span  v-if="item.orgCode == 'cpic'">
-                <img src="~IMG/hold-health-tag1.png" alt="">
-              </span>
-              <span v-if="item.orgCode == 'cntp'">
-                <img src="~IMG/hold-health-tag2.png" alt="">
-              </span>
-              <span @click="popOut">
-                <img src="~IMG/hold-health-info.png" alt="">
-              </span>
-            </div>
-            <div class="test-tag">
-              
-              <!-- <span>
-                <img src="~IMG/hold-health-cancel.png" alt="">
-              </span> -->
-            </div>
-          </div>
-          <div class="right-item">
-            <a :href="'https://h.guanqi2019.com/func/hrs/#/TestHealthDetail?orderCode='+item.orderCode">
-            <img src="~IMG/hold-health-test-item.png" alt="">
-            </a>
-            <!-- <a href="https://www.baidu.com">
-            <img src="~IMG/hold-health-test-item.png" alt="">
-            </a> -->
-          </div>
-        </li>
-        <!-- 
-        <li>
-          <div class="left-info">
-            <p>检测单号： CPIC20575587</p>
-            <p>申请检测人：<span>王一一</span><span>男</span><span>20岁</span></p>
-            <p>提交时间： 2018-10-28  20:57:56</p>
-            <div class="test-tag">
-              <span>
-                <img src="~IMG/hold-health-info.png" alt="">
-              </span>
-              <span>
-                <img src="~IMG/hold-health-cancel.png" alt="">
-              </span>
-            </div>
-          </div>
-          <div class="right-item">
-            <img src="~IMG/hold-health-test-item.png" alt="">
-          </div>
-        </li> -->
-      </ul>
-      <van-loading v-if="show" type="spinner" color="white" />
     </div>
+    <ul class="test-list">
+      <li v-for="(item,index) in orderList" :key="index">
+        <div class="left-info">
+          <a :href="'https://h.guanqi2019.com/func/hrs/#/TestHealthDetail?orderCode='+item.orderCode" >
+          <p>检测单号： {{item.orderCode}}</p>
+          <p>申请检测人：<span>{{item.userName}}</span><span>{{item.userGender}}</span><span>{{item.userAge}}岁</span></p>
+          <p>提交时间： {{item.gmtModify | formatterDateTime}}</p>
+          </a>
+          <div class="test-tag">
+            <span  v-if="item.orgCode == 'cpic'">
+              <img src="~IMG/hold-health-tag1.png" alt="">
+            </span>
+            <span v-if="item.orgCode == 'cntp'">
+              <img src="~IMG/hold-health-tag2.png" alt="">
+            </span>
+            <span @click="popOut">
+              <img src="~IMG/hold-health-info.png" alt="">
+            </span>
+          </div>
+        </div>
+        <div class="right-item" @click="displayDate(item)">
+          <a :href="'https://h.guanqi2019.com/func/hrs/#/TestHealthDetail?orderCode='+item.orderCode+'&userName='+item.userName+'&userAge='+item.userAge+'&gmtModify='+item.gmtModify" >
+            <img src="~IMG/hold-health-test-item.png" alt="">
+          </a>
+        </div>
+      </li>
+    </ul>
+    <van-loading v-if="show" type="spinner" color="white" />
     <div class="pop-up-bg" v-if="visible">
       <div class="pop-up-frame">
         <div class="frame-cont">
@@ -112,8 +86,8 @@ export default {
         url: "order/orderList",
         data: {
           orderStatus: 0,
-          pageNum: 1,
-          pageSize: 5,
+          pageNum: 0,
+          pageSize: 0,
           staffCode: localStorage.getItem("staffCode")
           // staffCode: 'TESTS81'
         }
@@ -126,7 +100,7 @@ export default {
             this.show = false
             console.log(this.orderList);
           }else{
-            console.log(result)
+            console.log(result.data.message)
           }
         })
         .catch(err => {
@@ -137,6 +111,77 @@ export default {
     jumpAPP(val){
 
     },
+    //日期时间格式过滤
+    formatterDateTime(value) {
+      var formatDate = function(date, fmt) {
+        if (/(y+)/.test(fmt)) {
+          fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+        }
+        let o = {
+          'M+': date.getMonth() + 1,
+          'd+': date.getDate(),
+          'h+': date.getHours(),
+          'm+': date.getMinutes(),
+          's+': date.getSeconds()
+        };
+        let padLeftZero = function(str) {
+          return ('00' + str).substr(str.length);
+        }
+        // 遍历这个对象
+        for (let k in o) {
+          if (new RegExp(`(${k})`).test(fmt)) {
+            // console.log(`${k}`)
+            let str = o[k] + '';
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : padLeftZero(str));
+          }
+        }
+        return fmt;
+      };
+      if (!value) return ''
+      return formatDate(new Date(value), 'yyyy-MM-dd hh:mm:ss')
+    },
+    //调用原生app加的方法
+    displayDate(val){
+      console.log('调用原生app加的方法')
+        // document.getElementById("demo").innerHTML=Date();
+        var orderCode = val.orderCode,
+            userName = val.userName,
+            userAge = val.userAge,
+            gmtModify = this.formatterDateTime(val.gmtModify);
+        var paramsObj = {
+          orderCode: val.orderCode,
+          userName: val.userName,
+          userAge: val.userAge,
+          gmtModify: this.formatterDateTime(val.gmtModify)
+        } 
+        console.log('传递参数',paramsObj)  
+        var paramsJson = JSON.stringify(paramsObj)
+        console.log('传递json',paramsJson)
+        this.$bridge.callhandler('HealthMonitoring', paramsJson, (data) => {
+
+            alert("返回数据：",data)
+
+        })
+        // this.setupWebViewJavascriptBridge(function(bridge){
+        //   console.log("调用setupWebViewJavascriptBridge")
+        //     bridge.callHandler('HealthMonitoring', paramsJson, function responseCallback(responseData) {
+        //       console.log("JS received response:", responseData)
+        //     });
+        // });
+    },
+    //申明交互
+    // setupWebViewJavascriptBridge(callback) {
+    //     console.log("进入setupWebViewJavascriptBridge")
+    //     if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+    //     if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+    //     window.WVJBCallbacks = [callback];
+    //     var WVJBIframe = document.createElement('iframe');
+    //     WVJBIframe.style.display = 'none';
+    //     WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
+    //     document.documentElement.appendChild(WVJBIframe);
+    //     setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+    // },
+
     //弹出弹框
     popOut(){
       this.visible = true

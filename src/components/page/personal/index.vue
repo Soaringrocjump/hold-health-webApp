@@ -144,6 +144,7 @@ import TopBg from 'Module/TopBg'
 export default {
   data () {
     return {
+      basicInfo: JSON.parse(localStorage.getItem("basicInfo")),
       personalMenu:[
         {
           menuName: '个人信息',

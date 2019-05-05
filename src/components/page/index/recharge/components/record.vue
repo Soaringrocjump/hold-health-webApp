@@ -2,12 +2,12 @@
 <template>
   <div class="record">
     <ul>
-      <li v-for="(item,index) in record" :key="index">
+      <li v-for="(item,index) in recordList" :key="index">
         <dl>
-          <dt>用户充值{{item.recharge}}元，可检测{{item.times}}次</dt>
-          <dd>{{item.date}}</dd>
+          <dt>用户充值{{item.payAmount}}元，可检测{{item.actNums}}次</dt>
+          <dd>{{item.payTime | formatterDateTime}}</dd>
         </dl>
-        <span>{{item.recharge}}</span>
+        <span>{{item.payAmount}}</span>
       </li>
     </ul>
   </div>
@@ -17,7 +17,7 @@
 export default {
   data () {
     return {
-      record:[
+      recordList:[
         {
           recharge: 1200.00,
           times: 365,
@@ -36,6 +36,36 @@ export default {
       ]
     };
   },
+  methods:{
+    //获取充值记录
+    getRecord(){
+      this.show = true
+      this.$axios({
+        method: "post",
+        url: "reCharge/reChargeList",
+        data: {
+          pageNum: 0,
+          pageSize: 0,
+          staffCode: localStorage.getItem("staffCode")
+        }
+      })
+        .then(result => {
+          console.log('充值记录',result);
+          if (result.data.resultCode == "200"){
+            var msg = result.data.data
+            this.recordList = msg.list
+          }else{
+            console.log(result.data.message)
+          }
+        })
+        .catch(err => {
+          alert("错误：获取数据异常" + err);
+        });
+    },
+  },
+  mounted(){
+    this.getRecord()
+  }
 }
 
 </script>

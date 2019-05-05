@@ -292,17 +292,33 @@
           }
         }
         dd{
-          input{
+          font-size: 29px;
+          position: relative;
+          input,select{
             width:100%;
             height:80px;
+            padding: 0 10px;
             background:rgba(255,255,255,1);
             border:2px solid rgba(180, 180, 180, 1);
           }
           textarea{
             width:100%;
             height:278px;
+            padding: 0 10px;
             background:rgba(255,255,255,1);
             border:2px solid rgba(180, 180, 180, 1);
+          }
+          ::-webkit-input-placeholder,::-webkit-textarea-placeholder{
+            color:rgba(144,144,144,.5);
+          }
+          .arrow{
+            position: absolute;
+            width: 42px;
+            height: 42px;
+            top: 20px;
+            right: 10px;
+            background: #fff;
+            pointer-events: none;
           }
         }
       }

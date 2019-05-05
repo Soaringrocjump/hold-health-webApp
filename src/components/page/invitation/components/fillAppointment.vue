@@ -14,19 +14,25 @@
     <div class="fill-info">
       <dl>
         <dt>姓名<span class="nes">*</span></dt>
-        <dd><input type="text" ></dd>
+        <dd><input type="text" placeholder="请输入您的姓名"></dd>
       </dl>
       <dl>
         <dt>性别<span class="nes">*</span></dt>
-        <dd><input type="text" ></dd>
+        <dd>
+          <span class="arrow"><img src="~IMG/down.png" alt=""></span>
+          <select >
+            <option value="0">男</option>
+            <option value="1">女</option>
+          </select>
+        </dd>
       </dl>
       <dl>
-        <dt>手机号码<span class="nes">*</span></dt>
-        <dd><input type="text" ></dd>
+        <dt>生日<span class="nes">*</span></dt>
+        <dd><input type="text" placeholder="请输入您的生日"></dd>
       </dl>
       <dl>
         <dt>其他备注信息</dt>
-        <dd><textarea type="text">sss</textarea></dd>
+        <dd><textarea type="text" placeholder="请输入您的备注信息"></textarea></dd>
       </dl>
       <div class="confirmBtn">我要预约</div>
     </div>
@@ -38,24 +44,6 @@ import TopBg from 'Module/TopBg'
 export default {
   data () {
     return {
-      serviceList:[
-        {
-          serviceName: '健康在手',
-          serviceImg: require('@/assets/img/invitation-service5.png')
-        },
-        {
-          serviceName: '荃禾"7+3"',
-          serviceImg: require('@/assets/img/invitation-service2.png')
-        },
-        {
-          serviceName: '遗传基因检测',
-          serviceImg: require('@/assets/img/invitation-service3.png')
-        },
-        {
-          serviceName: '健康智库',
-          serviceImg: require('@/assets/img/invitation-service4.png')
-        },
-      ]
     };
   },
   components:{

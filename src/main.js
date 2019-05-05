@@ -6,7 +6,9 @@ import router from './router'
 import axios from './axios'
 import store from './store'
 import * as filters from './filters' // 全局过滤文件
+import Bridge from './config/bridge.js'
 
+Vue.prototype.$bridge = Bridge
 //VantUI
 import { Tab, Tabs, Popup, Loading  } from 'vant';
 Vue.use(Tab);
@@ -47,6 +49,8 @@ router.beforeEach(function (to, from, next) {
     next()
   }
 });
+
+
 
 /* eslint-disable no-new */
 new Vue({
