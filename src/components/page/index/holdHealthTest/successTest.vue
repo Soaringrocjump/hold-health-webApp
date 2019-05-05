@@ -79,7 +79,7 @@ export default {
           orderStatus: 1,
           pageNum: 1,
           pageSize: 5,
-          staffCode: sessionStorage.getItem("staffCode")
+          staffCode: localStorage.getItem("staffCode")
         }
       })
         .then(result => {

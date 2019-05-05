@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
+// import {mapMutations} from 'vuex'
 export default {
   data () {
     return {
@@ -42,7 +42,7 @@ export default {
     };
   },
   methods:{
-    ...mapMutations(['LOGIN_INFO']),
+    // ...mapMutations(['LOGIN_INFO']),
     //登录跳转
     login(){
       if(this.userName != '' && this.userPwd != ''){
@@ -55,11 +55,11 @@ export default {
           .then(result => {
             if (result.data.resultCode == "200"){
               var msg = result.data.data
-              sessionStorage.setItem("authorization",msg.token);
-              sessionStorage.setItem("staffCode",msg.staffCode);
-              sessionStorage.setItem("basicInfo",JSON.stringify(msg));
+              localStorage.setItem("authorization",msg.token);
+              localStorage.setItem("staffCode",msg.staffCode);
+              localStorage.setItem("basicInfo",JSON.stringify(msg));
               console.log('result',msg);
-              this.LOGIN_INFO(msg)
+              // this.LOGIN_INFO(msg)
               this.$router.push({
                 path: 'menu'
               })

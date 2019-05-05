@@ -138,7 +138,7 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+// import {mapState} from 'vuex'
 import PersonTop from 'Module/PersonTop'
 import TopBg from 'Module/TopBg'
 export default {
@@ -177,7 +177,7 @@ export default {
     TopBg
   },
   computed: {
-    ...mapState(['basicInfo'])
+    // ...mapState(['basicInfo'])
   }
 }
 

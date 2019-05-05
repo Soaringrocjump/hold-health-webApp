@@ -8,12 +8,12 @@ export default new Router({
     {
       path: '/',
       name: 'login',
-      component: () => import(/* webpackChunkName: "login" */ '@/components/page/login')
+      component: () => import('@/components/page/login')
     },
     {
       path: '/menu',
       name: 'menu',
-      component: () => import(/* webpackChunkName: "menu" */ '@/components/page/layout/bottom-menu'),
+      component: () => import('@/components/page/layout/bottom-menu'),
       redirect: '/menu/index',
       children: [
         //首页模块

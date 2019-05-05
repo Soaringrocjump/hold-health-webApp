@@ -114,8 +114,8 @@ export default {
           orderStatus: 0,
           pageNum: 1,
           pageSize: 5,
-          // staffCode: sessionStorage.getItem("staffCode")
-          staffCode: 'TESTS81'
+          staffCode: localStorage.getItem("staffCode")
+          // staffCode: 'TESTS81'
         }
       })
         .then(result => {

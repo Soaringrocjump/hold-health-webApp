@@ -188,12 +188,12 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+// import {mapState} from 'vuex'
 import Title from 'Module/Title'
 export default {
   data () {
     return {
-      basicInfo: JSON.parse(sessionStorage.getItem("basicInfo"))
+      basicInfo: JSON.parse(localStorage.getItem("basicInfo"))
     };
   },
   components:{
