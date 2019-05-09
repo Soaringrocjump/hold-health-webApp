@@ -10,7 +10,6 @@ const request = axios.create({
     headers: {
         'content-type': 'application/json;charset=UTF-8',
         'token': localStorage.getItem('authorization')  
-        // 'token': '2dbe6524c2864873b92cd4d73512a6fe' 
     }
 })
 //添加请求拦截器

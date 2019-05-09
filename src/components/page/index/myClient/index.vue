@@ -99,6 +99,7 @@ export default {
 <style lang='scss' >
 .van-tabs--line .van-tabs__wrap {
   height: 21vw;
+  z-index: 0;
   .van-tab{
     font-size: 26px;
     line-height: 60px;

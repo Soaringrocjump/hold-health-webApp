@@ -1,5 +1,11 @@
 /* 充值记录 */
 .recharge-page{
+  padding-top: 450px;
+  .recharge-top{
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
   .recharge-panel{
     position: relative;
     background: #fff;

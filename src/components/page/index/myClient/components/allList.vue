@@ -57,9 +57,11 @@ export default {
         });
     },
     jump(val){
-      console.log('tr点击')
       this.$router.push({
-        path: '/clientInfo'
+        path: '/clientInfo',
+        query:{
+          wxOpenid: val.wxOpenid
+        }
       })
     }
   },

@@ -9,12 +9,24 @@ import * as filters from './filters' // 全局过滤文件
 import Bridge from './config/bridge.js'
 
 Vue.prototype.$bridge = Bridge
+
+//ElementUI
+import { DatePicker,Table } from 'element-ui';
+Vue.use(DatePicker)
+Vue.use(Table)
 //VantUI
-import { Tab, Tabs, Popup, Loading  } from 'vant';
+import { Tab, Tabs, Popup, Loading, DatetimePicker, Area, Picker, RadioGroup, Radio, Icon, Toast } from 'vant';
 Vue.use(Tab);
 Vue.use(Tabs);
 Vue.use(Popup);
 Vue.use(Loading);
+Vue.use(DatetimePicker);
+Vue.use(Area);
+Vue.use(Picker);
+Vue.use(Radio);
+Vue.use(RadioGroup);
+Vue.use(Icon);
+Vue.use(Toast);
 
 // 注册全局过滤器
 Object.keys(filters).forEach(key => {

@@ -11,6 +11,11 @@ export default new Router({
       component: () => import('@/components/page/login')
     },
     {
+      path: '/test',
+      name: 'test',
+      component: () => import('@/components/page/test')
+    },
+    {
       path: '/menu',
       name: 'menu',
       component: () => import('@/components/page/layout/bottom-menu'),
@@ -26,13 +31,13 @@ export default new Router({
         {
           path: 'orders',
           name: 'orders',
-          component: () => import ("@/components/page/orders/index")
+          component: () => import ("@/components/page/index/holdHealthTest/waitTest")
         },
-        //采购模块
+        //客户模块
         {
           path: 'purchase',
           name: 'purchase',
-          component: () => import ("@/components/page/purchase/index")
+          component: () => import ("@/components/page/index/myClient")
         },
         //个人中心模块
         {
@@ -70,55 +75,80 @@ export default new Router({
       ]
     },
     //健康预约
-    {
-      path: '/appointment',
-      name: 'appointment',
-      component: () => import ("@/components/page/invitation/appointment"),
-      redirect: '/appointment/getAppointment',
-      children: [
-        //客户收到邀约
-        {
-          path: 'getAppointment',
-          name: 'getAppointment',
-          component: () => import ("@/components/page/invitation/components/getAppointment")
-        },
-        //填写预约信息
-        {
-          path: 'fillAppointment',
-          name: 'fillAppointment',
-          component: () => import ("@/components/page/invitation/components/fillAppointment")
-        },
-      ]
-    },
-    //我的客户模块
+    // {
+    //   path: '/appointment',
+    //   name: 'appointment',
+    //   component: () => import ("@/components/page/invitation/appointment"),
+    //   redirect: '/appointment/getAppointment',
+    //   children: [
+    //     //客户收到邀约
+    //     {
+    //       path: 'getAppointment',
+    //       name: 'getAppointment',
+    //       component: () => import ("@/components/page/invitation/components/getAppointment")
+    //     },
+    //     //填写预约信息
+    //     {
+    //       path: 'fillAppointment',
+    //       name: 'fillAppointment',
+    //       component: () => import ("@/components/page/invitation/components/fillAppointment")
+    //     },
+    //     //预约成功
+    //     {
+    //       path: 'fillSuccess',
+    //       name: 'fillSuccess',
+    //       component: () => import ("@/components/page/invitation/components/fillSuccess")
+    //     },
+    //     //面对面扫码填入信息
+    //     {
+    //       path: 'scanCodeFill',
+    //       name: 'scanCodeFill',
+    //       component: () => import ("@/components/page/invitation/components/scanCodeFill")
+    //     },
+    //     //预约成功
+    //     {
+    //       path: 'fillSuccess',
+    //       name: 'fillSuccess',
+    //       component: () => import ("@/components/page/invitation/components/fillSuccess")
+    //     },
+    //   ]
+    // },
+    //我的客户
     {
       path: '/myClient',
       name: 'myClient',
       component: () => import ("@/components/page/index/myClient"),
       meta: {title: 'myClient'},
     },
-    //客户中心模块
+    //客户中心
     {
       path: '/clientInfo',
       name: 'clientInfo',
       component: () => import ("@/components/page/index/clientInfo"),
       meta: {title: 'clientInfo'},
     },
-    //成功检测模块
+    //修改客户信息
+    {
+      path: '/infoModify',
+      name: 'infoModify',
+      component: () => import ("@/components/page/index/clientInfo/infoModify"),
+      meta: {title: 'clientInfo'},
+    },
+    //成功检测
     {
       path: '/successTest',
       name: 'successTest',
       component: () => import ("@/components/page/index/holdHealthTest/successTest"),
       meta: {title: 'successTest'},
     },
-    //等待检测模块
+    //等待检测
     {
       path: '/waitTest',
       name: 'waitTest',
       component: () => import ("@/components/page/index/holdHealthTest/waitTest"),
       meta: {title: 'waitTest'},
     },
-    //充值记录模块
+    //充值记录
     {
       path: '/recharge',
       name: 'recharge',

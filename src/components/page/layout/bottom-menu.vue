@@ -22,9 +22,9 @@
       </dl>
       <dl :class="[$route.path.endsWith('purchase') ? 'active' : '']" @click="handle('purchase')">
         <dt>
-          <i class="iconfont icon-gouwuche"></i>
+          <i class="iconfont icon-nav_promoter"></i>
         </dt>
-        <dd>采购</dd>
+        <dd>客户</dd>
       </dl>
       <dl :class="[$route.path.endsWith('personal') ? 'active' : '']" @click="handle('personal')">
         <dt>

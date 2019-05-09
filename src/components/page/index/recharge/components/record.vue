@@ -4,7 +4,8 @@
     <ul>
       <li v-for="(item,index) in recordList" :key="index">
         <dl>
-          <dt>用户充值{{item.payAmount}}元，可检测{{item.actNums}}次</dt>
+          <!-- <dt>用户充值{{item.payAmount}}元，可检测{{item.actNums}}次</dt> -->
+          <dt>{{item.content}}</dt>
           <dd>{{item.payTime | formatterDateTime}}</dd>
         </dl>
         <span>{{item.payAmount}}</span>

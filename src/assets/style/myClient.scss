@@ -1,4 +1,5 @@
 .myClient-page{
+  padding-top: 100px;
   .myClient-banner{
     width: 750px;
     height: 200px;
@@ -177,12 +178,15 @@
         font-size: 28px;
         color: #767676;
         line-height: 2;
+        p{
+          white-space: nowrap;
+        }
       }
       .info-left{
         width: 368px;
       }
       .info-right{
-        margin-left: 26px;
+        // margin-left: 26px;
       }
       .revise{
         position: absolute;
@@ -268,5 +272,81 @@
         color: #777;
       }
     }
+  }
+}
+.infoModify-page{
+  padding: 100px 0 60px;
+  .info-form{
+    padding: 20px 104px 50px;
+    border-bottom: 1px solid rgba(229,229,229,1);
+    li{
+      margin: 15px 0;
+      padding-bottom: 10px;
+      h3{
+        font-size:29px;
+        color:#8348EB;
+        .nes{
+          font-size: 42px;
+          color: #FF0000;
+          margin-left: 12px;    
+          vertical-align: middle;
+        }
+      }
+      input,select{
+        width:100%;
+        height:68px;
+        font-size:28px;
+        padding: 0 15px;
+        background:#fff;
+        border:2px solid rgba(180,180,180,1);
+        color: #909090;
+      }
+    }
+  }
+  dl{
+    padding: 0 104px;
+    margin-top: 40px;
+    dt{
+      font-size:29px;
+      color:#8348EB;
+    }
+    dd{
+      .van-radio-group{
+        display: flex;
+        flex-wrap: wrap;
+        .van-radio{
+          width: 50%;
+          margin-top: 20px;
+          .van-radio__icon, .van-radio__label{
+            line-height: 45px;
+          }
+          .van-radio__icon{
+            height: 45px;
+            line-height: 45px;
+            .van-icon{
+              width: 45px;
+              height: 45px;
+              line-height: 45px;
+              font-size: 32px;
+            }
+          }
+          .van-radio__label{
+            color: #a0a0a0;
+            margin-left: 25px;
+          }
+        }
+      }
+    }
+  }
+  .confirmBtn{
+    width:556px;
+    height:104px;
+    line-height: 104px;
+    margin: 80px auto;
+    background:linear-gradient(360deg,rgba(106,99,242,1) 0%,rgba(186,54,229,1) 100%);
+    border-radius:52px;
+    text-align: center;
+    font-size: 45px;
+    color: #FEFEFE;
   }
 }

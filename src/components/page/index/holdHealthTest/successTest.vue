@@ -8,9 +8,9 @@
       <div class="waitTest-search">
         <div class="left-input">
           <i class="iconfont icon-xiazai17"></i>
-          <input type="text" placeholder="输入客户或订单号点击查询">
+          <input type="text" v-model="searchName" placeholder="输入客户点击查询">
         </div>
-        <div class="right-btn">查 询</div>
+        <div class="right-btn" @click="searchOrder">查 询</div>
       </div>
     </div>
     <ul class="test-list">
@@ -43,7 +43,8 @@ import TopBg from 'Module/TopBg'
 export default {
   data () {
     return {
-      successOrderList: []
+      successOrderList: [],
+      searchName: ''
     };
   },
   components:{
@@ -52,7 +53,7 @@ export default {
   },
   methods:{
     //获取检测列表
-    getOrderList(){
+    getOrderList(name){
       this.$axios({
         method: "post",
         url: "order/orderList",
@@ -60,7 +61,8 @@ export default {
           orderStatus: 1,
           pageNum: 0,
           pageSize: 0,
-          staffCode: localStorage.getItem("staffCode")
+          staffCode: localStorage.getItem("staffCode"),
+          userName: name || ''
         }
       })
         .then(result => {
@@ -76,6 +78,14 @@ export default {
         .catch(err => {
           alert("错误：获取数据异常" + err);
         });
+    },
+    //查询订单
+    searchOrder(){
+      if(this.searchName != ''){
+        this.getOrderList(this.searchName)
+      }else{
+        this.getOrderList()
+      }
     },
   },
   mounted(){

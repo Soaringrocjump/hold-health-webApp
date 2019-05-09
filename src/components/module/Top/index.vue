@@ -32,6 +32,10 @@ export default {
 </script>
 <style lang='scss' scoped>
 .page-top{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
   width: 750px;
   height: 100px;
   padding: 0 35px;

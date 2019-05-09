@@ -59,6 +59,14 @@ export default {
         .catch(err => {
           alert("错误：获取数据异常" + err);
         });
+    },
+    jump(val){
+      this.$router.push({
+        path: '/clientInfo',
+        query:{
+          wxOpenid: val.wxOpenid
+        }
+      })
     }
   },
   mounted(){

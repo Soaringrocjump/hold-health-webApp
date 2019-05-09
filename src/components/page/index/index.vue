@@ -17,9 +17,15 @@
       <i>
         <img src="~IMG/index-notice.png" alt="">
       </i>
-      <marquee direction="left" behavior="scroll" scrollamount="5" hspace="10" >
+      <!-- <marquee direction="left" behavior="scroll" scrollamount="5" hspace="10" >
         5月1日，太保常州客户经营日。太保常州客户经...
-      </marquee>
+      </marquee> -->
+      <div class="notice-slide">
+        <ul>
+          <li class="slide1">5月1日，太保常州客户经营日。太保常州客户经...</li>
+          <!-- <li class="slide2">5月2日，太保常州客户经营日。太保常州客户经...</li> -->
+        </ul>
+      </div>
     </div>
     <div class="index-count">
       <dl>
@@ -53,48 +59,19 @@
       <Title title="尊贵服务" hasLine/>
       <ul>
         <li>
-          <div class="iconBox"><img src="~IMG/index-service1.png" alt=""></div>
-          <p>线下健康讲座</p>
+          <img src="~IMG/index-best-service1.png" alt="">
         </li>
         <li>
-          <div class="iconBox"><img src="~IMG/index-service2.png" alt=""></div>
-          <p>线上健康讲座</p>
+          <img src="~IMG/index-best-service2.png" alt="">
         </li>
         <li>
-          <div class="iconBox"><img src="~IMG/index-service3.png" alt=""></div>
-          <p>线上慢性病管理</p>
+          <img src="~IMG/index-best-service3.png" alt="">
         </li>
         <li>
-          <div class="iconBox"><img src="~IMG/index-service4.png" alt=""></div>
-          <p>报告上门解读</p>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <div class="iconBox"><img src="~IMG/index-service5.png" alt=""></div>
-          <p>线上健康科普</p>
-        </li>
-        <li>
-          <div class="iconBox"><img src="~IMG/index-service6.png" alt=""></div>
-          <p>专业推荐</p>
-        </li>
-        <li>
-          <div class="iconBox"><img src="~IMG/index-service7.png" alt=""></div>
-          <p>企业健康沙龙</p>
-        </li>
-        <li>
-          <div class="iconBox"><img src="~IMG/index-service8.png" alt=""></div>
-          <p>送医上门</p>
+          <img src="~IMG/index-best-service4.png" alt="">
         </li>
       </ul>
     </div>
-    <!-- <div class="index-slogan2">
-      <ul>
-        <li>
-          <img src="~IMG/slogan3.png" alt="">
-        </li>
-      </ul>
-    </div> -->
     <div class="index-slogan3">
       <ul>
         <li>
@@ -203,10 +180,29 @@ export default {
     // ...mapState(['basicInfo']),
   },
   methods:{
-    
+    //获取民族字典
+    getNation(){
+      this.$axios({
+        method: "get",
+        url: "dic/getListByType?type=ZX_GS_BM_MZ",
+      })
+        .then(result => {
+          console.log('result',result);
+          if (result.data.resultCode == "200"){
+            var msg = result.data.data.values
+            // console.log(msg)
+            localStorage.setItem('nationArr',JSON.stringify(msg))
+          }else{
+            alert(result.data.message)
+          }
+        })
+        .catch(err => {
+          alert("错误：获取nation数据异常" + err);
+        });
+    }
   },
   mounted(){
-    
+    this.getNation()
   }
 }
 

@@ -8,35 +8,36 @@
       <div class="waitTest-search">
         <div class="left-input">
           <i class="iconfont icon-xiazai17"></i>
-          <input type="text" placeholder="输入客户或订单号点击查询">
+          <input type="text" v-model="searchName" placeholder="输入客户点击查询">
         </div>
-        <div class="right-btn">查 询</div>
+        <div class="right-btn" @click="searchOrder">查 询</div>
       </div>
     </div>
     <ul class="test-list">
       <li v-for="(item,index) in orderList" :key="index">
         <div class="left-info">
-          <a :href="'https://h.guanqi2019.com/func/hrs/#/TestHealthDetail?orderCode='+item.orderCode" >
+          <!-- <a :href="'https://h.guanqi2019.com/func/hrs/#/TestHealthDetail?orderCode='+item.orderCode" > -->
           <p>检测单号： {{item.orderCode}}</p>
           <p>申请检测人：<span>{{item.userName}}</span><span>{{item.userGender}}</span><span>{{item.userAge}}岁</span></p>
           <p>提交时间： {{item.gmtModify | formatterDateTime}}</p>
-          </a>
+          <!-- </a> -->
           <div class="test-tag">
-            <span  v-if="item.orgCode == 'cpic'">
+            <span  v-if="item.orgCode == 'CPIC'">
               <img src="~IMG/hold-health-tag1.png" alt="">
             </span>
-            <span v-if="item.orgCode == 'cntp'">
+            <span v-if="item.orgCode == 'CNTP'">
               <img src="~IMG/hold-health-tag2.png" alt="">
             </span>
-            <span @click="popOut">
+            <span @click="popOut(item)">
               <img src="~IMG/hold-health-info.png" alt="">
             </span>
           </div>
         </div>
-        <div class="right-item" @click="displayDate(item)">
-          <a :href="'https://h.guanqi2019.com/func/hrs/#/TestHealthDetail?orderCode='+item.orderCode+'&userName='+item.userName+'&userAge='+item.userAge+'&gmtModify='+item.gmtModify" >
-            <img src="~IMG/hold-health-test-item.png" alt="">
-          </a>
+        <div class="right-item" @click="jumpAPP(item)">
+          <!-- <a :href="'https://h.guanqi2019.com/func/hrs/#/TestHealthDetail?orderCode='+item.orderCode+'&userName='+item.userName+'&userAge='+item.userAge+'&gmtModify='+item.gmtModify" > -->
+            <img v-if="item.rowState == 9" src="~IMG/hold-health-cant-test.png" alt="">
+            <img v-else src="~IMG/hold-health-can-test.png" alt="">
+          <!-- </a> -->
         </div>
       </li>
     </ul>
@@ -49,7 +50,7 @@
             <p>请扫描二维码进行身份信息输入</p>
           </div>
           <div class="qrcode-box">
-            <img src="~IMG/QR-code.png" alt="">
+            <img :src="inviteQRCode" alt="">
           </div>
           <p>扫码后关注“观禾未来”微信公众号</p>
           <p>按照提示完成信息输入</p>
@@ -70,7 +71,10 @@ export default {
     return {
       visible: false,
       show: true,
-      orderList: []
+      orderList: [],
+      searchName: '',
+      baseImgUrl: 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=',
+      inviteQRCode: ''
     };
   },
   components:{
@@ -79,17 +83,17 @@ export default {
   },
   methods:{
     //获取检测列表
-    getOrderList(){
+    getOrderList(name){
       this.show = true
       this.$axios({
         method: "post",
         url: "order/orderList",
         data: {
-          orderStatus: 0,
+          orderStatus: 3,
           pageNum: 0,
           pageSize: 0,
-          staffCode: localStorage.getItem("staffCode")
-          // staffCode: 'TESTS81'
+          staffCode: localStorage.getItem("staffCode"),
+          userName: name
         }
       })
         .then(result => {
@@ -109,7 +113,47 @@ export default {
     },
     //跳app
     jumpAPP(val){
-
+      if(val.rowState != 9){
+        var token = localStorage.getItem('authorization'),
+          orderCode = val.orderCode,
+          userName = val.userName,
+          userAge = val.userAge,
+          userGender = val.userGender,
+          gmtModify = this.formatterDateTime(val.gmtModify),
+          ordersn ="",
+          deviceData ="";
+        console.log("跳转传参",token,orderCode,userName,userAge,userGender,gmtModify)
+        location.href=`https://h.guanqi2019.com/func/hrs/#/TestHealthDetail?token=${token}&orderCode=${orderCode}&userName=${userName}&userAge=${userAge}&userGender=${userGender}&gmtModify=${gmtModify}`
+      }
+    },
+    //查询订单
+    searchOrder(){
+      if(this.searchName != ''){
+        this.getOrderList(this.searchName)
+      }else{
+        this.getOrderList()
+      }
+    },
+    //获取二维码
+    getAffirmQRCode(orderCode){
+      let token = localStorage.getItem('authorization');
+      this.$axios({
+        method: "get",
+        url: "wx/getAffirmQRCode?token="+token+"&orderCode="+orderCode ,
+      })
+        .then(result => {
+          console.log('result',result);
+          if (result.data.resultCode == "200"){
+            var msg = result.data.data
+            console.log(msg);
+            this.inviteQRCode = this.baseImgUrl + msg
+          }else{
+            console.log(result)
+          }
+        })
+        .catch(err => {
+          alert("错误：获取数据异常" + err);
+        });
     },
     //日期时间格式过滤
     formatterDateTime(value) {
@@ -143,11 +187,6 @@ export default {
     //调用原生app加的方法
     displayDate(val){
       console.log('调用原生app加的方法')
-        // document.getElementById("demo").innerHTML=Date();
-        var orderCode = val.orderCode,
-            userName = val.userName,
-            userAge = val.userAge,
-            gmtModify = this.formatterDateTime(val.gmtModify);
         var paramsObj = {
           orderCode: val.orderCode,
           userName: val.userName,
@@ -183,12 +222,14 @@ export default {
     // },
 
     //弹出弹框
-    popOut(){
+    popOut(val){
       this.visible = true
+      this.getAffirmQRCode(val.orderCode)
     },
     //取消弹框
     cancel(){
       this.visible = false
+      this.inviteQRCode = ''
     }
   },
   mounted(){
