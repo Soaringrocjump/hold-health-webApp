@@ -61,7 +61,8 @@ export default {
           }
         })
         .catch(err => {
-          alert("错误：获取数据异常" + err);
+          alert("服务器连接繁忙！");
+          console.log("错误：获取充值记录数据异常" + err);
         });
     },
   },

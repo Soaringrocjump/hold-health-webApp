@@ -224,7 +224,8 @@ export default {
           }
         })
         .catch(err => {
-          alert("错误：获取nation数据异常" + err);
+          alert("服务器连接繁忙！");
+          console.log("错误：获取民族异常" + err);
         });
     },
     //获取banner和notice
@@ -245,7 +246,8 @@ export default {
           }
         })
         .catch(err => {
-          alert("错误：获取nation数据异常" + err);
+          alert("服务器连接繁忙！");
+          console.log("错误：轮播异常" + err);
         });
     }
   },
