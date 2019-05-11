@@ -8,7 +8,7 @@
         <th width="15%">性别</th>
         <th width="15%">年龄</th>
         <th width="25%">身高/体重</th>
-        <th width="20%">累计检测</th>
+        <th width="20%">检测次数</th>
       </tr>
       <tr v-for="(item,index) in myClientList" :key="index" @click="jump(item)">
         <!-- <td width="10%"><span v-if="item.isReExamition == 0" class="repeat"><img src="~IMG/myClient-repeat.png" alt=""></span></td> -->

@@ -42,7 +42,6 @@
         </van-tab>
       </van-tabs>
     </div>
-    
     <!-- <allList v-show="selType == '全部客户'"/>
     <repeatList v-show="selType == '复检客户'"/>
     <followList v-show="selType == '准客户'"/>
