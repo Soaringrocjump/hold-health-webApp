@@ -64,7 +64,7 @@
         <div class="part-left">
           <dl>
             <dt>设备识别号</dt>
-            <dd v-if="basicInfo.deviceCode">{{basicInfo.deviceCode}}</dd>
+            <dd v-if="basicInfo.deviceCode">{{basicInfo.deviceCode.substr(0,10)}}</dd>
             <dd v-else></dd>
           </dl>
           <div class="panel-btn">继续充值</div>

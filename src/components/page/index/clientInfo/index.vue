@@ -48,7 +48,7 @@
             <dl>
               <dt>亚健康检测</dt>
               <dd>
-                <span><big>0</big><small>次</small></span>
+                <span><big>{{customerInfo.orderList.length}}</big><small>次</small></span>
                 <i class="iconfont icon-youhua"></i>
               </dd>
             </dl>
@@ -134,7 +134,8 @@ export default {
           }
         })
         .catch(err => {
-          alert("错误：获取数据异常" + err);
+          alert("服务器连接繁忙！");
+          console.log("错误：获取客户信息异常" + err);
         });
     },
     changeInfo(){
