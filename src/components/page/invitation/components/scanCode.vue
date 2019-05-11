@@ -57,6 +57,13 @@ export default {
           service: this.$route.query.service
         }
       })
+      // let basicInfo = JSON.parse(localStorage.getItem('basicInfo')),
+      //     token = localStorage.getItem('authorization'),
+      //     staffCode = basicInfo.staffCode,
+      //     userName = basicInfo.userName,
+      //     choseService = this.$route.query.service
+      // console.log(token,staffCode,userName,choseService)
+      // location.href=`https://h.guanqi2019.com/func/hrs/#/invitation?token=${token}&staffCode=${staffCode}&userName=${userName}&choseService=${choseService}`
     }
   },
   mounted(){

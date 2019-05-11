@@ -12,9 +12,10 @@
               <img src="~IMG/recharge-head.png" alt="">
             </div>
             <div class="count">
-              <p>您当前已累计充值：1300 元</p>
-              <p>可用检测次数：666 次</p>
-              <p>截止有效期：2018/12/27(过期清零)</p>
+              <p>您当前已累计充值：{{basicInfo.rechargeTotal}} 元</p>
+              <p>可用检测次数：{{basicInfo.deviceNums}} 次</p>
+              <p>截止有效期：{{basicInfo.deviceExp | formatterDate}} (过期清零)</p>
+              
             </div>
           </div>
           <div class="recharge-card-down">
@@ -52,6 +53,7 @@ import recharge from './components/recharge'
 export default {
   data () {
     return {
+      basicInfo: JSON.parse(localStorage.getItem('basicInfo')),
       selBtn: '充值记录',
       recharge:['充值记录','立即充值'],
       visible: false

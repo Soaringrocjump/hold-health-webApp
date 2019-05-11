@@ -2,36 +2,34 @@
 <template>
   <div class="personal-page">
     <TopBg>
-      <PersonTop title="个人中心"  hasMore/>
+      <PersonTop title="个人中心" />
     </TopBg>
     <div class="personal-card">
       <div class="personal-card-up">
         <div class="head-info">
           <div class="head">
-            <img src="~IMG/YY.jpg" alt="">
+            <img src="~IMG/userHead.png" alt="">
           </div>
           <dl>
-            <dt>工号：{{basicInfo.staffCode}}</dt>
-            <dd>太平洋人寿保险宁波分公司</dd>
+            <dt>健康专员工号</dt>
+            <dd>{{basicInfo.staffCode}}</dd>
           </dl>
         </div>
-        <!-- <div class="qr-code">
-          <img src="~IMG/qqr-code.png" alt="">
-        </div> -->
-        <i class="iconfont icon-erweima"></i>
+        <div class="qr-code">
+          <i class="iconfont icon-erweima"></i>
+          <p>二维码名片</p>
+        </div>
       </div>
       <div class="personal-card-down">
         <div>
-          <span>剩余检测次数</span>
-          <span>{{basicInfo.deviceNums}}</span>
+          <span>编辑我的名片</span>
         </div>
         <div>
-          <span>当前剩余积分</span>
-          <span>1888</span>
+          <span>分享我的名片</span>
         </div>
       </div>
     </div>
-    <div class="personal-new-msg">
+    <!-- <div class="personal-new-msg">
       <div class="check">
         <span class="msg-icon"><img src="~IMG/personal-msg.png" alt=""></span>
         <span>您有新的留言消息</span>
@@ -39,14 +37,14 @@
       <div class="close">
         <img src="~IMG/personal-close.png" alt="">
       </div>
-    </div>
+    </div> -->
     <div class="personal-panel">
       <h2>我的钱包</h2>
       <div class="part-panel">
         <div class="part-left">
           <dl>
             <dt>剩余检测次数</dt>
-            <dd>365</dd>
+            <dd>{{basicInfo.deviceNums}}</dd>
           </dl>
           <div class="panel-btn">继续充值</div>
         </div>
@@ -54,7 +52,7 @@
         <div class="part-right">
           <dl>
             <dt>到期时间（过期清零）</dt>
-            <dd>2019.10.01</dd>
+            <dd>{{basicInfo.deviceExp | formatterDate}}</dd>
           </dl>
           <div class="panel-btn">如何延长有效期</div>
         </div>
@@ -66,7 +64,8 @@
         <div class="part-left">
           <dl>
             <dt>设备识别号</dt>
-            <dd>HH19B0001</dd>
+            <dd v-if="basicInfo.deviceCode">{{basicInfo.deviceCode}}</dd>
+            <dd v-else></dd>
           </dl>
           <div class="panel-btn">继续充值</div>
         </div>
@@ -74,13 +73,14 @@
         <div class="part-right">
           <dl>
             <dt>设备归属权</dt>
-            <dd>拥有所有权</dd>
+            <dd v-if="basicInfo.isDeviceOwned == 1">拥有所有权</dd>
+            <dd v-else></dd>
           </dl>
           <div class="panel-btn">申请解绑设备</div>
         </div>
       </div>
     </div>
-    <div class="personal-panel">
+    <!-- <div class="personal-panel">
       <h2>发布邀约记录</h2>
       <ul class="record">
         <li>2019.05.01,13:11 通过微信发送给朋友。</li>
@@ -92,7 +92,7 @@
           <div class="panel-btn">申请解绑设备</div>
           <span class="more">查看更多>></span>
       </div>
-    </div>
+    </div> -->
     <div class="personal-panel">
       <h2>我的工具</h2>
       <div class="personal-tool-list clearfix">
@@ -176,9 +176,6 @@ export default {
   components:{
     PersonTop,
     TopBg
-  },
-  computed: {
-    // ...mapState(['basicInfo'])
   }
 }
 

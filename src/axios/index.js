@@ -5,7 +5,8 @@ import axios from 'axios';
 // axios.defaults.timeout = 5000
 
 const request = axios.create({
-    baseURL: 'http://47.96.67.198:8861/', 
+    // baseURL: 'http://47.96.67.198:8861/', //测试地址
+    baseURL: 'http://39.100.58.46:8000', 
     timeout: 10000, // 请求超时
     headers: {
         'content-type': 'application/json;charset=UTF-8',

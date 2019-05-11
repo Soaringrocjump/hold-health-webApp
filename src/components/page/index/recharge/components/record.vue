@@ -4,11 +4,12 @@
     <ul>
       <li v-for="(item,index) in recordList" :key="index">
         <dl>
-          <!-- <dt>用户充值{{item.payAmount}}元，可检测{{item.actNums}}次</dt> -->
-          <dt>{{item.content}}</dt>
-          <dd>{{item.payTime | formatterDateTime}}</dd>
+          <dt>用户充值{{item.payAmount || '-'}}元，可检测{{item.actNums || '-'}}次</dt>
+          <!-- <dt>{{item.content || '-'}}</dt> -->
+          <dd v-if="item.payTime">{{item.payTime | formatterDateTime}}</dd>
+          <dd v-else>-</dd>
         </dl>
-        <span>{{item.payAmount}}</span>
+        <span>{{item.payAmount || '-'}}</span>
       </li>
     </ul>
   </div>

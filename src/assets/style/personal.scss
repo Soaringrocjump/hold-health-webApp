@@ -43,22 +43,31 @@
             font-size: 30px;
           }
           dd{
-            font-size: 25px;
-            margin-top: 20px;
+            font-size: 30px;
+            margin-top: 10px;
+            color: #a94fff;
+            font-weight: bold;
           }
         }
       }
       .qr-code{
-        width: 82px;
-        height: 82px;
+        // width: 64px;
+        // height: 64px;
+        text-align: center;
+        i{
+          font-size: 64px;
+          color:rgba(14,16,128,1);
+          background:linear-gradient(90deg,rgba(173,106,255,1),rgba(218,69,231,1));
+          -webkit-background-clip:text;
+          -webkit-text-fill-color:transparent;
+        }
+        p{
+          font-size: 20px;
+          color: #b539e6;
+          // margin-top: 10px;
+        }
       }
-      i{
-        font-size: 90px;
-        color:rgba(14,16,128,1);
-        background:linear-gradient(90deg,rgba(173,106,255,1),rgba(218,69,231,1));
-        -webkit-background-clip:text;
-        -webkit-text-fill-color:transparent;
-      }
+      
     }
     .personal-card-down{
       height: 69px;
@@ -150,8 +159,9 @@
             line-height: 1;
           }
           dd{
-            font-size: 50px;
+            font-size: 42px;
             color: #8753EE;
+            height: 72px;
             line-height: 72px;
           }
         }

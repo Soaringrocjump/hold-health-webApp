@@ -1,7 +1,7 @@
 <!-- 立即充值 -->
 <template>
   <div class="recharge">
-    <h2>请选择套餐</h2>
+    <!-- <h2>请选择套餐</h2>
     <ul class="recharge-package">
       <li v-for="(item,index) in recharge" :key="index">
         <div :class="[item.checked ? 'package-price-checked': 'package-price']">¥ {{item.amount}}</div>
@@ -14,7 +14,7 @@
       </li>
     </ul>
     <p class="tips">温馨提示：公司同步充值金额次日到账，系统自动核对无误后，检测次数自动累加，请注意查收。</p>
-    <div class="confirmBtn">确认充值</div>
+    <div class="confirmBtn">确认充值</div> -->
   </div>
 </template>
 

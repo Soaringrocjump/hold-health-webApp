@@ -13,27 +13,34 @@
         <div class="right-btn" @click="searchOrder">查 询</div>
       </div>
     </div>
-    <ul class="test-list">
-      <li v-for="(item,index) in successOrderList" :key="index">
-        <div class="left-info">
-          <p>检测单号： {{item.orderCode}}</p>
-          <p>被检测人：<span>{{item.userName}}</span><span>{{item.userGender}}</span><span>{{item.userAge}}岁</span></p>
-          <p>提交时间： {{item.gmtModify | formatterDateTime}}</p>
-          <div class="test-tag">
-            <span>
-              <img src="~IMG/report-push.png" alt="">
-            </span>
-            <span>
-              <img src="~IMG/report-print.png" alt="">
-            </span>
-          </div>
-        </div>
-        <dl class="right-score">
-          <dt>综合评分</dt>
-          <dd>{{item.orderScore}}</dd>
-        </dl>
-      </li>
-    </ul>
+    <div class="test-list-box">
+      <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+        <ul class="test-list">
+          <li v-for="(item,index) in successOrderList" :key="index">
+            <div class="left-info">
+              <div @click="jump(item.orderCode)">
+              <p>检测单号： {{item.orderCode}}</p>
+              <p>被检测人：<span>{{item.userName}}</span><span>{{item.userGender}}</span><span>{{item.userAge}}岁</span></p>
+              <p>提交时间： {{item.gmtModify | formatterDateTime}}</p>
+              </div>
+              <div class="test-tag">
+                <span>
+                  <img src="~IMG/report-push.png" alt="">
+                </span>
+                <span>
+                  <img src="~IMG/report-print.png" alt="">
+                </span>
+              </div>
+            </div>
+            <dl class="right-score">
+              <dt>综合评分</dt>
+              <dd>{{item.orderScore}}</dd>
+            </dl>
+          </li>
+        </ul>
+      </van-pull-refresh>
+    </div>
+    
   </div>
 </template>
 
@@ -43,8 +50,10 @@ import TopBg from 'Module/TopBg'
 export default {
   data () {
     return {
+      isLoading: false,
       successOrderList: [],
-      searchName: ''
+      searchName: '',
+      pageCount: 1
     };
   },
   components:{
@@ -52,6 +61,15 @@ export default {
     TopBg
   },
   methods:{
+    //下拉刷新
+    onRefresh() {
+      this.pageCount++;
+      this.getOrderList()
+      setTimeout(() => {
+        this.$toast('刷新成功');
+        this.isLoading = false;
+      }, 500);
+    },
     //获取检测列表
     getOrderList(name){
       this.$axios({
@@ -59,8 +77,8 @@ export default {
         url: "order/orderList",
         data: {
           orderStatus: 1,
-          pageNum: 0,
-          pageSize: 0,
+          pageNum: 1,
+          pageSize: this.pageCount*10,
           staffCode: localStorage.getItem("staffCode"),
           userName: name || ''
         }
@@ -87,6 +105,9 @@ export default {
         this.getOrderList()
       }
     },
+    jump(orderCode){
+      location.href="https://h.hfieta.com/hps/#/TestReport?orderCode="+orderCode;
+    }
   },
   mounted(){
     this.getOrderList()
@@ -96,4 +117,13 @@ export default {
 </script>
 <style lang='scss' scoped>
 @import "@/assets/style/healthTest.scss";
+</style>
+<style>
+.van-toast{
+  font-size: 32px;
+  line-height: unset
+}
+.van-toast--text{
+  padding: 6px 20px;
+}
 </style>

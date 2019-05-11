@@ -155,6 +155,30 @@ export default new Router({
       component: () => import ("@/components/page/index/recharge"),
       meta: {title: 'recharge'},
     },
-    
+    //尊贵服务-基础
+    {
+      path: '/serviceStage1',
+      name: 'serviceStage1',
+      component: () => import ("@/components/page/index/honorableService/stage1"),
+      meta: {title: 'serviceStage1'},
+    },
+    {
+      path: '/serviceStage2',
+      name: 'serviceStage2',
+      component: () => import ("@/components/page/index/honorableService/stage2"),
+      meta: {title: 'serviceStage2'},
+    },
+    {
+      path: '/serviceStage3',
+      name: 'serviceStage3',
+      component: () => import ("@/components/page/index/honorableService/stage3"),
+      meta: {title: 'serviceStage3'},
+    },
+    {
+      path: '/serviceStage4',
+      name: 'serviceStage4',
+      component: () => import ("@/components/page/index/honorableService/stage4"),
+      meta: {title: 'serviceStage4'},
+    },
   ]
 })

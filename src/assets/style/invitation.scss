@@ -46,6 +46,9 @@
           height: 55px;
           border-radius: 12px;
         }
+        .disabled{
+          background: #dcdcdc;
+        }
       }
     }
     .confirmBtn{
@@ -138,26 +141,99 @@
       margin: 66px auto;
     }
     .invitation-info{
-      width:649px;
-      height:299px;
+      width:689px;
+      // height:215px;
+      margin: -50px auto 0;
       background:#fff;
       border:1px solid rgba(232, 232, 232, 1);
       box-shadow:4px 3px 20px 0px rgba(0, 0, 0, 0.25);
       border-radius:25px;
-      margin: -53px auto;
-      padding: 30px 35px;
-      color: #555;
-      line-height: 1.6;
-      h2{
-        font-size: 35px;
+      overflow: hidden;
+      .personal-info{
+        height: 146px;
+        padding: 0 35px 0 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .head-info{
+          display: flex;
+          align-items: center;
+          .head{
+            width:109px;
+            height:109px;
+            background:#D2D2D2;
+            border:2px solid rgba(210,210,210,1);
+            box-shadow:0px 7px 18px 0px rgba(125,133,152,0.36);
+            border-radius:50%;
+            overflow: hidden;
+          }
+          dl{
+            margin-left: 11px;
+            color: #333;
+            dt{
+              font-size: 30px;
+            }
+            dd{
+              font-size: 30px;
+              margin-top: 10px;
+              color: #a94fff;
+              font-weight: bold;
+            }
+          }
+        }
+        .qr-code{
+          // width: 64px;
+          // height: 64px;
+          text-align: center;
+          i{
+            font-size: 64px;
+            color:rgba(14,16,128,1);
+            background:linear-gradient(90deg,rgba(173,106,255,1),rgba(218,69,231,1));
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+          }
+          p{
+            font-size: 20px;
+            color: #b539e6;
+            // margin-top: 10px;
+          }
+        }
+        
       }
-      p{
-        font-size: 28px;
+      .personal-card{
+        height: 69px;
+        background: #F4F5FA;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &>div{
+          width: 50%;
+          height: 35px;
+          font-size: 25px;
+          color: #C8C8C8;
+          text-align: center;
+          color: #818181;
+          span{
+            margin: 0 8px;
+          }
+        }
+        &>div~div{
+          border-left: 1px solid #C8C8C8;
+        }
+      }
+      .personal-input{
+        textarea{
+          display: block;
+          width: 100%;
+          padding: 30px 50px;
+          border: none;
+          background: #fff;
+        }
       }
     }
     .gradient-txt{
       width: 516px;
-      margin: 115px auto 0;
+      margin: 50px auto 0;
     }
     .intro{
       font-size: 35px;
@@ -210,13 +286,13 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
+      width: 750px;
       height: 100%;
       background: rgba(0, 0, 0, 0.4);
       .shareBox{
-        position: absolute;
+        position: fixed;
         bottom: -380px;
-        // left: 0;
+        left: 0;
         width: 750px;
         height: 380px;
         background: #fff;
@@ -256,144 +332,144 @@
       }
     }
   }
-  .getAppointment{
-    .service-info{
-      padding: 50px 0 60px;
-      background: #fff;
-      .gradient-txt2{
-        width: 458px;
-        margin: 0 auto;
-      }
-      p{
-        font-size: 28px;
-        color: #646464;
-        margin-top: 20px;
-        text-align: center;
-        .officer{
-          font-size: 28px;
-          color: #000;
-          font-weight: bold;
-        }
-      }
-      .officer-code{
-        width: 200px;
-        margin: 45px auto;
-      }
-      .step{
-        color: #646464;
-        width: 592px;
-        margin: 65px auto;
-        line-height: 1.6;
-        dt{
-          font-size: 35px;
-        }
-        dd{
-          font-size: 28px;
-        }
-      }
-    }
+  // .getAppointment{
+  //   .service-info{
+  //     padding: 50px 0 60px;
+  //     background: #fff;
+  //     .gradient-txt2{
+  //       width: 458px;
+  //       margin: 0 auto;
+  //     }
+  //     p{
+  //       font-size: 28px;
+  //       color: #646464;
+  //       margin-top: 20px;
+  //       text-align: center;
+  //       .officer{
+  //         font-size: 28px;
+  //         color: #000;
+  //         font-weight: bold;
+  //       }
+  //     }
+  //     .officer-code{
+  //       width: 200px;
+  //       margin: 45px auto;
+  //     }
+  //     .step{
+  //       color: #646464;
+  //       width: 592px;
+  //       margin: 65px auto;
+  //       line-height: 1.6;
+  //       dt{
+  //         font-size: 35px;
+  //       }
+  //       dd{
+  //         font-size: 28px;
+  //       }
+  //     }
+  //   }
     
-  }
-  .fillAppointment,.scanCodeFill{
-    .slogan{
-      width: 522px;
-      margin: 66px auto;
-    }
-    .invitation-info{
-      width:500px;
-      height:80px;
-      line-height:80px;
-      background:rgba(255,255,255,1);
-      box-shadow:0px 0px 32px 4px rgba(0, 0, 0, 0.1);
-      border-radius: 80px;
-      margin: -40px auto;
-      text-align: center;
-      font-size: 35px;
-      color: #5F5F5F;
-    }
-    .gradient-txt2{
-      width: 461px;
-      margin: 85px auto 0;
-    } 
-    p{
-      font-size: 28px;
-      color: #646464;
-      margin-top: 20px;
-      text-align: center;
-      .officer{
-        font-size: 28px;
-        color: #000;
-        font-weight: bold;
-      }
-    }
-    .fill-info{
-      padding: 40px 100px 89px;
-      background: #fff;
-      margin: 30px auto;
-      dl{
-        margin-top: 10px;
-        dt{
-          font-size: 29px;
-          line-height: 50px;
-          color: #8348EB;
-          .nes{
-            color: #FF0000;
-            // font-size: 42px;
-          }
-        }
-        dd{
-          font-size: 29px;
-          position: relative;
-          input,select{
-            width:100%;
-            height:80px;
-            padding: 0 15px;
-            background:rgba(255,255,255,1);
-            border:2px solid rgba(180, 180, 180, 1);
-          }
-          .disabled-input{
-            background: transparent;
-          }
-          textarea{
-            width:100%;
-            height:278px;
-            padding: 10px 15px;
-            background:rgba(255,255,255,1);
-            border:2px solid rgba(180, 180, 180, 1);
-          }
-          ::-webkit-input-placeholder,::-webkit-textarea-placeholder{
-            color:rgba(144,144,144,.5);
-          }
-          .arrow{
-            position: absolute;
-            width: 42px;
-            height: 42px;
-            top: 20px;
-            right: 10px;
-            background: #fff;
-            pointer-events: none;
-          }
-        }
-      }
-      .confirmBtn{
-        width:100%;
-        height:104px;
-        line-height: 104px;
-        background:linear-gradient(0deg,rgba(106,99,242,1),rgba(186,54,229,1));
-        box-shadow:0px 1px 0px 0px rgba(255,255,255,0.31);
-        margin: 74px auto;
-        border-radius: 104px;
-        text-align: center;
-        color: #fff;
-        font-size: 45px;
-      }
-    }
-  }
-  .scanCodeFill{
-    .fill-info{
-      background: transparent;
-    }
-  } 
+  // }
+  // .fillAppointment,.scanCodeFill{
+  //   .slogan{
+  //     width: 522px;
+  //     margin: 66px auto;
+  //   }
+  //   .invitation-info{
+  //     width:500px;
+  //     height:80px;
+  //     line-height:80px;
+  //     background:rgba(255,255,255,1);
+  //     box-shadow:0px 0px 32px 4px rgba(0, 0, 0, 0.1);
+  //     border-radius: 80px;
+  //     margin: -40px auto;
+  //     text-align: center;
+  //     font-size: 35px;
+  //     color: #5F5F5F;
+  //   }
+  //   .gradient-txt2{
+  //     width: 461px;
+  //     margin: 85px auto 0;
+  //   } 
+  //   p{
+  //     font-size: 28px;
+  //     color: #646464;
+  //     margin-top: 20px;
+  //     text-align: center;
+  //     .officer{
+  //       font-size: 28px;
+  //       color: #000;
+  //       font-weight: bold;
+  //     }
+  //   }
+  //   .fill-info{
+  //     padding: 40px 100px 89px;
+  //     background: #fff;
+  //     margin: 30px auto;
+  //     dl{
+  //       margin-top: 10px;
+  //       dt{
+  //         font-size: 29px;
+  //         line-height: 50px;
+  //         color: #8348EB;
+  //         .nes{
+  //           color: #FF0000;
+  //           // font-size: 42px;
+  //         }
+  //       }
+  //       dd{
+  //         font-size: 29px;
+  //         position: relative;
+  //         input,select{
+  //           width:100%;
+  //           height:80px;
+  //           padding: 0 15px;
+  //           background:rgba(255,255,255,1);
+  //           border:2px solid rgba(180, 180, 180, 1);
+  //         }
+  //         .disabled-input{
+  //           background: transparent;
+  //         }
+  //         textarea{
+  //           width:100%;
+  //           height:278px;
+  //           padding: 10px 15px;
+  //           background:rgba(255,255,255,1);
+  //           border:2px solid rgba(180, 180, 180, 1);
+  //         }
+  //         ::-webkit-input-placeholder,::-webkit-textarea-placeholder{
+  //           color:rgba(144,144,144,.5);
+  //         }
+  //         .arrow{
+  //           position: absolute;
+  //           width: 42px;
+  //           height: 42px;
+  //           top: 20px;
+  //           right: 10px;
+  //           background: #fff;
+  //           pointer-events: none;
+  //         }
+  //       }
+  //     }
+  //     .confirmBtn{
+  //       width:100%;
+  //       height:104px;
+  //       line-height: 104px;
+  //       background:linear-gradient(0deg,rgba(106,99,242,1),rgba(186,54,229,1));
+  //       box-shadow:0px 1px 0px 0px rgba(255,255,255,0.31);
+  //       margin: 74px auto;
+  //       border-radius: 104px;
+  //       text-align: center;
+  //       color: #fff;
+  //       font-size: 45px;
+  //     }
+  //   }
+  // }
+  // .scanCodeFill{
+  //   .fill-info{
+  //     background: transparent;
+  //   }
+  // } 
 }
 @keyframes slideIn {
   0%{

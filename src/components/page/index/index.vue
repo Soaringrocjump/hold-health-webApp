@@ -10,7 +10,12 @@
       <i class="iconfont icon-xiaoxi1"></i>
     </div>
     <div class="index-banner">
-      <img src="~IMG/index-banner.png" alt="">
+      <!-- <img src="~IMG/index-banner1.png" alt=""> -->
+      <van-swipe :autoplay="3000">
+        <van-swipe-item v-for="(item, index) in bannerArr" :key="index">
+          <img :src="item.imgUrl"/>
+        </van-swipe-item>
+      </van-swipe>
     </div>
     <div class="index-notice">
       <!-- <i class="iconfont icon-horn"></i> -->
@@ -21,10 +26,12 @@
         5月1日，太保常州客户经营日。太保常州客户经...
       </marquee> -->
       <div class="notice-slide">
-        <ul>
+        <!-- <ul>
           <li class="slide1">5月1日，太保常州客户经营日。太保常州客户经...</li>
-          <!-- <li class="slide2">5月2日，太保常州客户经营日。太保常州客户经...</li> -->
-        </ul>
+        </ul> -->
+        <van-swipe :autoplay="3000" vertical indicator-color="blue" :height="34">
+          <van-swipe-item v-for="(item,index) in noticeArr" :key="index">{{item.content}}</van-swipe-item>
+        </van-swipe>
       </div>
     </div>
     <div class="index-count">
@@ -59,16 +66,24 @@
       <Title title="尊贵服务" hasLine/>
       <ul>
         <li>
+          <!-- <router-link to="/serviceStage1"> -->
           <img src="~IMG/index-best-service1.png" alt="">
+          <!-- </router-link> -->
         </li>
         <li>
+          <!-- <router-link to="/serviceStage2"> -->
           <img src="~IMG/index-best-service2.png" alt="">
+          <!-- </router-link> -->
         </li>
         <li>
+          <!-- <router-link to="/serviceStage3"> -->
           <img src="~IMG/index-best-service3.png" alt="">
+          <!-- </router-link> -->
         </li>
         <li>
+          <!-- <router-link to="/serviceStage4"> -->
           <img src="~IMG/index-best-service4.png" alt="">
+          <!-- </router-link> -->
         </li>
       </ul>
     </div>
@@ -170,7 +185,19 @@ import Title from 'Module/Title'
 export default {
   data () {
     return {
-      basicInfo: JSON.parse(localStorage.getItem("basicInfo"))
+      basicInfo: JSON.parse(localStorage.getItem("basicInfo")),
+      bannerArr: [
+        // {
+        //   imgSrc: require('@/assets/img/index-banner1.png')
+        // },
+        // {
+        //   imgSrc: require('@/assets/img/index-banner2.png')
+        // },
+        // {
+        //   imgSrc: require('@/assets/img/index-banner3.png')
+        // }
+      ],
+      noticeArr: []
     };
   },
   components:{
@@ -199,14 +226,57 @@ export default {
         .catch(err => {
           alert("错误：获取nation数据异常" + err);
         });
+    },
+    //获取banner和notice
+    getBannerAndNotice(){
+      this.$axios({
+        method: "get",
+        url: "activity/getActivityAndNotice?orgCode=CNTP",
+      })
+        .then(result => {
+          console.log('result',result);
+          if (result.data.resultCode == "200"){
+            this.bannerArr = result.data.data.ACTIVITY.list
+            this.noticeArr = result.data.data.NOTICE.list
+          console.log('bannerArr',this.bannerArr);
+          console.log('noticeArr',this.noticeArr);
+          }else{
+            alert(result.data.message)
+          }
+        })
+        .catch(err => {
+          alert("错误：获取nation数据异常" + err);
+        });
     }
   },
   mounted(){
     this.getNation()
+    this.getBannerAndNotice()
   }
 }
 
 </script>
 <style lang='scss' scoped>
 @import "@/assets/style/index.scss";
+</style>
+<style lang='scss'>
+.index-banner{
+  .van-swipe__indicator{
+    width: 12px;
+    height: 12px;
+  }
+}
+.notice-slide{
+  .van-swipe-item{
+    // height: 72px !important;
+    // line-height: 60px;
+    display: flex;
+    align-items: center;
+    color: #000;
+    font-size: 26px;
+  }
+  .van-swipe__indicators{
+    display: none;
+  }
+}
 </style>

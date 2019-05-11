@@ -13,35 +13,44 @@
         <div class="right-btn" @click="searchOrder">查 询</div>
       </div>
     </div>
-    <ul class="test-list">
-      <li v-for="(item,index) in orderList" :key="index">
-        <div class="left-info">
-          <!-- <a :href="'https://h.guanqi2019.com/func/hrs/#/TestHealthDetail?orderCode='+item.orderCode" > -->
-          <p>检测单号： {{item.orderCode}}</p>
-          <p>申请检测人：<span>{{item.userName}}</span><span>{{item.userGender}}</span><span>{{item.userAge}}岁</span></p>
-          <p>提交时间： {{item.gmtModify | formatterDateTime}}</p>
-          <!-- </a> -->
-          <div class="test-tag">
-            <span  v-if="item.orgCode == 'CPIC'">
-              <img src="~IMG/hold-health-tag1.png" alt="">
-            </span>
-            <span v-if="item.orgCode == 'CNTP'">
-              <img src="~IMG/hold-health-tag2.png" alt="">
-            </span>
-            <span @click="popOut(item)">
-              <img src="~IMG/hold-health-info.png" alt="">
-            </span>
-          </div>
-        </div>
-        <div class="right-item" @click="jumpAPP(item)">
-          <!-- <a :href="'https://h.guanqi2019.com/func/hrs/#/TestHealthDetail?orderCode='+item.orderCode+'&userName='+item.userName+'&userAge='+item.userAge+'&gmtModify='+item.gmtModify" > -->
-            <img v-if="item.rowState == 9" src="~IMG/hold-health-cant-test.png" alt="">
-            <img v-else src="~IMG/hold-health-can-test.png" alt="">
-          <!-- </a> -->
-        </div>
-      </li>
-    </ul>
-    <van-loading v-if="show" type="spinner" color="white" />
+    <div class="test-list-box">
+      <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+        <ul class="test-list">
+          <li v-for="(item,index) in orderList" :key="index">
+            <div class="left-info">
+              <!-- <a :href="'https://h.guanqi2019.com/func/hrs/#/TestHealthDetail?orderCode='+item.orderCode" > -->
+              <div >
+                <p>检测单号： {{item.orderCode}}</p>
+                <p>申请检测人：<span>{{item.userName}}</span><span>{{item.userGender}}</span><span>{{item.userAge}}岁</span></p>
+                <p>提交时间： {{item.gmtModify | formatterDateTime}}</p>
+              </div>
+              <!-- </a> -->
+              <div class="test-tag">
+                <span  v-if="item.orgCode == 'CPIC'">
+                  <img src="~IMG/hold-health-tag1.png" alt="">
+                </span>
+                <span v-if="item.orgCode == 'CNTP'">
+                  <img src="~IMG/hold-health-tag2.png" alt="">
+                </span>
+                <span @click="popOut(item)">
+                  <img src="~IMG/hold-health-info.png" alt="">
+                </span>
+                <span v-if="item.orgCode == null" @click="cancelOrder(item.orderCode)">
+                  <img src="~IMG/hold-health-cancel.png" alt="">
+                </span>
+              </div>
+            </div>
+            <div class="right-item" @click="jumpAPP(item)">
+              <!-- <a :href="'https://h.guanqi2019.com/func/hrs/#/TestHealthDetail?orderCode='+item.orderCode+'&userName='+item.userName+'&userAge='+item.userAge+'&gmtModify='+item.gmtModify" > -->
+                <img v-if="item.rowState == 9" src="~IMG/hold-health-cant-test.png" alt="">
+                <img v-else src="~IMG/hold-health-can-test.png" alt="">
+              <!-- </a> -->
+            </div>
+          </li>
+        </ul>
+      </van-pull-refresh>
+    </div>
+    
     <div class="pop-up-bg" v-if="visible">
       <div class="pop-up-frame">
         <div class="frame-cont">
@@ -70,11 +79,12 @@ export default {
   data () {
     return {
       visible: false,
-      show: true,
+      isLoading: false,
       orderList: [],
       searchName: '',
       baseImgUrl: 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=',
-      inviteQRCode: ''
+      inviteQRCode: '',
+      pageCount: 1
     };
   },
   components:{
@@ -82,6 +92,15 @@ export default {
     TopBg
   },
   methods:{
+    //下拉刷新
+    onRefresh() {
+      this.pageCount++;
+      this.getOrderList()
+      setTimeout(() => {
+        this.$toast('刷新成功');
+        this.isLoading = false;
+      }, 500);
+    },
     //获取检测列表
     getOrderList(name){
       this.show = true
@@ -90,8 +109,8 @@ export default {
         url: "order/orderList",
         data: {
           orderStatus: 3,
-          pageNum: 0,
-          pageSize: 0,
+          pageNum: 1,
+          pageSize: this.pageCount*10,
           staffCode: localStorage.getItem("staffCode"),
           userName: name
         }
@@ -123,7 +142,7 @@ export default {
           ordersn ="",
           deviceData ="";
         console.log("跳转传参",token,orderCode,userName,userAge,userGender,gmtModify)
-        location.href=`https://h.guanqi2019.com/func/hrs/#/TestHealthDetail?token=${token}&orderCode=${orderCode}&userName=${userName}&userAge=${userAge}&userGender=${userGender}&gmtModify=${gmtModify}`
+        location.href=`HealthMonitoring?token=${token}&orderCode=${orderCode}&userName=${userName}&userAge=${userAge}&userGender=${userGender}&gmtModify=${gmtModify}`
       }
     },
     //查询订单
@@ -133,6 +152,31 @@ export default {
       }else{
         this.getOrderList()
       }
+    },
+    //取消订单
+    cancelOrder(orderCode){
+      this.$axios({
+        method: "post",
+        url: "order/orderCancel",
+        data: {
+          orderCode: orderCode,
+          staffCode: localStorage.getItem("staffCode"),
+        }
+      })
+        .then(result => {
+          console.log('result',result);
+          if (result.data.resultCode == "200"){
+            var msg = result.data.data
+            console.log(msg);
+            this.$toast('取消订单成功');
+            this.getOrderList()
+          }else{
+            console.log(result.data.message)
+          }
+        })
+        .catch(err => {
+          alert("错误：获取数据异常" + err);
+        });
     },
     //获取二维码
     getAffirmQRCode(orderCode){
@@ -184,43 +228,6 @@ export default {
       if (!value) return ''
       return formatDate(new Date(value), 'yyyy-MM-dd hh:mm:ss')
     },
-    //调用原生app加的方法
-    displayDate(val){
-      console.log('调用原生app加的方法')
-        var paramsObj = {
-          orderCode: val.orderCode,
-          userName: val.userName,
-          userAge: val.userAge,
-          gmtModify: this.formatterDateTime(val.gmtModify)
-        } 
-        console.log('传递参数',paramsObj)  
-        var paramsJson = JSON.stringify(paramsObj)
-        console.log('传递json',paramsJson)
-        this.$bridge.callhandler('HealthMonitoring', paramsJson, (data) => {
-
-            alert("返回数据：",data)
-
-        })
-        // this.setupWebViewJavascriptBridge(function(bridge){
-        //   console.log("调用setupWebViewJavascriptBridge")
-        //     bridge.callHandler('HealthMonitoring', paramsJson, function responseCallback(responseData) {
-        //       console.log("JS received response:", responseData)
-        //     });
-        // });
-    },
-    //申明交互
-    // setupWebViewJavascriptBridge(callback) {
-    //     console.log("进入setupWebViewJavascriptBridge")
-    //     if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
-    //     if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
-    //     window.WVJBCallbacks = [callback];
-    //     var WVJBIframe = document.createElement('iframe');
-    //     WVJBIframe.style.display = 'none';
-    //     WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
-    //     document.documentElement.appendChild(WVJBIframe);
-    //     setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
-    // },
-
     //弹出弹框
     popOut(val){
       this.visible = true
@@ -240,4 +247,13 @@ export default {
 </script>
 <style lang='scss' scoped>
 @import "@/assets/style/healthTest.scss";
+</style>
+<style>
+.van-toast{
+  font-size: 32px;
+  line-height: unset
+}
+.van-toast--text{
+  padding: 6px 20px;
+}
 </style>

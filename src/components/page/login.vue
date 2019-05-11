@@ -48,9 +48,11 @@ export default {
       if(this.userName != '' && this.userPwd != ''){
         console.log(this.userName);
         console.log(this.userPwd);
+        let userName = this.userName.trim()
+        let userPwd = this.userPwd.trim()
         this.$axios({
           method: "post",
-          url: "staff/login?userName="+this.userName+"&userPwd="+this.userPwd,
+          url: "staff/login?userName="+userName+"&userPwd="+userPwd,
         })
           .then(result => {
             if (result.data.resultCode == "200"){

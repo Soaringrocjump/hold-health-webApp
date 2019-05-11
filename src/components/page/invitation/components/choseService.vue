@@ -8,7 +8,7 @@
           <div class="invitation-service">
             <img :src="item.serviceImg" alt="">
           </div>
-          <div :class="[item.check ? 'checkedBox' : 'checkBox']" @click="chose(item)">
+          <div :class="[item.check ? 'checkedBox' : 'checkBox',item.disabled ? 'disabled' : '']" @click="chose(item)">
             <img v-if="item.check" src="~IMG/invitation-checked.png" alt="">
           </div>
         </dd>
@@ -28,14 +28,14 @@ export default {
         {
           serviceName: '健康在手',
           serviceImg: require('@/assets/img/invitation-service1.png'),
-          check: false,
+          check: true,
           disabled: false
         },
         {
           serviceName: '荃禾"7+3"',
           serviceImg: require('@/assets/img/invitation-service2.png'),
           check: false,
-          disabled: false
+          disabled: true
         },
         {
           serviceName: '遗传基因检测',

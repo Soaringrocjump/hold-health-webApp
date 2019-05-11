@@ -9,7 +9,7 @@
         <div class="clientInfo-card-up">
           <div class="head-info">
             <div class="head">
-              <img src="~IMG/YY.jpg" alt="">
+              <img src="~IMG/userHead.png" alt="">
             </div>
             <h2>{{customerInfo.userName}}</h2>
             <h3>{{customerInfo.userGender}}</h3>

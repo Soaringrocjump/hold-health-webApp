@@ -15,7 +15,7 @@ import { DatePicker,Table } from 'element-ui';
 Vue.use(DatePicker)
 Vue.use(Table)
 //VantUI
-import { Tab, Tabs, Popup, Loading, DatetimePicker, Area, Picker, RadioGroup, Radio, Icon, Toast } from 'vant';
+import { Tab, Tabs, Popup, Loading, DatetimePicker, Area, Picker, RadioGroup, Radio, Icon, Toast, Swipe, SwipeItem, Actionsheet, PullRefresh } from 'vant';
 Vue.use(Tab);
 Vue.use(Tabs);
 Vue.use(Popup);
@@ -27,6 +27,10 @@ Vue.use(Radio);
 Vue.use(RadioGroup);
 Vue.use(Icon);
 Vue.use(Toast);
+Vue.use(Swipe);
+Vue.use(SwipeItem);
+Vue.use(Actionsheet);
+Vue.use(PullRefresh);
 
 // 注册全局过滤器
 Object.keys(filters).forEach(key => {

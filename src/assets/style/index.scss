@@ -1,6 +1,7 @@
 /*首页*/
 .index-page{
   .index-top{
+    width: 750px;
     margin-top: 30px;
     padding: 0 30px;
     display: flex;
@@ -36,13 +37,16 @@
     }
   }
   .index-banner{
+    width: 750px;
     padding: 18px 30px 16px;
   }
   .index-notice{
+    width: 750px;
     position: relative;
     background: #fff;
     height: 72px;
-    padding: 6px 42px;
+    // padding: 5px 42px;
+    padding: 0 42px;
     display: flex;
     align-items: center;
     i{
@@ -88,6 +92,7 @@
     }
   }
   .index-count{
+    width: 750px;
     height: 180px;
     padding: 50px 8px 38px;
     display: flex;
@@ -116,6 +121,7 @@
     }
   }
   .index-slogan{
+    width: 750px;
     background: #fff;
     padding: 13px 30px 11px;
     li{
@@ -130,6 +136,7 @@
     // }
   }
   .index-slogan2{
+    width: 750px;
     padding: 16px 30px;
     li{
       width: 690px;
@@ -142,6 +149,7 @@
     }
   }
   .index-slogan3{
+    width: 750px;
     background: #fff;
     padding: 17px 30px 20px;
     margin-top: 14px;
@@ -156,6 +164,7 @@
     }
   }
   .index-service{
+    width: 750px;
     margin-top: 14px;
     background: #fff;
     ul{
@@ -171,6 +180,7 @@
     }
   }
   .index-test{
+    width: 750px;
     margin-top: 15px;
     background: #fff;
     ul{
@@ -204,6 +214,7 @@
     }
   }
   .index-mytool{
+    width: 750px;
     margin-top: 15px;
     background: #fff;
     .tool-list{

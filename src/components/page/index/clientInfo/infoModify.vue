@@ -5,12 +5,12 @@
     <ul class="info-form">
       <li>
         <h3>姓名<span class="nes">*</span></h3>
-        <input type="text" v-model="userName">
+        <input type="text" v-model="userName" disabled>
       </li> 
       <li>
         <h3>性别<span class="nes">*</span></h3>
         <!-- <input type="text" v-model="userGender">  -->
-        <select v-model="userGender">
+        <select v-model="userGender" disabled>
           <option value="男">男</option>
           <option value="女">女</option>
         </select>
@@ -25,7 +25,7 @@
       </li>
       <li>
         <h3>年龄<span class="nes">*</span></h3>
-        <input type="text" v-model="userAge">
+        <input type="text" v-model="userAge" disabled>
       </li>
       <li>
         <h3>民族<span class="nes">*</span></h3>

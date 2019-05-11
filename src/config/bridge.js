@@ -1,6 +1,6 @@
 function setupWebViewJavascriptBridge(callback) {
   console.log("进入setupWebViewJavascriptBridge")
-  console.log("window.WebViewJavascriptBridge",window)
+  console.log("window.WebViewJavascriptBridge",window.WebViewJavascriptBridge)
   if (window.WebViewJavascriptBridge) {
     return callback(window.WebViewJavascriptBridge)
   }

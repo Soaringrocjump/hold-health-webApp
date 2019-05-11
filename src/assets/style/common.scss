@@ -163,7 +163,7 @@ body {
 .slide-in-enter-active,
 .slide-in-leave-active {
   will-change: transform;
-  transition: all 500ms;
+  transition: all 300ms;
   height: 100%;
   top: 0;
   position: absolute;
@@ -196,7 +196,7 @@ body {
 .son-slide-in-enter-active,
 .son-slide-in-leave-active {
   will-change: transform;
-  transition: all 500ms;
+  transition: all 300ms;
   height: 100%;
   top: 110px;
   position: absolute;

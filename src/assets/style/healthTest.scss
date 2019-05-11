@@ -1,10 +1,13 @@
 .waitTest,.successTest{
   position: relative;
   background: #fff;
+  padding-top: 336px;
+  padding-bottom: 310px;
   .fix-top{
     position: fixed;
     left: 0;
-    top: 0;
+    top: 0;    
+    z-index: 9;
     background: #fff;
     padding-bottom: 76px;
     border-bottom: 4px solid #f7f7f7;
@@ -53,8 +56,7 @@
     }
   }
   .test-list{
-    padding-top: 336px;
-    padding-bottom: 310px;
+    
     li{
       // height: 245px;
       padding: 33px 59px 29px;
@@ -88,7 +90,7 @@
         width: 120px;
       }
       .right-score{
-        width: 130px;
+        width: 140px;
         height: 97px;
         border-left: 2px solid #D7D7D7;
         padding-left: 34px;
