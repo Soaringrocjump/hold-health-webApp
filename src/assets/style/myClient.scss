@@ -122,7 +122,7 @@
     width: 750px;
     background: #fff;
     padding-bottom: 10px;
-    padding-top: 420px;
+    padding-top: 380px;
   }
   .clientInfo-card{
     position: absolute;
@@ -130,7 +130,7 @@
     left: 50%;
     transform: translateX(-50%);
     width:689px;
-    height:486px;
+    // height:486px;
     // margin: -92px auto 0;
     background:#fff;
     border:1px solid rgba(232, 232, 232, 1);
@@ -174,7 +174,7 @@
     }
     .clientInfo-card-down{
       position: relative;
-      height: 340px;
+      // height: 340px;
       background: #F4F5FA;
       padding: 30px 45px;
       display: flex;
@@ -195,8 +195,8 @@
       }
       .revise{
         position: absolute;
-        right: 38px;
-        bottom: 38px;
+        right: 30px;
+        bottom: 30px;
         width: 89px;
         height: 89px;
         line-height: 89px;

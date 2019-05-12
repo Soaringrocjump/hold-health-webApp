@@ -98,13 +98,13 @@ export default {
     },
     //分享微信
     shareWechat(){
-      console.log(`PushReport?url=${this.url}&orderCode=${this.orderCode}&title=${this.title}&desc=${this.desc}&type=1`)
-      // location.href=`PushReport?url=${this.url}&orderCode=${this.orderCode}&title=${this.title}&desc=${this.desc}&type=1`
+      // console.log(`PushReport?url=${this.url}&orderCode=${this.orderCode}&title=${this.title}&desc=${this.desc}&type=1`)
+      location.href=`PushReport?url=${this.url}&orderCode=${this.orderCode}&title=${this.title}&desc=${this.desc}&type=1`
     },
     //分享朋友圈
     shareFriendCircle(){
-      console.log(`PushReport?url=${this.url}&orderCode=${this.orderCode}&title=${this.title}&desc=${this.desc}&type=2`)
-      // location.href=`PushReport?url=${this.url}&orderCode=${this.orderCode}&title=${this.title}&desc=${this.desc}&type=2`
+      // console.log(`PushReport?url=${this.url}&orderCode=${this.orderCode}&title=${this.title}&desc=${this.desc}&type=2`)
+      location.href=`PushReport?url=${this.url}&orderCode=${this.orderCode}&title=${this.title}&desc=${this.desc}&type=2`
     },
     //复制链接
     copyLink(){

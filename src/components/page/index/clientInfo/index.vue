@@ -26,7 +26,7 @@
             <p>身高：{{customerInfo.userHeight}} 厘米</p>
             <p>民族：{{customerInfo.userNation | matchNation}}</p>
             <!-- <p>联系电话：{{customerInfo.telephone}}</p> -->
-            <p>常住地：{{customerInfo.userAddress}}</p>
+            <p>地址：{{customerInfo.userAddress}}</p>
             <p>复检时间：{{customerInfo.nextDate && customerInfo.nextDate}}</p>
           </div>
           <div class="info-right">

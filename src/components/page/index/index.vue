@@ -236,7 +236,7 @@ export default {
           }
         })
         .catch(err => {
-          alert("服务器连接繁忙！");
+          alert("服务器连接繁忙，获取轮播失败！");
           console.log("错误：轮播异常" + err);
         });
     }

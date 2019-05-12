@@ -85,7 +85,13 @@ export default {
         },2000)
       }
       
-      
+    }
+  },
+  beforeCreate(){
+    if(localStorage.getItem('authorization')){
+      this.$router.push({
+        path: 'menu'
+      })
     }
   }
 }

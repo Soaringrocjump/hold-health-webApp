@@ -35,7 +35,7 @@
                 <span @click="popOut(item)">
                   <img src="~IMG/hold-health-info.png" alt="">
                 </span>
-                <span v-if="item.orgCode == null" @click="cancelOrder(item.orderCode)">
+                <span v-if="!item.orderCode.includes('CNTP') && !item.orderCode.includes('CPIC')" @click="cancelOrder(item.orderCode)">
                   <img src="~IMG/hold-health-cancel.png" alt="">
                 </span>
               </div>
