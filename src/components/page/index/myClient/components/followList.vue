@@ -16,10 +16,10 @@
         <td>{{item.userGender || '-'}}</td>
         <td>{{item.userAge || '-'}}</td>
         <td>{{item.userHeight || '-'}}/{{item.userWeight || '-'}}</td>
-        <td>
-          <span class="type">
+        <td>准客户
+          <!-- <span class="type">
             <img src="~IMG/myClient-type-zhun.png" alt="">
-          </span>
+          </span> -->
         </td>
       </tr>
     </table>

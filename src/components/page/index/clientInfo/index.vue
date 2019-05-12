@@ -27,7 +27,7 @@
             <p>民族：{{customerInfo.userNation | matchNation}}</p>
             <!-- <p>联系电话：{{customerInfo.telephone}}</p> -->
             <p>常住地：{{customerInfo.userAddress}}</p>
-            <p>复检时间：{{customerInfo.nextDate && customerInfo.nextDate.substr(0,10)}}</p>
+            <p>复检时间：{{customerInfo.nextDate && customerInfo.nextDate}}</p>
           </div>
           <div class="info-right">
             <p>体重：{{customerInfo.userWeight}} 公斤</p>
@@ -48,7 +48,7 @@
             <dl>
               <dt>亚健康检测</dt>
               <dd>
-                <span><big>{{customerInfo.orderList.length}}</big><small>次</small></span>
+                <span><big>{{customerInfo.orderList && customerInfo.orderList.length}}</big><small>次</small></span>
                 <i class="iconfont icon-youhua"></i>
               </dd>
             </dl>
@@ -60,7 +60,7 @@
             <dl>
               <dt>健康治库VIP</dt>
               <dd>
-                <span>已开卡</span>
+                <span>未开卡</span>
                 <i class="iconfont icon-youhua"></i>
               </dd>
             </dl>

@@ -2,8 +2,9 @@
 <template>
   <div class="page-top" :class="[hasTopBg ? 'hasTopBg' : '']">
     <i class="iconfont icon-fanhui" @click="$router.go(-1)"></i>
-    <span>{{title}}</span>
-    <i class="iconfont"></i>
+    <span></span>
+    <!-- <i class="iconfont"></i> -->
+    <span>{{viewScrollTop}}</span>
   </div>
 </template>
 
@@ -11,6 +12,10 @@
 export default {
   props:{
     title:{
+      type: String,
+      default: ''
+    },
+    viewScrollTop:{
       type: String,
       default: ''
     },

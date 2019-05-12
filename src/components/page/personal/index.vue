@@ -134,6 +134,7 @@
         </dl>
       </div>
     </div>
+    <div class="exitLogin" @click="exitLogin">退出当前账户</div>
   </div>
 </template>
 
@@ -176,10 +177,39 @@ export default {
   components:{
     PersonTop,
     TopBg
+  },
+  methods:{
+    exitLogin(){
+      this.$dialog.confirm({
+        title: '提示',
+        message: '确定退出登录？'
+      }).then(() => {
+        // on confirm
+        localStorage.clear()
+        this.$router.push({
+          path: '/'
+        })
+      }).catch(() => {
+        // on cancel
+      });
+    }
   }
 }
 
 </script>
 <style lang='scss' scoped>
 @import "@/assets/style/personal.scss";
+</style>
+<style>
+.van-dialog__header{
+  font-size: 32px;
+}
+.van-dialog__message{
+  font-size: 32px;
+}
+.van-button{
+  font-size: 32px;
+  height: 80px;
+  line-height: 80px;
+}
 </style>

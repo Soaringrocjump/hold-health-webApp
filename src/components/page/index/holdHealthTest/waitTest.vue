@@ -26,10 +26,10 @@
               </div>
               <!-- </a> -->
               <div class="test-tag">
-                <span  v-if="item.orgCode == 'CPIC'">
+                <span  v-if="item.orderCode.includes('CPIC')">
                   <img src="~IMG/hold-health-tag1.png" alt="">
                 </span>
-                <span v-if="item.orgCode == 'CNTP'">
+                <span v-if="item.orderCode.includes('CNTP')">
                   <img src="~IMG/hold-health-tag2.png" alt="">
                 </span>
                 <span @click="popOut(item)">

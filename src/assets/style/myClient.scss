@@ -88,11 +88,15 @@
     table{
       th{
         height: 78px;
+        font-size: 22px;
+        color: #878787;
         text-align: center;
         border-bottom: 2px solid rgba(244,245,250,1);
       }
       td{
         height: 88px;
+        font-size: 28px;
+        color: #333;
         text-align: center;
         border-bottom: 2px solid rgba(244,245,250,1);
       }
@@ -279,7 +283,7 @@
   padding: 100px 0 60px;
   .info-form{
     padding: 20px 104px 50px;
-    border-bottom: 1px solid rgba(229,229,229,1);
+    // border-bottom: 1px solid rgba(229,229,229,1);
     li{
       margin: 15px 0;
       padding-bottom: 10px;
@@ -288,7 +292,7 @@
         color:#8348EB;
         .nes{
           font-size: 42px;
-          color: #FF0000;
+          color: #8348EB;
           margin-left: 12px;    
           vertical-align: middle;
         }
@@ -309,7 +313,7 @@
   }
   dl{
     padding: 0 104px;
-    margin-top: 40px;
+    // margin-top: 40px;
     dt{
       font-size:29px;
       color:#8348EB;

@@ -1,16 +1,8 @@
 <!-- 基础 -->
 <template>
-  <div class="honorableService" ref="viewBox">
-    <Top title="基础" :hasTopBg="hasBg"/>
-    <img src="~IMG/service/ada1.png" alt="">
-    <img src="~IMG/service/ada2.png" alt="">
-    <img src="~IMG/service/ada3.png" alt="">
-    <img src="~IMG/service/ada4.png" alt="">
-    <img src="~IMG/service/ada5.png" alt="">
-    <img src="~IMG/service/ada6.png" alt="">
-    <img src="~IMG/service/ada7.png" alt="">
-    <img src="~IMG/service/ada8.png" alt="">
-    <img src="~IMG/service/ada9.png" alt="">
+  <div class="honorableService" >
+    <Top title="基础" :viewScrollTop="viewScrollTop" :hasTopBg="hasBg"/>
+    <img v-for="(img,index) in imageList" :key="index" v-lazy="img.path" >
   </div>
 </template>
 
@@ -19,21 +11,61 @@ import Top from './Top'
 export default {
   data () {
     return {
-      hasBg: false
+      hasBg: false,
+      viewScrollTop: '',
+      imageList: [
+        {
+          path: require('@/assets/img/service/ada1.png')
+        },
+        {
+          path: require('@/assets/img/service/ada2.png')
+        },
+        {
+          path: require('@/assets/img/service/ada3.png')
+        },
+        {
+          path: require('@/assets/img/service/ada4.png')
+        },
+        {
+          path: require('@/assets/img/service/ada5.png')
+        },
+        {
+          path: require('@/assets/img/service/ada6.png')
+        },
+        {
+          path: require('@/assets/img/service/ada7.png')
+        },
+        {
+          path: require('@/assets/img/service/ada8.png')
+        },
+        {
+          path: require('@/assets/img/service/ada9.png')
+        },
+      ]
     };
   },
   components:{
     Top
   },
+  watch:{
+    hasBg(val){
+      console.log('watch',document.documentElement.scrollTop)
+    }
+  },
   mounted(){
-    this.box = this.$refs.viewBox
-    this.box.addEventListener('scroll', () => {
-    console.log(" scroll " + this.$refs.viewBox.scrollTop)
-    //以下是我自己的需求，向下滚动的时候显示“我是有底线的（类似支付宝）”
-    // this.isScroll=this.$refs.viewBox.scrollTop>0
-    console.log("aaa")
-    this.hasBg = true
-    }, false)
+    let hasBg = this.hasBg
+    let viewScrollTop = this.viewScrollTop
+    this.hasBg = window.addEventListener('scroll', function(){
+        console.log('scrolling',document.documentElement.scrollTop);
+        viewScrollTop = document.documentElement.scrollTop
+        console.log('viewScrollTop',viewScrollTop)
+        
+        // console.log('data',hasBg)
+        if(document.documentElement.scrollTop > 100){
+          console.log('加背景')
+          return true
+        }
+    })
   }
 }
 

@@ -19,7 +19,7 @@
           <!-- <i>
             <img src="~IMG/login-psd.png" alt="">
           </i> -->
-          <input type="text" v-model="userPwd" placeholder="输入您的身份证后六位">
+          <input type="password" v-model="userPwd" placeholder="输入您的身份证后六位">
         </li>
       </ul>
       <div class="btn" @click="login">登 录</div>

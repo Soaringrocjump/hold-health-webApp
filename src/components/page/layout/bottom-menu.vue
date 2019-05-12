@@ -22,7 +22,7 @@
       </dl>
       <dl :class="[$route.path.endsWith('purchase') ? 'active' : '']" @click="handle('purchase')">
         <dt>
-          <i class="iconfont icon-nav_promoter"></i>
+          <i class="iconfont icon-aixin1"></i>
         </dt>
         <dd>客户</dd>
       </dl>
@@ -75,7 +75,7 @@ export default {
 </script>
 <style lang='scss' scoped>
 .wrapper{
-  padding-bottom: 160px;
+  padding-bottom: 180px;
   .bottom-menu{
     position: fixed;
     bottom: 0;

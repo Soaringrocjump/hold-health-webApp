@@ -58,32 +58,32 @@
           <img src="~IMG/slogan1.png" alt="">
         </li>
         <li>
-          <img src="~IMG/slogan3.png" alt="">
+          <img src="~IMG/slogan2.png" alt="">
         </li>
       </ul>
     </div>
     <div class="index-service">
-      <Title title="尊贵服务" hasLine/>
+      <Title title="服务宝典" hasLine/>
       <ul>
         <li>
-          <!-- <router-link to="/serviceStage1"> -->
+          <router-link to="/serviceStage1">
           <img src="~IMG/index-best-service1.png" alt="">
-          <!-- </router-link> -->
+          </router-link>
         </li>
         <li>
-          <!-- <router-link to="/serviceStage2"> -->
+          <router-link to="/serviceStage2">
           <img src="~IMG/index-best-service2.png" alt="">
-          <!-- </router-link> -->
+          </router-link>
         </li>
         <li>
-          <!-- <router-link to="/serviceStage3"> -->
+          <router-link to="/serviceStage3">
           <img src="~IMG/index-best-service3.png" alt="">
-          <!-- </router-link> -->
+          </router-link>
         </li>
         <li>
-          <!-- <router-link to="/serviceStage4"> -->
+          <router-link to="/serviceStage4">
           <img src="~IMG/index-best-service4.png" alt="">
-          <!-- </router-link> -->
+          </router-link>
         </li>
       </ul>
     </div>
@@ -186,17 +186,7 @@ export default {
   data () {
     return {
       basicInfo: JSON.parse(localStorage.getItem("basicInfo")),
-      bannerArr: [
-        // {
-        //   imgSrc: require('@/assets/img/index-banner1.png')
-        // },
-        // {
-        //   imgSrc: require('@/assets/img/index-banner2.png')
-        // },
-        // {
-        //   imgSrc: require('@/assets/img/index-banner3.png')
-        // }
-      ],
+      bannerArr: [],
       noticeArr: []
     };
   },
@@ -266,6 +256,9 @@ export default {
   .van-swipe__indicator{
     width: 12px;
     height: 12px;
+  }
+  .van-swipe__indicator--active{
+    background-color: #fc7f06;
   }
 }
 .notice-slide{

@@ -1,7 +1,7 @@
 <!-- 客户信息修改 -->
 <template>
   <div class="infoModify-page">
-    <Top2 title="客户基本信息修改"/>
+    <Top2Left title="客户基本信息修改"/>
     <ul class="info-form">
       <li>
         <h3>姓名<span class="nes">*</span></h3>
@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import Top2 from 'Module/Top2'
+import Top2Left from 'Module/Top2Left'
 import areaData from '@/assets/js/area'
 export default {
   data () {
@@ -88,7 +88,7 @@ export default {
     };
   },
   components:{
-    Top2
+    Top2Left
   },
   methods:{
     confirm(){

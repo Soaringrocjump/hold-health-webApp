@@ -21,15 +21,15 @@
               <div @click="jump(item.orderCode)">
               <p>检测单号： {{item.orderCode}}</p>
               <p>被检测人：<span>{{item.userName}}</span><span>{{item.userGender}}</span><span>{{item.userAge}}岁</span></p>
-              <p>提交时间： {{item.gmtModify | formatterDateTime}}</p>
+              <p>检测时间： {{item.gmtModify | formatterDateTime}}</p>
               </div>
               <div class="test-tag">
-                <span>
+                <span @click="reportPush(item)">
                   <img src="~IMG/report-push.png" alt="">
                 </span>
-                <span>
+                <!-- <span>
                   <img src="~IMG/report-print.png" alt="">
-                </span>
+                </span> -->
               </div>
             </div>
             <dl class="right-score">
@@ -40,7 +40,22 @@
         </ul>
       </van-pull-refresh>
     </div>
-    
+    <van-actionsheet v-model="show" cancel-text="取消">
+      <div class="sharePlat">
+        <dl @click="shareWechat">
+          <dt><img src="~IMG/share-wechat.png" alt=""></dt>
+          <dd>微信</dd>
+        </dl>
+        <dl @click="shareFriendCircle">
+          <dt><img src="~IMG/share-wechat-friends.png" alt=""></dt>
+          <dd>朋友圈</dd>
+        </dl>
+        <dl @click="copyLink">
+          <dt><img src="~IMG/share-copy-link.png" alt=""></dt>
+          <dd>复制链接</dd>
+        </dl>
+      </div>
+    </van-actionsheet>
   </div>
 </template>
 
@@ -51,9 +66,14 @@ export default {
   data () {
     return {
       isLoading: false,
+      show: false,
       successOrderList: [],
       searchName: '',
-      pageCount: 1
+      pageCount: 1,
+      url: 'https://h.hfieta.com/hps/#/TestReport',
+      orderCode: '',
+      title: '',
+      desc: '观禾未来客户亚健康检测报告'
     };
   },
   components:{
@@ -69,6 +89,27 @@ export default {
         this.$toast('刷新成功');
         this.isLoading = false;
       }, 500);
+    },
+    //报告推送
+    reportPush(val){
+      this.show = true
+      this.orderCode = val.orderCode
+      this.title = val.userName + val.userGender + '士检测报告'
+    },
+    //分享微信
+    shareWechat(){
+      console.log(`PushReport?url=${this.url}&orderCode=${this.orderCode}&title=${this.title}&desc=${this.desc}&type=1`)
+      // location.href=`PushReport?url=${this.url}&orderCode=${this.orderCode}&title=${this.title}&desc=${this.desc}&type=1`
+    },
+    //分享朋友圈
+    shareFriendCircle(){
+      console.log(`PushReport?url=${this.url}&orderCode=${this.orderCode}&title=${this.title}&desc=${this.desc}&type=2`)
+      // location.href=`PushReport?url=${this.url}&orderCode=${this.orderCode}&title=${this.title}&desc=${this.desc}&type=2`
+    },
+    //复制链接
+    copyLink(){
+      let link = this.$route.fullPath;
+      console.log(link)
     },
     //获取检测列表
     getOrderList(name){
@@ -119,12 +160,41 @@ export default {
 <style lang='scss' scoped>
 @import "@/assets/style/healthTest.scss";
 </style>
-<style>
+<style lang='scss'>
 .van-toast{
   font-size: 32px;
   line-height: unset
 }
 .van-toast--text{
   padding: 6px 20px;
+}
+.sharePlat{
+  padding: 70px 70px 40px;
+  display: flex;
+  dl{
+    text-align: center;
+    dt{
+      width: 100px;
+      margin: 0 auto;
+    }
+    dd{
+      color: #323232;
+      font-size: 28px;
+      margin-top: 10px;
+    }
+  }
+  dl~dl{
+    margin-left: 70px;
+  }
+}
+.van-popup--bottom{
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  .van-actionsheet__cancel{
+    height: 119px;
+    line-height: 119px;
+    font-size: 32px;
+    color: #FF3657;
+  }
 }
 </style>

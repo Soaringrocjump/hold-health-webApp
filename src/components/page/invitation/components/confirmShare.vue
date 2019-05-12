@@ -167,36 +167,33 @@ export default {
 
 </script>
 <style lang='scss'>
-.confirmShare{
-  .sharePlat{
-    padding: 70px 70px 40px;
-    display: flex;
-    dl{
-      text-align: center;
-      dt{
-        width: 100px;
-        margin: 0 auto;
-      }
-      dd{
-        color: #323232;
-        font-size: 28px;
-        margin-top: 10px;
-      }
+.sharePlat{
+  padding: 70px 70px 40px;
+  display: flex;
+  dl{
+    text-align: center;
+    dt{
+      width: 100px;
+      margin: 0 auto;
     }
-    dl~dl{
-      margin-left: 70px;
+    dd{
+      color: #323232;
+      font-size: 28px;
+      margin-top: 10px;
     }
   }
-  .van-popup--bottom{
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    .van-actionsheet__cancel{
-      height: 119px;
-      line-height: 119px;
-      font-size: 32px;
-      color: #FF3657;
-    }
+  dl~dl{
+    margin-left: 70px;
   }
 }
-
+.van-popup--bottom{
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  .van-actionsheet__cancel{
+    height: 119px;
+    line-height: 119px;
+    font-size: 32px;
+    color: #FF3657;
+  }
+}
 </style>
