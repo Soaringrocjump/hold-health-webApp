@@ -94,7 +94,11 @@
       <div class="clientInfo-service">
         <Title title="服务记录" hasLine/>
         <ul class="service-record">
-          <li v-for="(item,index) in customerInfo.orderList" :key="index">{{item.payTime | formatterDateTime}}，健康在手健康检测1次。</li>
+          <li v-for="(item,index) in customerInfo.orderList" :key="index">
+            <p v-if="item.payTime">{{item.payTime | formatterDateChina}} , 健康在手健康检测1次。</p>
+            <!-- <p v-else>1970年01月01日,健康在手健康检测1次。</p> -->
+            <p v-else>1970年01月01日 , 健康在手健康检测1次。</p>
+          </li>
         </ul>
       </div>
     </div>

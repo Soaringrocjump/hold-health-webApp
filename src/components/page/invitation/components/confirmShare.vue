@@ -54,30 +54,7 @@
         </li>
       </ul>
     </div>
-    <!-- <router-link to="/appointment"> -->
-      <div class="confirmBtn" @click="show = true">已确认，发布邀约</div>
-      <!-- <router-link to="/appointment/fillAppointment"><div class="confirmBtn">信息填写</div></router-link>
-      <router-link to="/appointment/scanCodeFill"><div class="confirmBtn">面对面扫码</div></router-link> -->
-    <!-- </router-link> -->
-    <!-- <div v-if="show" class="shareShadow">
-      <div class="shareBox">
-        <div class="sharePlat">
-          <dl @click="shareWechat">
-            <dt><img src="~IMG/share-wechat.png" alt=""></dt>
-            <dd>微信</dd>
-          </dl>
-          <dl @click="shareFriendCircle">
-            <dt><img src="~IMG/share-wechat-friends.png" alt=""></dt>
-            <dd>朋友圈</dd>
-          </dl>
-          <dl @click="copyLink">
-            <dt><img src="~IMG/share-wechat-friends.png" alt=""></dt>
-            <dd>复制链接</dd>
-          </dl>
-        </div>
-        <div class="cancelBtn" @click="show = false">取消</div>
-      </div>
-    </div> -->
+    <div class="confirmBtn" @click="show = true">已确认，发布邀约</div>
     <van-actionsheet v-model="show" cancel-text="取消">
       <div class="sharePlat">
         <dl @click="shareWechat">
@@ -103,6 +80,7 @@ export default {
   data () {
     return {
       show: false,
+      token: localStorage.getItem('authorization'),
       service: [],
       remark: '',
       basicInfo: JSON.parse(localStorage.getItem('basicInfo')),
@@ -136,23 +114,13 @@ export default {
       //     // 处理返回数据
       //     alert('成功回调')
       // })
-      let basicInfo = JSON.parse(localStorage.getItem('basicInfo')),
-          token = localStorage.getItem('authorization'),
-          staffCode = basicInfo.staffCode,
-          userName = basicInfo.userName,
-          remark = this.remark
-      console.log(token,staffCode,userName,remark)
-      location.href=`ShareToWeixin?token=${token}&staffCode=${staffCode}&type=1`
+      console.log(this.token,this.basicInfo.staffCode,this.remark)
+      location.href=`ShareToWeixin?token=${this.token}&staffCode=${this.basicInfo.staffCode}&remark=${this.remark}&type=1`
     },
     //分享朋友圈
     shareFriendCircle(){
-      let basicInfo = JSON.parse(localStorage.getItem('basicInfo')),
-          token = localStorage.getItem('authorization'),
-          staffCode = basicInfo.staffCode,
-          userName = basicInfo.userName,
-          remark = this.remark
-      console.log(token,staffCode,userName,remark)
-      location.href=`ShareToWeixin?token=${token}&staffCode=${staffCode}&type=2`
+      console.log(this.token,this.basicInfo.staffCode,this.remark)
+      location.href=`ShareToWeixin?token=${this.token}&staffCode=${this.basicInfo.staffCode}&remark=${this.remark}&type=2`
     },
     //复制链接
     copyLink(){

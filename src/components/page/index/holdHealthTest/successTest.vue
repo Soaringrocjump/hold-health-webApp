@@ -17,25 +17,28 @@
       <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
         <ul class="test-list">
           <li v-for="(item,index) in successOrderList" :key="index">
-            <div class="left-info">
-              <div @click="jump(item.orderCode)">
-              <p>检测单号： {{item.orderCode}}</p>
-              <p>被检测人：<span>{{item.userName}}</span><span>{{item.userGender}}</span><span>{{item.userAge}}岁</span></p>
-              <p>检测时间： {{item.gmtModify | formatterDateTime}}</p>
+            <div class="order-top-jump" @click="jump(item.orderCode)">
+              <div class="left-info">
+                <div >
+                <p>检测单号： {{item.orderCode}}</p>
+                <p>被检测人：<span>{{item.userName}}</span><span>{{item.userGender}}</span><span>{{item.userAge}}岁</span></p>
+                <p>检测时间： {{item.gmtModify | formatterDateTime}}</p>
+                </div>
+                
               </div>
-              <div class="test-tag">
-                <span @click="reportPush(item)">
-                  <img src="~IMG/report-push.png" alt="">
-                </span>
-                <!-- <span>
-                  <img src="~IMG/report-print.png" alt="">
-                </span> -->
-              </div>
+              <dl class="right-score">
+                <dt>综合评分</dt>
+                <dd>{{item.orderScore}}</dd>
+              </dl>
             </div>
-            <dl class="right-score">
-              <dt>综合评分</dt>
-              <dd>{{item.orderScore}}</dd>
-            </dl>
+            <div class="order-top-tag">
+              <span @click="reportPush(item)">
+                <img src="~IMG/report-push.png" alt="">
+              </span>
+              <!-- <span>
+                <img src="~IMG/report-print.png" alt="">
+              </span> -->
+            </div>
           </li>
         </ul>
       </van-pull-refresh>
@@ -196,5 +199,8 @@ export default {
     font-size: 32px;
     color: #FF3657;
   }
+}
+.van-pull-refresh__head{
+  font-size: 26px;
 }
 </style>

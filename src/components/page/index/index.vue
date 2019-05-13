@@ -90,7 +90,7 @@
     <div class="index-slogan3">
       <ul>
         <li>
-          <img src="~IMG/slogan4.png" alt="">
+          <img src="~IMG/slogan3.png" alt="">
         </li>
       </ul>
     </div>
@@ -186,8 +186,22 @@ export default {
   data () {
     return {
       basicInfo: JSON.parse(localStorage.getItem("basicInfo")),
-      bannerArr: [],
-      noticeArr: []
+      bannerArr: [
+        {
+          imgUrl: require('@/assets/img/index-banner1.png')
+        },
+        {
+          imgUrl: require('@/assets/img/index-banner2.png')
+        },
+        {
+          imgUrl: require('@/assets/img/index-banner3.png')
+        }
+      ],
+      noticeArr: [
+        {content: "2019年4月1号，健康在手检测一次"},
+        {content: "2019年4月2号，健康在手检测一次"},
+        {content: "2019年4月3号，健康在手检测一次"}
+      ]
     };
   },
   components:{
@@ -243,7 +257,7 @@ export default {
   },
   mounted(){
     this.getNation()
-    this.getBannerAndNotice()
+    // this.getBannerAndNotice()
   }
 }
 

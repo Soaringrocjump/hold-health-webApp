@@ -17,34 +17,32 @@
       <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
         <ul class="test-list">
           <li v-for="(item,index) in orderList" :key="index">
-            <div class="left-info">
-              <!-- <a :href="'https://h.guanqi2019.com/func/hrs/#/TestHealthDetail?orderCode='+item.orderCode" > -->
-              <div >
-                <p>检测单号： {{item.orderCode}}</p>
-                <p>申请检测人：<span>{{item.userName}}</span><span>{{item.userGender}}</span><span>{{item.userAge}}岁</span></p>
-                <p>提交时间： {{item.gmtModify | formatterDateTime}}</p>
+            <div class="order-top-jump" @click="jumpAPP(item)">
+              <div class="left-info">
+                <div >
+                  <p>检测单号： {{item.orderCode}}</p>
+                  <p>申请检测人：<span>{{item.userName}}</span><span>{{item.userGender}}</span><span>{{item.userAge}}岁</span></p>
+                  <p>提交时间： {{item.gmtModify | formatterDateTime}}</p>
+                </div>
               </div>
-              <!-- </a> -->
-              <div class="test-tag">
-                <span  v-if="item.orderCode.includes('CPIC')">
-                  <img src="~IMG/hold-health-tag1.png" alt="">
-                </span>
-                <span v-if="item.orderCode.includes('CNTP')">
-                  <img src="~IMG/hold-health-tag2.png" alt="">
-                </span>
-                <span @click="popOut(item)">
-                  <img src="~IMG/hold-health-info.png" alt="">
-                </span>
-                <span v-if="!item.orderCode.includes('CNTP') && !item.orderCode.includes('CPIC')" @click="cancelOrder(item.orderCode)">
-                  <img src="~IMG/hold-health-cancel.png" alt="">
-                </span>
+              <div class="right-item" >
+                  <img v-if="item.rowState == 9" src="~IMG/hold-health-cant-test.png" alt="">
+                  <img v-else src="~IMG/hold-health-can-test.png" alt="">
               </div>
             </div>
-            <div class="right-item" @click="jumpAPP(item)">
-              <!-- <a :href="'https://h.guanqi2019.com/func/hrs/#/TestHealthDetail?orderCode='+item.orderCode+'&userName='+item.userName+'&userAge='+item.userAge+'&gmtModify='+item.gmtModify" > -->
-                <img v-if="item.rowState == 9" src="~IMG/hold-health-cant-test.png" alt="">
-                <img v-else src="~IMG/hold-health-can-test.png" alt="">
-              <!-- </a> -->
+            <div class="order-top-tag">
+              <span  v-if="item.orderCode.includes('CPIC')">
+                <img src="~IMG/hold-health-tag1.png" alt="">
+              </span>
+              <span v-if="item.orderCode.includes('CNTP')">
+                <img src="~IMG/hold-health-tag2.png" alt="">
+              </span>
+              <span v-if="!item.orderCode.includes('CNTP') && !item.orderCode.includes('CPIC') && item.rowState == 9" @click="popOut(item)">
+                <img src="~IMG/hold-health-info.png" alt="">
+              </span>
+              <span v-if="!item.orderCode.includes('CNTP') && !item.orderCode.includes('CPIC')" @click="cancelConfirm(item.orderCode)">
+                <img src="~IMG/hold-health-cancel.png" alt="">
+              </span>
             </div>
           </li>
         </ul>
@@ -61,7 +59,7 @@
           <div class="qrcode-box">
             <img :src="inviteQRCode" alt="">
           </div>
-          <p>扫码后关注“观禾未来”微信公众号</p>
+          <p>扫码后关注“E时代的科技生活”微信公众号</p>
           <p>按照提示完成信息输入</p>
         </div>
         <div class="frame-close" @click="cancel">
@@ -133,18 +131,35 @@ export default {
     },
     //跳app
     jumpAPP(val){
-      if(val.rowState != 9){
-        var token = localStorage.getItem('authorization'),
-          orderCode = val.orderCode,
-          userName = val.userName,
-          userAge = val.userAge,
-          userGender = val.userGender,
-          gmtModify = this.formatterDateTime(val.gmtModify),
-          ordersn ="",
-          deviceData ="";
-        console.log("跳转传参",token,orderCode,userName,userAge,userGender,gmtModify)
-        location.href=`HealthMonitoring?token=${token}&orderCode=${orderCode}&userName=${userName}&userAge=${userAge}&userGender=${userGender}&gmtModify=${gmtModify}`
-      }
+      console.log(val)
+      this.$axios({
+        method: "post",
+        url: "order/orderBeforeScan",
+        data: val
+      })
+        .then(result => {
+          console.log('检测前result',result);
+          if (result.data.resultCode == "200"){
+            if(val.rowState != 9){
+              let token = localStorage.getItem('authorization'),
+                  orderCode = val.orderCode,
+                  userName = val.userName,
+                  userAge = val.userAge,
+                  userGender = val.userGender,
+                  gmtModify = this.formatterDateTime(val.gmtModify),
+                  ordersn ="",
+                  deviceData ="";
+              console.log("跳转传参",token,orderCode,userName,userAge,userGender,gmtModify)
+              location.href=`HealthMonitoring?token=${token}&orderCode=${orderCode}&userName=${userName}&userAge=${userAge}&userGender=${userGender}&gmtModify=${gmtModify}`
+            }
+          }else{
+            console.log(result.data.message)
+          }
+        })
+        .catch(err => {
+          alert("服务器连接繁忙！");
+          console.log("错误：获取数据异常" + err);
+        });
     },
     //查询订单
     searchOrder(){
@@ -153,6 +168,18 @@ export default {
       }else{
         this.getOrderList()
       }
+    },
+    //取消确认
+    cancelConfirm(val){
+      this.$dialog.confirm({
+        title: '提示',
+        message: '确定取消订单？'
+      }).then(() => {
+        // on confirm
+        this.cancelOrder(val)
+      }).catch(() => {
+        // on cancel
+      });
     },
     //取消订单
     cancelOrder(orderCode){
@@ -256,5 +283,19 @@ export default {
 }
 .van-toast--text{
   padding: 6px 20px;
+}
+.van-dialog__header{
+  font-size: 32px;
+}
+.van-dialog__message{
+  font-size: 32px;
+}
+.van-button{
+  font-size: 32px;
+  height: 80px;
+  line-height: 80px;
+}
+.van-pull-refresh__head{
+  font-size: 26px;
 }
 </style>

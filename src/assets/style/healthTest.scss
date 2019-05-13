@@ -56,53 +56,54 @@
     }
   }
   .test-list{
-    
     li{
       // height: 245px;
       padding: 33px 59px 29px;
       border-bottom: 4px solid #f7f7f7;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      .left-info{
-        p{
-          font-size: 26px;
-          color: #000;
-          span{
-            margin-left: 20px;
+      .order-top-jump{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        .left-info{
+          p{
+            font-size: 26px;
+            color: #000;
+            span{
+              margin-left: 20px;
+            }
+          }
+          p:last-of-type{
+            color: #969696
           }
         }
-        p:last-of-type{
-          color: #969696
+        .right-item{
+          width: 120px;
         }
-        .test-tag{
-          margin-top: 20px;
-          span{
-            display: inline-block;
-            width: 185px;
+        .right-score{
+          width: 140px;
+          height: 97px;
+          border-left: 2px solid #D7D7D7;
+          padding-left: 34px;
+          text-align: center;
+          dt{
+            font-size: 21px;
+            color: #858585;
           }
-          span~span{
-            margin-left: 20px;
+          dd{
+            font-size: 49px;
+            color: #777;
+            font-weight: bold;
           }
         }
       }
-      .right-item{
-        width: 120px;
-      }
-      .right-score{
-        width: 140px;
-        height: 97px;
-        border-left: 2px solid #D7D7D7;
-        padding-left: 34px;
-        text-align: center;
-        dt{
-          font-size: 21px;
-          color: #858585;
+      .order-top-tag{
+        margin-top: 20px;
+        span{
+          display: inline-block;
+          width: 185px;
         }
-        dd{
-          font-size: 49px;
-          color: #777;
-          font-weight: bold;
+        span~span{
+          margin-left: 20px;
         }
       }
     }
@@ -111,6 +112,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 9;
     width:100%;
     height:100%;
     background: rgba(130, 130, 130, 0.6);
@@ -149,6 +151,7 @@
         }
         .qrcode-box{
           width: 302px;
+          height: 302px;
           margin: 50px auto 45px;
         }
         &>p{

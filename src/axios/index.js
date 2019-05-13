@@ -10,7 +10,7 @@ const request = axios.create({
     timeout: 10000, // 请求超时
     headers: {
         'content-type': 'application/json;charset=UTF-8',
-        'token': localStorage.getItem('authorization')  
+        'token': localStorage.getItem('authorization') || '' 
     }
 })
 //添加请求拦截器

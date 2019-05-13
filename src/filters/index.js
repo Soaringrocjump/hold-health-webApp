@@ -15,6 +15,12 @@ function formatterDate(value) {
   return formatDate(new Date(value), 'yyyy-MM-dd')
 }
 
+//格式化时间yyyy年MM月dd日
+function formatterDateChina(value) {
+  if (!value) return ''
+  return formatDate(new Date(value), 'yyyy年MM月dd日')
+}
+
 //格式化时间yyyy-MM
 function formatterMonth(value) {
   if (!value) return ''
@@ -54,6 +60,7 @@ export {
   // formatDate,
   formatterDateTime,
   formatterDate,
+  formatterDateChina,
   formatterMonth,
   moneyFormat,
   matchNation
