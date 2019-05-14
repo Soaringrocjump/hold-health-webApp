@@ -57,10 +57,9 @@ export default {
           .then(result => {
             if (result.data.resultCode == "200"){
               var msg = result.data.data
-              localStorage.setItem("authorization",msg.token);
-              localStorage.setItem("staffCode",msg.staffCode);
-              localStorage.setItem("basicInfo",JSON.stringify(msg));
-              console.log('result',msg);
+              console.log('result',msg)
+              localStorage.setItem("authorization",msg.token)
+              localStorage.setItem("staffCode",msg.staffCode)
               // this.LOGIN_INFO(msg)
               this.$router.push({
                 path: 'menu'

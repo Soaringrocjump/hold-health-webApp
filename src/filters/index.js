@@ -9,6 +9,11 @@ function formatterDateTime(value) {
   return formatDate(new Date(value), 'yyyy-MM-dd hh:mm:ss')
 }
 
+function formatterDateTimeChina(value) {
+  if (!value) return ''
+  return formatDate(new Date(value), 'yyyy年MM月dd日 hh:mm:ss')
+}
+
 //格式化时间yyyy-MM-dd
 function formatterDate(value) {
   if (!value) return ''
@@ -59,6 +64,7 @@ function matchNation(val){
 export {
   // formatDate,
   formatterDateTime,
+  formatterDateTimeChina,
   formatterDate,
   formatterDateChina,
   formatterMonth,

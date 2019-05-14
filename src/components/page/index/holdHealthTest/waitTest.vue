@@ -22,7 +22,7 @@
                 <div >
                   <p>检测单号： {{item.orderCode}}</p>
                   <p>申请检测人：<span>{{item.userName}}</span><span>{{item.userGender}}</span><span>{{item.userAge}}岁</span></p>
-                  <p>提交时间： {{item.gmtModify | formatterDateTime}}</p>
+                  <p>提交时间： {{item.gmtCreate | formatterDateTime}}</p>
                 </div>
               </div>
               <div class="right-item" >
@@ -50,9 +50,9 @@
     </div>
     
     <div class="pop-up-bg" v-if="visible">
-      <div class="pop-up-frame">
-        <div class="frame-cont">
-          <div class="frame-up">
+      <div class="pop-up-qrcode" v-if="qrcodeDisplay">
+        <div class="qrcode-cont">
+          <div class="qrcode-up">
             <h2>客户扫码</h2>
             <p>请扫描二维码进行身份信息输入</p>
           </div>
@@ -62,9 +62,16 @@
           <p>扫码后关注“E时代的科技生活”微信公众号</p>
           <p>按照提示完成信息输入</p>
         </div>
-        <div class="frame-close" @click="cancel">
+        <div class="qrcode-close" @click="cancel">
           <img src="~IMG/hold-health-close.png" alt="">
         </div>
+      </div>
+      <div class="pop-up-remark" v-if="remarkDisplay">
+        <div class="remark-tit">
+          <h2>客户扫码</h2>
+          <i class="iconfont icon-guanbi1" @click="cancel"></i>
+        </div>
+        <div class="remark-cont">{{remark}}</div>
       </div>
     </div>
   </div>
@@ -76,12 +83,15 @@ import TopBg from 'Module/TopBg'
 export default {
   data () {
     return {
-      visible: false,
+      visible: true,
       isLoading: false,
+      qrcodeDisplay: false,
+      remarkDisplay: true,
       orderList: [],
       searchName: '',
       baseImgUrl: 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=',
       inviteQRCode: '',
+      remark: '',
       pageCount: 1
     };
   },
@@ -132,7 +142,8 @@ export default {
     //跳app
     jumpAPP(val){
       console.log(val)
-      this.$axios({
+      if(val.rowState == 9){
+        this.$axios({
         method: "post",
         url: "order/orderBeforeScan",
         data: val
@@ -146,20 +157,29 @@ export default {
                   userName = val.userName,
                   userAge = val.userAge,
                   userGender = val.userGender,
-                  gmtModify = this.formatterDateTime(val.gmtModify),
+                  gmtCreate = this.formatterDateTime(val.gmtCreate),
                   ordersn ="",
                   deviceData ="";
-              console.log("跳转传参",token,orderCode,userName,userAge,userGender,gmtModify)
-              location.href=`HealthMonitoring?token=${token}&orderCode=${orderCode}&userName=${userName}&userAge=${userAge}&userGender=${userGender}&gmtModify=${gmtModify}`
+              console.log("跳转传参",token,orderCode,userName,userAge,userGender,gmtCreate)
+              location.href=`HealthMonitoring?token=${token}&orderCode=${orderCode}&userName=${userName}&userAge=${userAge}&userGender=${userGender}&gmtModify=${gmtCreate}`
             }
           }else{
-            console.log(result.data.message)
+            alert(result.data.message)
           }
         })
         .catch(err => {
           alert("服务器连接繁忙！");
           console.log("错误：获取数据异常" + err);
         });
+      }else{
+        this.remark = val.remark
+        console.log(this.remark)
+        console.log('visible',this.visible)
+        console.log('remarkDisplay',this.remarkDisplay)
+        this.visible = true
+        this.remarkDisplay = true
+      }
+      
     },
     //查询订单
     searchOrder(){
@@ -259,11 +279,14 @@ export default {
     //弹出弹框
     popOut(val){
       this.visible = true
-      this.getAffirmQRCode(val.orderCode)
+      this.remarkDisplay = true
+      // this.getAffirmQRCode(val.orderCode)
     },
     //取消弹框
     cancel(){
       this.visible = false
+      this.qrcodeDisplay = false
+      this.remarkDisplay = false
       this.inviteQRCode = ''
     }
   },

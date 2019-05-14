@@ -74,7 +74,7 @@
           <dl>
             <dt>设备归属权</dt>
             <dd v-if="basicInfo.isDeviceOwned == 1">拥有所有权</dd>
-            <dd v-else></dd>
+            <dd v-else>拥有使用权</dd>
           </dl>
           <div class="panel-btn">申请解绑设备</div>
         </div>

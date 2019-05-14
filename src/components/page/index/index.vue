@@ -185,7 +185,7 @@ import Title from 'Module/Title'
 export default {
   data () {
     return {
-      basicInfo: JSON.parse(localStorage.getItem("basicInfo")),
+      basicInfo: '',
       bannerArr: [
         {
           imgUrl: require('@/assets/img/index-banner1.png')
@@ -218,7 +218,7 @@ export default {
         url: "dic/getListByType?type=ZX_GS_BM_MZ",
       })
         .then(result => {
-          console.log('result',result);
+          console.log('result民族',result);
           if (result.data.resultCode == "200"){
             var msg = result.data.data.values
             // console.log(msg)
@@ -253,10 +253,34 @@ export default {
           alert("服务器连接繁忙，获取轮播失败！");
           console.log("错误：轮播异常" + err);
         });
+    },
+    //获取用户信息
+    getStaff(){
+      let token = localStorage.getItem('authorization')
+      let staffCode = localStorage.getItem('staffCode')
+      this.$axios({
+        method: "post",
+        url: "staff/getStaff?token="+token+"&staffCode="+staffCode,
+      })
+        .then(result => {
+          if (result.data.resultCode == "200"){
+            var msg = result.data.data
+            this.basicInfo = msg
+            localStorage.setItem("basicInfo",JSON.stringify(msg));
+            console.log('result用户信息',msg);
+          }else{
+            alert(result.data.message)
+          }
+        })
+        .catch(err => {
+          alert("服务器连接繁忙！");
+          console.log('错误：获取数据异常',err);
+        });
     }
   },
   mounted(){
     this.getNation()
+    this.getStaff()
     // this.getBannerAndNotice()
   }
 }

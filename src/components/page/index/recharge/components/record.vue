@@ -4,8 +4,8 @@
     <ul>
       <li v-for="(item,index) in recordList" :key="index">
         <dl>
-          <dt>用户充值{{item.payAmount || '-'}}元，可检测{{item.actNums || '-'}}次</dt>
-          <!-- <dt>{{item.content || '-'}}</dt> -->
+          <!-- <dt>用户充值{{item.payAmount || '-'}}元，可检测{{item.actNums || '-'}}次</dt> -->
+          <dt>{{item.content || '-'}}</dt>
           <dd v-if="item.payTime">{{item.payTime | formatterDateTime}}</dd>
           <dd v-else>-</dd>
         </dl>
@@ -48,6 +48,7 @@ export default {
         data: {
           pageNum: 0,
           pageSize: 0,
+          rowStatus: 1,
           staffCode: localStorage.getItem("staffCode")
         }
       })
