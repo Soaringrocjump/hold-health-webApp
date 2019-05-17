@@ -55,7 +55,9 @@
     <div class="index-slogan">
       <ul>
         <li>
-          <img src="~IMG/slogan1.png" alt="">
+          
+          <router-link to="/holdHealth"><div class="short"><img src="~IMG/invitation-service1-short.png" alt=""></div></router-link>
+          <router-link to="/operateGuide"><div class="guide"><img src="~IMG/guide-entry.png" alt=""></div></router-link>
         </li>
         <li>
           <img src="~IMG/slogan2.png" alt="">
@@ -279,7 +281,7 @@ export default {
     }
   },
   mounted(){
-    this.getNation()
+    // this.getNation()
     this.getStaff()
     // this.getBannerAndNotice()
   }

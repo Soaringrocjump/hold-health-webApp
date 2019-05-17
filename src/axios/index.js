@@ -6,7 +6,10 @@ import axios from 'axios';
 
 const request = axios.create({
     // baseURL: 'http://47.96.67.198:8861/', //测试地址
-    baseURL: 'http://39.100.58.46:8000', 
+    // baseURL: 'http://39.100.58.46:8000', 
+    baseURL: 'http://ios.guanqi2019.com:8000/',
+    // baseURL: 'https://m.hfieta.com/web2/',
+    // baseURL: 'http://39.98.71.27:8000',
     timeout: 10000, // 请求超时
     headers: {
         'content-type': 'application/json;charset=UTF-8',

@@ -1,24 +1,42 @@
 <!-- 全部客户 -->
 <template>
   <div class="myClient-list">
-    <table width="100%">
-      <tr>
-        <!-- <th></th> -->
-        <th width="25%">姓名</th>
-        <th width="15%">性别</th>
-        <th width="15%">年龄</th>
-        <th width="25%">身高/体重</th>
-        <th width="20%">累计检测</th>
-      </tr>
-      <tr v-for="(item,index) in myClientList" :key="index" @click="jump(item)">
-        <!-- <td width="10%"><span v-if="item.isReExamition == 0" class="repeat"><img src="~IMG/myClient-repeat.png" alt=""></span></td> -->
-        <td>{{item.userName || '-'}}</td>
-        <td>{{item.userGender || '-'}}</td>
-        <td>{{item.userAge || '-'}}</td>
-        <td>{{item.userHeight || '-'}}/{{item.userWeight || '-'}}</td>
-        <td>{{item.totalOrderNum || '-'}}</td>
-      </tr>
-    </table>
+    <!-- <table width="100%">
+      <thead>
+        <tr>
+          <th width="25%">姓名</th>
+          <th width="15%">性别</th>
+          <th width="15%">年龄</th>
+          <th width="25%">身高/体重</th>
+          <th width="20%">累计检测</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(item,index) in myClientList" :key="index" @click="jump(item)">
+          <td width="25%">{{item.userName || '-'}}</td>
+          <td width="15%">{{item.userGender || '-'}}</td>
+          <td width="15%">{{item.userAge || '-'}}</td>
+          <td width="25%">{{item.userHeight || '-'}}/{{item.userWeight || '-'}}</td>
+          <td width="20%">{{item.totalOrderNum || '-'}}</td>
+        </tr>
+      </tbody>
+    </table> -->
+    <div class="t-head">
+      <div style="width:25%;">姓名</div>
+      <div style="width:15%;">性别</div>
+      <div style="width:15%;">年龄</div>
+      <div style="width:25%;">身高/体重</div>
+      <div style="width:20%;">累计检测</div>
+    </div>
+    <div class="t-body">
+      <div v-for="(item,index) in myClientList" :key="index" @click="jump(item)">
+        <div style="width:25%;">{{item.userName || '-'}}</div>
+        <div style="width:15%;">{{item.userGender || '-'}}</div>
+        <div style="width:15%;">{{item.userAge || '-'}}</div>
+        <div style="width:25%;">{{item.userHeight || '-'}}/{{item.userWeight || '-'}}</div>
+        <div style="width:20%;">{{item.totalOrderNum || '-'}}</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -72,5 +90,13 @@ export default {
 }
 
 </script>
-<style lang='' scoped>
+<style lang='scss'>
+.van-tabs{
+  margin-top: 40vw;
+}
+.van-tabs--line .van-tabs__wrap{
+  position: fixed;
+  top: 49vw;
+  z-index: 1;
+}
 </style>

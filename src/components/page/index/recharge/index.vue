@@ -2,8 +2,11 @@
 <template>
   <div class="recharge-page">
     <div class="recharge-top">
-      <TopBg>
+      <!-- <TopBg>
         <PersonTop title="充值记录" hasBack hasMore/>
+      </TopBg> -->
+      <TopBg>
+        <Top title="充值记录"  theme="white"/>
       </TopBg>
       <div class="recharge-panel">
         <div class="recharge-card">
@@ -47,6 +50,7 @@
 
 <script>
 import PersonTop from 'Module/PersonTop'
+import Top from 'Module/Top'
 import TopBg from 'Module/TopBg'
 import record from './components/record'
 import recharge from './components/recharge'
@@ -62,6 +66,7 @@ export default {
   components:{
     PersonTop,
     TopBg,
+    Top,
     record,
     recharge
   },

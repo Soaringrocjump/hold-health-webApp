@@ -2,18 +2,13 @@ import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   // mode:'history',
   routes: [
     {
       path: '/',
       name: 'login',
       component: () => import('@/components/page/login')
-    },
-    {
-      path: '/test',
-      name: 'test',
-      component: () => import('@/components/page/test')
     },
     {
       path: '/menu',
@@ -31,13 +26,13 @@ export default new Router({
         {
           path: 'orders',
           name: 'orders',
-          component: () => import ("@/components/page/index/holdHealthTest/waitTest")
+          component: () => import ("@/components/page/orders/index")
         },
         //客户模块
         {
           path: 'purchase',
           name: 'purchase',
-          component: () => import ("@/components/page/index/myClient")
+          component: () => import ("@/components/page/purchase/index")
         },
         //个人中心模块
         {
@@ -74,45 +69,6 @@ export default new Router({
         }
       ]
     },
-    //健康预约
-    // {
-    //   path: '/appointment',
-    //   name: 'appointment',
-    //   component: () => import ("@/components/page/invitation/appointment"),
-    //   redirect: '/appointment/getAppointment',
-    //   children: [
-    //     //客户收到邀约
-    //     {
-    //       path: 'getAppointment',
-    //       name: 'getAppointment',
-    //       component: () => import ("@/components/page/invitation/components/getAppointment")
-    //     },
-    //     //填写预约信息
-    //     {
-    //       path: 'fillAppointment',
-    //       name: 'fillAppointment',
-    //       component: () => import ("@/components/page/invitation/components/fillAppointment")
-    //     },
-    //     //预约成功
-    //     {
-    //       path: 'fillSuccess',
-    //       name: 'fillSuccess',
-    //       component: () => import ("@/components/page/invitation/components/fillSuccess")
-    //     },
-    //     //面对面扫码填入信息
-    //     {
-    //       path: 'scanCodeFill',
-    //       name: 'scanCodeFill',
-    //       component: () => import ("@/components/page/invitation/components/scanCodeFill")
-    //     },
-    //     //预约成功
-    //     {
-    //       path: 'fillSuccess',
-    //       name: 'fillSuccess',
-    //       component: () => import ("@/components/page/invitation/components/fillSuccess")
-    //     },
-    //   ]
-    // },
     //我的客户
     {
       path: '/myClient',
@@ -155,6 +111,20 @@ export default new Router({
       component: () => import ("@/components/page/index/recharge"),
       meta: {title: 'recharge'},
     },
+    //健康在手
+    {
+      path: '/holdHealth',
+      name: 'holdHealth',
+      component: () => import ("@/components/page/index/advert/holdHealth"),
+      meta: {title: 'holdHealth'},
+    },
+    //操作指南
+    {
+      path: '/operateGuide',
+      name: 'operateGuide',
+      component: () => import ("@/components/page/index/advert/operateGuide"),
+      meta: {title: 'operateGuide'},
+    },
     //尊贵服务-基础
     {
       path: '/serviceStage1',
@@ -162,23 +132,63 @@ export default new Router({
       component: () => import ("@/components/page/index/honorableService/stage1"),
       meta: {title: 'serviceStage1'},
     },
+    //尊贵服务-进阶
     {
       path: '/serviceStage2',
       name: 'serviceStage2',
       component: () => import ("@/components/page/index/honorableService/stage2"),
       meta: {title: 'serviceStage2'},
     },
+    //尊贵服务-提升
     {
       path: '/serviceStage3',
       name: 'serviceStage3',
       component: () => import ("@/components/page/index/honorableService/stage3"),
       meta: {title: 'serviceStage3'},
     },
+    //尊贵服务-特色
     {
       path: '/serviceStage4',
       name: 'serviceStage4',
       component: () => import ("@/components/page/index/honorableService/stage4"),
       meta: {title: 'serviceStage4'},
     },
+    //设置
+    {
+      path: '/option',
+      name: 'option',
+      component: () => import ("@/components/page/personal/option"),
+      meta: {title: 'option'},
+    },
+    //关于我们
+    {
+      path: '/aboutUs',
+      name: 'aboutUs',
+      component: () => import ("@/components/page/personal/aboutUs"),
+      meta: {title: 'aboutUs'},
+    },
+    //用户协议
+    {
+      path: '/userAgreement',
+      name: 'userAgreement',
+      component: () => import ("@/components/page/personal/userAgreement"),
+      meta: {title: 'userAgreement'},
+    },
   ]
 })
+
+/* 权限判断 */
+router.beforeEach((to, from, next) => {
+  let isLogin = localStorage.getItem("authorization")
+  if (!isLogin) {
+    if (to.path === '/') {
+      next();
+    } else {
+      next('/')
+    }
+  } else {
+    next()
+  }
+})
+
+export default router

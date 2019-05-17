@@ -1,8 +1,8 @@
 <!-- 客户信息模块 -->
 <template>
   <div class="clientInfo-page">
-    <TopBg gray>
-      <PersonTop title="客户信息" hasBack hasMore/>
+    <TopBg>
+      <PersonTop title="客户信息" hasBack/>
     </TopBg>
     <div class="clientInfo-panel">
       <div class="clientInfo-card">
@@ -41,7 +41,7 @@
       <div class="clientInfo-archive">
         <Title title="健康档案" />
         <div class="archive-card">
-          <div class="card1">
+          <div class="card1" @click="jumpHistory">
             <div class="card-icon">
               <img src="~IMG/clientInfo-icon1.png" alt="">
             </div>
@@ -122,6 +122,7 @@ export default {
     TopBg
   },
   methods:{
+    //获取客户详情
     getCustomerInfo(val){
       this.$axios({
         method: "post",
@@ -141,6 +142,7 @@ export default {
           console.log("错误：获取客户信息异常" + err);
         });
     },
+    //更改客户信息
     changeInfo(){
       // this.show = true;
       this.$router.push({
@@ -159,8 +161,16 @@ export default {
           customerCode: this.customerInfo.customerCode
         }
       })
+    },
+    //跳亚健康检测记录
+    jumpHistory(){
+      if(this.customerInfo.orderList.length > 0){
+        let orderCode = this.customerInfo.orderList.find(el => el.rowState == '1').orderCode;
+        console.log(orderCode,'orderCode')
+        location.href=`https://h.hfieta.com/hps/#/TestDetail?orderCode=${orderCode}`
+      }
+      // location.href=`https://h.hfieta.com/hps/#/TestDetail?orderCode=${this.}`
     }
-    
   },
   mounted(){
     let wxOpenid = this.$route.query.wxOpenid

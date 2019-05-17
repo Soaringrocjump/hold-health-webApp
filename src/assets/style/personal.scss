@@ -232,3 +232,37 @@
     text-align: center;
   }
 }
+/* 设置 */
+.option-page{
+  width: 750px;
+  background: #fff;
+  padding-bottom: 400px;
+  .option-list{
+    li{
+      height: 109px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 34px 0 48px;
+      border-bottom: 3px solid #F2F1FE;
+      .left{
+        display: flex;
+        align-items: center;
+        .icon{
+          width: 48px;
+          height: 48px;
+          margin-right: 48px;
+        }
+        h2{
+          font-size:30px;
+          color:rgba(29,30,44,1);
+        }
+      }
+      i{
+        font-size: 28px;
+        font-weight: bold;
+      }
+    }
+    
+  }
+}

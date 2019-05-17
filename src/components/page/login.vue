@@ -12,14 +12,14 @@
           <!-- <i>  引入图片的方法
             <img src="~IMG/login-user.png" alt="">
           </i> -->
-          <input type="text" v-model="userName" placeholder="输入你的工号">
+          <input type="text" v-model="userName" placeholder="请输入你的工号">
         </li>
         <li>
           <i class="iconfont icon-iconmima"></i>
           <!-- <i>
             <img src="~IMG/login-psd.png" alt="">
           </i> -->
-          <input type="password" v-model="userPwd" placeholder="输入您的身份证后六位">
+          <input type="password" v-model="userPwd" placeholder="请输入您的身份证后六位">
         </li>
       </ul>
       <div class="btn" @click="login">登 录</div>

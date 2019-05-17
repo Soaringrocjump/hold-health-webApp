@@ -1,7 +1,7 @@
 // 全局filter（过滤）方法
 // 过滤器在{}、v-bind中使用，一般跟在'|'后面，将前面的结果作为入参
 import {formatDate} from '../utils'
-// import nationArr from '@/assets/js/nation'
+import nationArr from '@/assets/js/nation'
 
 //格式化时间yyyy-MM-dd hh:mm:ss
 function formatterDateTime(value) {
@@ -53,8 +53,8 @@ function moneyFormat(val) {
   return (((sign) ? '' : '-') + val + '.' + cents);
 }
 
+//匹配民族
 function matchNation(val){
-  let nationArr = JSON.parse(localStorage.getItem('nationArr'))
   let selNation = nationArr.find(el => el.code == val)
   if(selNation){
     return selNation.name

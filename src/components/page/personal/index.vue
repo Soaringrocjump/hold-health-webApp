@@ -2,7 +2,7 @@
 <template>
   <div class="personal-page">
     <TopBg>
-      <PersonTop title="个人中心" />
+      <PersonTop title="个人中心" hasMore/>
     </TopBg>
     <div class="personal-card">
       <div class="personal-card-up">

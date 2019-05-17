@@ -78,17 +78,6 @@
         text-overflow: ellipsis;
         overflow: hidden;
       }
-      .slide1{
-        position: absolute;
-        left: 0;
-        animation: slideUp1 4s infinite;
-      }
-      .slide2{
-        position: absolute;
-        left: 0;
-        top: 60px;
-        animation: slideUp2 8s  infinite;
-      }
     }
   }
   .index-count{
@@ -130,6 +119,23 @@
       border-radius: 10px;
       overflow: hidden;
       margin: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .short{
+        width: 529px;
+        // height: 139px;
+      }
+      .guide{
+        width:140px;
+        height:140px;
+        padding: 33px;
+        background:linear-gradient(132deg,rgba(93,2,140,1) 0%,rgba(230,53,255,1) 100%);
+        border-radius:10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
     // li~li{
     //   margin-top: 20px;
@@ -237,31 +243,5 @@
         }
       }
     }
-  }
-}
-@keyframes slideUp1{
-  0%{
-    top: 30px;
-  }
-  20%{
-    top: 0px;
-  }
-  80%{
-    top: 0px;
-  }
-  100%{
-    top: -30px;
-  }
-}
-@keyframes slideUp2{
-  0%{
-    top: 60px;
-  }
-  
-  75%{
-    top: 0px;
-  }
-  100%{
-    top: -60px;
   }
 }

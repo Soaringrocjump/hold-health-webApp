@@ -1,9 +1,8 @@
 <!-- 准客户 -->
 <template>
   <div class="myClient-list">
-    <table width="100%">
+    <!-- <table width="100%">
       <tr>
-        <!-- <th></th> -->
         <th width="25%">姓名</th>
         <th width="15%">性别</th>
         <th width="15%">年龄</th>
@@ -11,18 +10,30 @@
         <th width="20%">客户类型</th>
       </tr>
       <tr v-for="(item,index) in myClientList" :key="index" @click="jump(item)">
-        <!-- <td width="10%"><span v-if="item.isReExamition == 0" class="repeat"><img src="~IMG/myClient-repeat.png" alt=""></span></td> -->
         <td>{{item.userName || '-'}}</td>
         <td>{{item.userGender || '-'}}</td>
         <td>{{item.userAge || '-'}}</td>
         <td>{{item.userHeight || '-'}}/{{item.userWeight || '-'}}</td>
         <td>准客户
-          <!-- <span class="type">
-            <img src="~IMG/myClient-type-zhun.png" alt="">
-          </span> -->
         </td>
       </tr>
-    </table>
+    </table> -->
+    <div class="t-head">
+      <div style="width:25%;">姓名</div>
+      <div style="width:15%;">性别</div>
+      <div style="width:15%;">年龄</div>
+      <div style="width:25%;">身高/体重</div>
+      <div style="width:20%;">客户类型</div>
+    </div>
+    <div class="t-body">
+      <div v-for="(item,index) in myClientList" :key="index" @click="jump(item)">
+        <div style="width:25%;">{{item.userName || '-'}}</div>
+        <div style="width:15%;">{{item.userGender || '-'}}</div>
+        <div style="width:15%;">{{item.userAge || '-'}}</div>
+        <div style="width:25%;">{{item.userHeight || '-'}}/{{item.userWeight || '-'}}</div>
+        <div style="width:20%;">准客户</div>
+      </div>
+    </div>
   </div>
 </template>
 

@@ -59,7 +59,7 @@
           <div class="qrcode-box">
             <img :src="inviteQRCode" alt="">
           </div>
-          <p>扫码后关注“E时代的科技生活”微信公众号</p>
+          <p>扫码后关注“健康E顾问”微信公众号</p>
           <p>按照提示完成信息输入</p>
         </div>
         <div class="qrcode-close" @click="cancel">
@@ -71,7 +71,7 @@
           <h2>客户扫码</h2>
           <i class="iconfont icon-guanbi1" @click="cancel"></i>
         </div>
-        <div class="remark-cont">{{remark}}</div>
+        <div class="remark-cont">{{remark || '用户未备注'}}</div>
       </div>
     </div>
   </div>
@@ -83,10 +83,10 @@ import TopBg from 'Module/TopBg'
 export default {
   data () {
     return {
-      visible: true,
+      visible: false,
       isLoading: false,
       qrcodeDisplay: false,
-      remarkDisplay: true,
+      remarkDisplay: false,
       orderList: [],
       searchName: '',
       baseImgUrl: 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=',
@@ -142,7 +142,7 @@ export default {
     //跳app
     jumpAPP(val){
       console.log(val)
-      if(val.rowState == 9){
+      if(val.rowState != 9){
         this.$axios({
         method: "post",
         url: "order/orderBeforeScan",
@@ -172,14 +172,10 @@ export default {
           console.log("错误：获取数据异常" + err);
         });
       }else{
-        this.remark = val.remark
-        console.log(this.remark)
-        console.log('visible',this.visible)
-        console.log('remarkDisplay',this.remarkDisplay)
         this.visible = true
-        this.remarkDisplay = true
+        this.qrcodeDisplay = true
+        this.getAffirmQRCode(val.orderCode)
       }
-      
     },
     //查询订单
     searchOrder(){
@@ -240,7 +236,7 @@ export default {
             console.log(msg);
             this.inviteQRCode = this.baseImgUrl + msg
           }else{
-            console.log(result)
+            alert(result)
           }
         })
         .catch(err => {
@@ -280,6 +276,8 @@ export default {
     popOut(val){
       this.visible = true
       this.remarkDisplay = true
+      this.remark = val.remark
+      console.log(this.remark)
       // this.getAffirmQRCode(val.orderCode)
     },
     //取消弹框
@@ -287,6 +285,7 @@ export default {
       this.visible = false
       this.qrcodeDisplay = false
       this.remarkDisplay = false
+      this.remark = ''
       this.inviteQRCode = ''
     }
   },

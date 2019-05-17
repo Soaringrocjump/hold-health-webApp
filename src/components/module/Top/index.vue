@@ -3,7 +3,7 @@
   <div :class="['page-top',hasBg ? 'hasBg': '',theme,]">
     <i class="iconfont icon-fanhui" @click="$router.go(-1)"></i>
     <span>{{title}}</span>
-    <i class="iconfont icon-lingdang"></i>
+    <i class="iconfont "></i>
   </div>
 </template>
 

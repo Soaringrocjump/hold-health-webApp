@@ -54,7 +54,7 @@
         </li>
       </ul>
     </div>
-    <div class="confirmBtn" @click="show = true">已确认，发布邀约</div>
+    <div class="confirmBtn" @click="confirm">已确认，发布邀约</div>
     <van-actionsheet v-model="show" cancel-text="取消">
       <div class="sharePlat">
         <dl @click="shareWechat">
@@ -108,6 +108,10 @@ export default {
     TopBg
   },
   methods:{
+    confirm(){
+      this.show = true
+      localStorage.setItem('shareRemark',this.remark)
+    },
     //分享微信
     shareWechat(){
       // this.$bridge.callhandler('HealthMonitoring', (data) => {
@@ -130,6 +134,7 @@ export default {
   },
   mounted(){
     this.service = this.$route.query.service
+    this.remark = localStorage.getItem('shareRemark')
   }
 }
 

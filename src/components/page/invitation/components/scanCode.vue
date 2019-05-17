@@ -8,7 +8,7 @@
         <!-- <img src="~IMG/QR-code.png" alt=""> -->
         <img :src="inviteQRCode" alt="">
       </div>
-      <p class="step2">扫码后关注“E时代的科技生活”微信公众号<br>按照提示完成信息输入</p>
+      <p class="step2">扫码后关注“健康E顾问”微信公众号<br>按照提示完成信息输入</p>
       <div class="cancel" @click="$router.go(-1)">
         <i class="iconfont icon-iconfontguanbi"></i>
       </div>

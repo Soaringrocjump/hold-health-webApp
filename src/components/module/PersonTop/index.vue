@@ -3,7 +3,11 @@
   <div class="personal-top-option">
     <span><i class="iconfont icon-fanhui" v-if="hasBack" @click="$router.go(-1)"></i></span>
     <span>{{title}}</span>
-    <span><i v-if="hasMore" class="iconfont icon-gengduo"></i></span>
+    <span>
+      <router-link to="/option">
+      <i v-if="hasMore" class="iconfont icon-shezhi"></i>
+      </router-link>
+    </span>
   </div>
 </template>
 
@@ -40,9 +44,14 @@ export default {
   color: #fff;
   i{
     font-size: 40px;
+    color: #fff;
   }
   span{
     font-size: 36px;
+    i{
+      font-size: 42px;
+      color: #fff;
+    }
   }
 }
 </style>

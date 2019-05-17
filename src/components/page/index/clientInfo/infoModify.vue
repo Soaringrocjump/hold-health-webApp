@@ -68,6 +68,7 @@
 <script>
 import Top2Left from 'Module/Top2Left'
 import areaData from '@/assets/js/area'
+import nationArr from '@/assets/js/nation'
 export default {
   data () {
     return {
@@ -83,7 +84,7 @@ export default {
       customerType: '',
       customerCode: '',
       userNation: '',
-      nation: JSON.parse(localStorage.getItem('nationArr')),
+      nation: nationArr,
       areaList: areaData
     };
   },
