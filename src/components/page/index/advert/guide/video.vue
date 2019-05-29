@@ -41,10 +41,10 @@ export default {
       display: flex;
       align-items: center;
       font-size: 32px;
-      color: rgba(14,16,128,1);
-      background: linear-gradient(0deg,#a94fff,#e635ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #a94fff;
+      // background: linear-gradient(0deg,#a94fff,#e635ff);
+      // -webkit-background-clip: text;
+      // -webkit-text-fill-color: transparent;
       margin-top: 75px;
       i{
         font-size: 36px;

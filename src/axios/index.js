@@ -6,10 +6,10 @@ import axios from 'axios';
 
 const request = axios.create({
     // baseURL: 'http://47.96.67.198:8861/', //测试地址
-    // baseURL: 'http://39.100.58.46:8000', 
-    baseURL: 'http://ios.guanqi2019.com:8000/',
+    baseURL: 'http://39.100.58.46:8000', 
+    // baseURL: 'http://ios.guanqi2019.com:8000/',
     // baseURL: 'https://m.hfieta.com/web2/',
-    // baseURL: 'http://39.98.71.27:8000',
+    // baseURL: 'http://39.98.71.27:8861',
     timeout: 10000, // 请求超时
     headers: {
         'content-type': 'application/json;charset=UTF-8',
@@ -34,6 +34,4 @@ request.interceptors.request.use((config) => {
 });
 /*使用axios插件*/
 Vue.prototype.$axios = request;
-// Vue.prototype.HOME = 'http://47.99.185.0:8088/'
-// Vue.prototype.FILE = 'http://47.99.185.0:8088/alapolicefile/'
 export default request

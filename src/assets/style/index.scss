@@ -169,9 +169,159 @@
       margin-top: 20px;
     }
   }
+  .manage-panel{
+    margin-top: 17px;
+    background: #fff;
+    padding-bottom: 40px;
+    .manage-cont{
+      padding: 28px 30px 0;
+      display: flex;
+      justify-content: space-between;
+      dl{
+        text-align: center;
+        font-size: 26px;
+        color: #666;
+        dt{
+          width: 137px;
+          height: 137px;
+        }
+        dd{
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+  .reach-standard{
+    margin-top: 17px;
+    background: #fff;
+    padding-bottom: 30px;
+    .situation{
+      width:690px;
+      height:278px;
+      background:#F4F5FA;
+      border-radius:10px;
+      margin: 14px auto 0;
+      overflow: hidden;
+      .top{
+        height:86px;
+        background:linear-gradient(90deg,rgba(106,99,242,1) 0%,rgba(186,54,229,1) 100%);
+        display: flex;
+        align-items: center;
+        font-size: 30x;
+        color: #fff;
+        .icon{
+          display: block;
+          width: 46px;
+          height: 46px;
+          margin: 0 26px;
+        }
+      }
+      .cont{
+        height: 192px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 29px;
+        .month-count{
+          p{
+            font-size: 28px;
+            color: #777;
+            line-height: 1.8;
+          }
+        }
+        .month-rate{
+          width: 227px;
+          text-align: center;
+          line-height: 1;
+          border-left: 3px solid #DFDFDF;
+          dt{
+            big{
+              position: relative;
+              font-size:100px;
+              font-weight:bold;
+              color:rgba(51,51,51,1);
+              background:linear-gradient(0deg,rgba(11,1,16,1) 0.732421875%, rgba(106,99,242,1) 48.388671875%, rgba(186,54,229,1) 100%);
+              -webkit-background-clip:text;
+              -webkit-text-fill-color:transparent;
+              &::after{
+                content: "%";
+                font-size: 35px;
+                color: #333;
+                position: absolute;
+                right: -30px;
+                bottom: 20px;
+                color: #333;
+                -webkit-text-fill-color: #333;
+              }
+            }
+            
+          }
+          dd{
+            font-size: 25px;
+            color: #777;
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
+  .customer-uphold{
+    margin-top: 17px;
+    background: #fff;
+    .uphold-type{
+      display: flex;
+      justify-content: space-between;
+      padding: 18px 30px 30px;
+      dl{
+        width: 220px;
+        height: 294px;
+        background: #F4F5FA;
+        padding: 25px 23px 0;
+        dt{
+          width: 173px;
+          height: 160px;
+          padding-top: 25px;
+          font-weight: 100;
+          font-size: 60px;
+          color: #fff;
+          text-align: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        dd{
+          font-size: 28px;
+          line-height: 1.6;
+        }
+      }
+      dl:nth-of-type(1){
+        dt{
+          background-image: url(~IMG/index-uphold1.png)
+        }
+        dd{
+          color: #F85355;
+        }
+      }
+      dl:nth-of-type(2){
+        dt{
+          background-image: url(~IMG/index-uphold2.png)
+        }
+        dd{
+          color: #6B63F2;
+        }
+      }
+      dl:nth-of-type(3){
+        dt{
+          background-image: url(~IMG/index-uphold3.png)
+        }
+        dd{
+          color: #B33AE6;
+        }
+      }
+    }
+  }
   .index-service{
     width: 750px;
-    margin-top: 14px;
+    margin-top: 17px;
     background: #fff;
     ul{
       display: flex;
@@ -181,13 +331,13 @@
       li{
         position: relative;
         width: 330px;
-        margin-bottom: 20px;
+        margin: 10px 0;
       }
     }
   }
   .index-test{
     width: 750px;
-    margin-top: 15px;
+    margin-top: 17px;
     background: #fff;
     ul{
       li{
@@ -221,7 +371,7 @@
   }
   .index-mytool{
     width: 750px;
-    margin-top: 15px;
+    margin-top: 17px;
     background: #fff;
     .tool-list{
       width: 100%;

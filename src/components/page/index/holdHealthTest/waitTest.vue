@@ -141,7 +141,7 @@ export default {
     },
     //跳app
     jumpAPP(val){
-      console.log(val)
+      console.log('jumpAPP',val)
       if(val.rowState != 9){
         this.$axios({
         method: "post",
@@ -164,7 +164,12 @@ export default {
               location.href=`HealthMonitoring?token=${token}&orderCode=${orderCode}&userName=${userName}&userAge=${userAge}&userGender=${userGender}&gmtModify=${gmtCreate}`
             }
           }else{
-            alert(result.data.message)
+            // alert(result.data.message)
+            this.$dialog.alert({
+              message: result.data.message
+            }).then(() => {
+              // on close
+            });
           }
         })
         .catch(err => {
@@ -236,7 +241,12 @@ export default {
             console.log(msg);
             this.inviteQRCode = this.baseImgUrl + msg
           }else{
-            alert(result)
+            // alert(result.data.message)
+            this.$dialog.alert({
+              message: result.data.message
+            }).then(() => {
+              // on close
+            });
           }
         })
         .catch(err => {
